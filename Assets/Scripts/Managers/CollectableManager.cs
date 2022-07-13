@@ -6,7 +6,8 @@ public class CollectableManager : MonoBehaviour
 {
     #region Self Variables
     #region Public Variables
-    public CollectableStateData CollectableStateData;
+    public CollectableStateData StateData;
+    public MeshStateData MeshData;
 
 
 
@@ -25,17 +26,22 @@ public class CollectableManager : MonoBehaviour
 
     private void Awake()
     {
-        CollectableStateData = GetCollectableStateData();
+        
+        StateData = GetCollectableStateData();
+        Debug.Log(StateData.collectableTypes);
+        MeshData = GetMeshData();
+        
     }
-
-
-
-    private  CollectableStateData GetCollectableStateData()
+    private void Start()
     {
-
-       return Resources.Load<CD_Collectables>("Data/CD_Collectable").collectableStateData;
-
+        OnChangeCollectableState(StateData.collectableTypes);
+        Debug.Log(StateData.collectableTypes);
     }
+
+
+    private CollectableStateData GetCollectableStateData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").collectableStateData;
+    private MeshStateData GetMeshData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").meshState;
+    
 
 
     #region Event Subscription
@@ -63,28 +69,42 @@ public class CollectableManager : MonoBehaviour
 
     #endregion
 
-    private void OnChangeMeshOnGate()
+    public void SendCollectableStateDataToControllers()
+    {
+        collectableMeshController.SetMeshType(MeshData.meshType);
+    }
+
+    public void OnChangeMeshOnGate()
     {
 
     }
 
-    private void OnCollisionWithAtm()
+    public void OnCollisionWithAtm()
     {
 
     }
-    private void OnCollisionWithCollectable()
-    {
-
-    }
-
-    private void OnCollisionWithObstacle()
+    public void OnCollisionWithCollectable()
     {
 
     }
 
-    private void OnChangeCollectableState()
+    public void OnCollisionWithObstacle()
     {
 
     }
+
+    public void OnChangeCollectableState(CollectableStateData.CollectableTypes _collectableTypes)
+    {
+        if (_collectableTypes==CollectableStateData.CollectableTypes.Money)
+        {
+            StateData.collectableTypes = CollectableStateData.CollectableTypes.Gold;
+        }
+        else if (_collectableTypes==CollectableStateData.CollectableTypes.Gold)
+        {
+            StateData.collectableTypes = CollectableStateData.CollectableTypes.Diamond;
+        }
+
+    }
+    
 
 }

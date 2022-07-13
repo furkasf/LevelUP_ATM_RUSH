@@ -20,8 +20,18 @@ public class CollectableMeshConroller : MonoBehaviour
     {
 
     }
-    public void SetMeshType(MeshStateData meshStateData)
+    public void SetMeshType(MeshStateData.MeshTypes _meshType)
     {
+        if(_meshType==MeshStateData.MeshTypes.MoneyFilter)
+        {
+            _meshType = MeshStateData.MeshTypes.GoldFilter;
+        
+        }
+        else if(_meshType==MeshStateData.MeshTypes.GoldFilter)
+        {
+            _meshType = MeshStateData.MeshTypes.DiamondFilter;
+        
+        }
 
     }
 

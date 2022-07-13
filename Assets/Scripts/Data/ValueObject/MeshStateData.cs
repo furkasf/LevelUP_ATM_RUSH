@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class MeshStateData : MonoBehaviour
+[Serializable]
+public class MeshStateData 
 {
     public enum MeshTypes
     {
@@ -10,5 +12,6 @@ public class MeshStateData : MonoBehaviour
         GoldFilter,
         DiamondFilter
     }
-
+    public MeshTypes meshType=MeshTypes.MoneyFilter;
+   // public MeshStateData MeshState { get { return meshState; } }
 }

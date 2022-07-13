@@ -1,6 +1,8 @@
 using UnityEngine;
+using System;
 
-public class MeshData : MonoBehaviour
+[Serializable]
+public class MeshData 
 {
     public MeshFilter filter;
 }
