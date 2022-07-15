@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07c8df80bf89e04e8c595fef0d09015, type: 3}
   m_Name: CD_Collectables
   m_EditorClassIdentifier: 
-  filters: []
+  filters:
+  - CollectableFilter: {fileID: 0}
+    CollectableObject: {fileID: 0}
+    collectableTexture: {fileID: 0}
   meshState:
     meshType: 0
   collectableStateData:
