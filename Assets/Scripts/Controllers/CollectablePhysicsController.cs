@@ -21,32 +21,45 @@ public class CollectablePhysicsController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.CompareTag("Atm"))
         {
             CollisionWithAtm();
+        }
 
+        if (other.CompareTag("Gate"))
+        {
+            CollisionWithGate();
+        }
+
+        if (other.CompareTag("Collectable"))
+        {
+            CollisionWithCollectable();
+        }
+
+        if (other.CompareTag("Obstacle"))
+        {
+            CollisionWithObstacle();
         }
     }
-    public void CollisionWithAtm()
+    private void CollisionWithAtm()
     {
         collectableManager.OnCollisionWithAtm();
     }
 
-    public void CollisionWithCollectable()
+    private void CollisionWithCollectable()
     {
         collectableManager.OnCollisionWithCollectable();
     }
 
-    public void CollisionWithObstacle()
+    private void CollisionWithObstacle()
     {
         collectableManager.OnCollisionWithObstacle();
     }
     
-    public void CollisionWithGate()
+    private void CollisionWithGate()
     {
-        collectableManager.OnChangeMeshOnGate();
-        //collectableManager.OnChangeCollectableState();
+        collectableManager.OnCollisionWithGate();
     }
-
 
 }

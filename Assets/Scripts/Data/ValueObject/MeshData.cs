@@ -1,8 +1,13 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
-[Serializable]
-public class MeshData 
+namespace Data.ValueObject
 {
-    public MeshFilter filter;
+    [Serializable]
+    public class MeshData 
+    {
+        public MeshFilter CollectableFilter;
+        public GameObject CollectableObject;
+        public Texture   collectableTexture;
+    }
 }
