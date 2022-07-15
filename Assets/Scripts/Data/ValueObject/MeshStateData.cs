@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
 
-[Serializable]
-public class MeshStateData 
+namespace Data.ValueObject
 {
-    public enum MeshTypes
+    [Serializable]
+    public class MeshStateData 
     {
-        MoneyFilter,
-        GoldFilter,
-        DiamondFilter
+        public enum MeshTypes
+        {
+            MoneyFilter,
+            GoldFilter,
+            DiamondFilter
+        }
+        public MeshTypes meshType=MeshTypes.MoneyFilter;
+        // public MeshStateData MeshState { get { return meshState; } }
     }
-    public MeshTypes meshType=MeshTypes.MoneyFilter;
-   // public MeshStateData MeshState { get { return meshState; } }
 }

@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using Data.ValueObject;
 using UnityEngine;
 
 public class CollectableManager : MonoBehaviour
 {
     #region Self Variables
     #region Public Variables
-    public CollectableStateData StateData;
+    public CollectableTypes StateData;
     public MeshStateData MeshData;
 
+    public GameObject go;
 
 
     #endregion
@@ -28,18 +28,10 @@ public class CollectableManager : MonoBehaviour
     {
         
         StateData = GetCollectableStateData();
-        Debug.Log(StateData.collectableTypes);
         MeshData = GetMeshData();
-        
-    }
-    private void Start()
-    {
-        OnChangeCollectableState(StateData.collectableTypes);
-        Debug.Log(StateData.collectableTypes);
     }
 
-
-    private CollectableStateData GetCollectableStateData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").collectableStateData;
+    private CollectableTypes GetCollectableStateData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").collectableStateData.collectableTypes;
     private MeshStateData GetMeshData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").meshState;
     
 
@@ -74,37 +66,36 @@ public class CollectableManager : MonoBehaviour
         collectableMeshController.SetMeshType(MeshData.meshType);
     }
 
-    public void OnChangeMeshOnGate()
+    public void OnCollisionWithGate()
     {
-
+        OnChangeCollectableState(StateData);
     }
-
     public void OnCollisionWithAtm()
     {
-
+        // Invoke RemoveStack && score
+        // pass the StateData value
     }
     public void OnCollisionWithCollectable()
     {
-
+        //Invoke AddStack
     }
 
     public void OnCollisionWithObstacle()
     {
-
+        // Invoke RemoveStack
     }
 
-    public void OnChangeCollectableState(CollectableStateData.CollectableTypes _collectableTypes)
+    public void OnChangeCollectableState(CollectableTypes _collectableTypes)
     {
-        if (_collectableTypes==CollectableStateData.CollectableTypes.Money)
+        if (_collectableTypes == CollectableTypes.Money)
         {
-            StateData.collectableTypes = CollectableStateData.CollectableTypes.Gold;
+            StateData = CollectableTypes.Gold;
         }
-        else if (_collectableTypes==CollectableStateData.CollectableTypes.Gold)
+        
+        else if(_collectableTypes == CollectableTypes.Gold)
         {
-            StateData.collectableTypes = CollectableStateData.CollectableTypes.Diamond;
+            StateData = CollectableTypes.Diamond;
         }
-
     }
     
-
 }

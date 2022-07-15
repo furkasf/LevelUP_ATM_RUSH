@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
 
-[Serializable]
-public class CollectableStateData 
+namespace Data.ValueObject
 {
     public enum CollectableTypes 
     {
         Default,
-        Money,
-        Gold,
-        Diamond
+        Money = 1,
+        Gold = 2,
+        Diamond = 3
     }
-     public CollectableTypes collectableTypes=CollectableTypes.Default;
-    //public CollectableTypes collectableType { get { return collectableTypes; } }
+    [Serializable]
+    public class CollectableStateData 
+    {
+        public CollectableTypes collectableTypes = CollectableTypes.Default;
+        //public CollectableTypes collectableType { get { return collectableTypes; } }
+    }
+
 }

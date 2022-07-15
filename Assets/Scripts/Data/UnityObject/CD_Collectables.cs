@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Data.ValueObject;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CD_Collectables", menuName = "AtmRush/CD_Collectables", order = 0)]
