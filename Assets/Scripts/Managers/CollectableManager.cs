@@ -1,3 +1,4 @@
+using System;
 using Data.ValueObject;
 using UnityEngine;
 
@@ -29,6 +30,14 @@ public class CollectableManager : MonoBehaviour
         
         StateData = GetCollectableStateData();
         MeshData = GetMeshData();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Gate"))
+        {
+            OnCollisionWithGate();
+        }
     }
 
     private CollectableTypes GetCollectableStateData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").collectableStateData.collectableTypes;
