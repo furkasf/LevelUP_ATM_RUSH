@@ -891,6 +891,7 @@ GameObject:
   - component: {fileID: 336944304}
   - component: {fileID: 336944303}
   - component: {fileID: 336944302}
+  - component: {fileID: 336944309}
   m_Layer: 0
   m_Name: MoneyCollectable
   m_TagString: Untagged
@@ -1015,6 +1016,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336944309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336944301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cb61acd91f28c46b13904ed4e3392f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateData: 0
+  MeshData:
+    meshType: 0
+  go: {fileID: 0}
+  collectablePhysicsController: {fileID: 0}
+  collectableMeshController: {fileID: 0}
 --- !u!1 &343995646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1522,7 @@ GameObject:
   - component: {fileID: 676135416}
   - component: {fileID: 676135415}
   - component: {fileID: 676135414}
+  - component: {fileID: 676135421}
   m_Layer: 0
   m_Name: MoneyCollectable (2)
   m_TagString: Untagged
@@ -1627,6 +1647,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &676135421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676135413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cb61acd91f28c46b13904ed4e3392f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateData: 0
+  MeshData:
+    meshType: 0
+  go: {fileID: 0}
+  collectablePhysicsController: {fileID: 0}
+  collectableMeshController: {fileID: 0}
 --- !u!1 &762936213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,6 +1784,7 @@ GameObject:
   - component: {fileID: 888178478}
   - component: {fileID: 888178477}
   - component: {fileID: 888178476}
+  - component: {fileID: 888178483}
   m_Layer: 0
   m_Name: MoneyCollectable (3)
   m_TagString: Untagged
@@ -1870,6 +1909,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &888178483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888178475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cb61acd91f28c46b13904ed4e3392f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateData: 0
+  MeshData:
+    meshType: 0
+  go: {fileID: 0}
+  collectablePhysicsController: {fileID: 0}
+  collectableMeshController: {fileID: 0}
 --- !u!1 &961375472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,6 +2303,7 @@ GameObject:
   - component: {fileID: 1157772321}
   - component: {fileID: 1157772320}
   - component: {fileID: 1157772319}
+  - component: {fileID: 1157772326}
   m_Layer: 0
   m_Name: MoneyCollectable (4)
   m_TagString: Untagged
@@ -2370,6 +2428,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157772326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157772318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cb61acd91f28c46b13904ed4e3392f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateData: 0
+  MeshData:
+    meshType: 0
+  go: {fileID: 0}
+  collectablePhysicsController: {fileID: 0}
+  collectableMeshController: {fileID: 0}
 --- !u!1 &1205406023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3412,6 +3488,7 @@ GameObject:
   - component: {fileID: 1779931682}
   - component: {fileID: 1779931681}
   - component: {fileID: 1779931680}
+  - component: {fileID: 1779931687}
   m_Layer: 0
   m_Name: MoneyCollectable (5)
   m_TagString: Untagged
@@ -3536,6 +3613,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1779931687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779931679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cb61acd91f28c46b13904ed4e3392f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateData: 0
+  MeshData:
+    meshType: 0
+  go: {fileID: 0}
+  collectablePhysicsController: {fileID: 0}
+  collectableMeshController: {fileID: 0}
 --- !u!1 &1818247347
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,7 +3736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818247347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3773,6 +3868,7 @@ GameObject:
   - component: {fileID: 1942910365}
   - component: {fileID: 1942910364}
   - component: {fileID: 1942910363}
+  - component: {fileID: 1942910370}
   m_Layer: 0
   m_Name: MoneyCollectable (1)
   m_TagString: Untagged
@@ -3897,6 +3993,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1942910370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942910362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cb61acd91f28c46b13904ed4e3392f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateData: 0
+  MeshData:
+    meshType: 0
+  go: {fileID: 0}
+  collectablePhysicsController: {fileID: 0}
+  collectableMeshController: {fileID: 0}
 --- !u!1001 &1956449490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4725,7 +4839,6 @@ Transform:
   - {fileID: 7028834261349472272}
   - {fileID: 3687507908227605494}
   - {fileID: 694499604382713249}
-  - {fileID: 2403619721540678008}
   - {fileID: 6522691511560025524}
   - {fileID: 5497083009244654540}
   - {fileID: 6783707609900910254}
@@ -4848,7 +4961,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1241995334359102989
 MeshRenderer:
@@ -5099,7 +5212,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1.0793004}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2211301273476549628
 MeshFilter:
@@ -5211,12 +5324,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7792861439749456711}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.49999988, y: 1.8, z: -2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.49999988, y: 1.8, z: 20.17}
   m_LocalScale: {x: 0.15, y: 0.3, z: 0.15}
   m_Children: []
-  m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 9
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2469617641326451946
 MeshRenderer:
@@ -5287,7 +5400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2752141192832297941
 MeshRenderer:
@@ -5364,7 +5477,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2819286225562507261
 MeshRenderer:
@@ -5490,7 +5603,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3318505086454149702
 Transform:
@@ -5739,7 +5852,7 @@ Transform:
   m_LocalScale: {x: 4.6199994, y: 9.999999, z: 9.999999}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4809004235981800149
 MeshFilter:
@@ -6038,7 +6151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5515170100554048742
 MeshFilter:
@@ -6076,7 +6189,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6522691511560025524
 Transform:
@@ -6090,7 +6203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6783707609900910254
 Transform:
@@ -6104,7 +6217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &6866183684962933570
 MeshRenderer:
@@ -6177,7 +6290,7 @@ Transform:
   m_LocalScale: {x: 29.999998, y: 14.999999, z: 14.999999}
   m_Children: []
   m_Father: {fileID: 543450653399450450}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7028834261349472272
 Transform:
@@ -6259,13 +6372,27 @@ GameObject:
   - component: {fileID: 2403619721540678008}
   - component: {fileID: 470665853446387446}
   - component: {fileID: 1875220236752599873}
+  - component: {fileID: 7792861439749456712}
   m_Layer: 0
   m_Name: Development_Gate
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &7792861439749456712
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792861439749456711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 22.999994, y: 11.999997, z: 2.9999993}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &7884587756375579225
 MeshFilter:
   m_ObjectHideFlags: 0
