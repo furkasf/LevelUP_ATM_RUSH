@@ -9,7 +9,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/CollectableCollider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/ValueObject/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/ValueObject/StackData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/Obstacles.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -26,7 +28,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -70,7 +72,30 @@
       <updated>1657837935619</updated>
       <workItem from="1657837938918" duration="9550000" />
       <workItem from="1657896868818" duration="1888000" />
-
+      <workItem from="1658006118675" duration="3700000" />
+      <workItem from="1658090134085" duration="688000" />
+      <workItem from="1658095171488" duration="33000" />
+      <workItem from="1658095254905" duration="146000" />
+      <workItem from="1658095532945" duration="99000" />
+      <workItem from="1658095729021" duration="92000" />
+      <workItem from="1658095844910" duration="192000" />
+      <workItem from="1658096056920" duration="608000" />
+      <workItem from="1658096708682" duration="181000" />
+      <workItem from="1658096925583" duration="1290000" />
+      <workItem from="1658098265098" duration="209000" />
+      <workItem from="1658100341878" duration="14000" />
+      <workItem from="1658100910853" duration="1000" />
+      <workItem from="1658100945316" duration="41000" />
+      <workItem from="1658102250564" duration="319000" />
+      <workItem from="1658103295690" duration="347000" />
+      <workItem from="1658103732073" duration="1382000" />
+      <workItem from="1658105525067" duration="702000" />
+      <workItem from="1658116063119" duration="1449000" />
+      <workItem from="1658134057948" duration="2061000" />
+      <workItem from="1658143007518" duration="626000" />
+      <workItem from="1658151746664" duration="1532000" />
+      <workItem from="1658155856928" duration="5034000" />
+      <workItem from="1658162121131" duration="3732000" />
     </task>
     <servers />
   </component>

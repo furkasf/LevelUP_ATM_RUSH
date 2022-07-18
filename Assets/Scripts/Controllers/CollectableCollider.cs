@@ -11,6 +11,7 @@ public class CollectableCollider : MonoBehaviour
         if(other.CompareTag("Obstical"))
         {
             int nextIndex = transform.GetSiblingIndex();
+            Debug.Log(nextIndex); 
             int currentindex = nextIndex - 1;
             
             StackManager.Instance.RemoveFromStack(nextIndex);

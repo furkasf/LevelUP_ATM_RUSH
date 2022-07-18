@@ -14,8 +14,8 @@ namespace Managers
         public int AtmScore;
         public int Gamescore;
         public float LERP_SPEED = 2.5f;
-        public float SCALE_MULTIPLIER = .5f;
-        public float SCALE_DURATION = .5f;
+        public float SCALE_MULTIPLIER = .1f;
+        public float SCALE_DURATION = .2f;
         public float JUMP_RADIUS;
 
         private Tween scaleTween;
@@ -54,7 +54,7 @@ namespace Managers
              if (scaleTween != null)
                  scaleTween.Kill(true);
              
-             scaleTween = transform.DOPunchScale(Vector3.one * SCALE_MULTIPLIER, SCALE_DURATION, 2);
+             scaleTween = transform.DOPunchScale(Vector3.one * SCALE_MULTIPLIER, SCALE_DURATION, 1);
              
         }
 
@@ -63,7 +63,7 @@ namespace Managers
             for (int i = 0; i < Collectables.Count; i++)
             { 
                 ShakeScaleOfStack(Collectables[i].transform);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.3f);
             }
      
         }
@@ -107,22 +107,27 @@ namespace Managers
             {
                 return;
             }
-          
-                // Debug.Log("Lerp!");
-                // Collectables[i].transform.position = Vector3.Lerp(new Vector3 (Collectables[i].transform.position.x, 0, 0),
-                //     new Vector3(Collectables[i-1].transform.position.x * 2, 0,0),
-                //     LERP_SPEED * Time.deltaTime);
-                 for (int i = Collectables.Count-1; i >= 1; i--)
-                 {
-                    Collectables[i].transform.DOMoveX(Collectables[i - 1].transform.position.x, 0.1f);
-                 }
+ 
+      // Debug.Log("Lerp!");
+      // Collectables[i].transform.position = Vector3.Lerp(new Vector3 (Collectables[i].transform.position.x, 0, 0),
+      //     new Vector3(Collectables[i-1].transform.position.x * 2, 0,0),
+      //     LERP_SPEED * Time.deltaTime);
+       for (int i = this.transform.childCount-1; i >= 1; i--)
+          {
+           this.transform.GetChild(i).transform
+               .DOMoveX(this.transform.GetChild(i - 1).transform.position.x, .1f);
+       }
+        // for (int i = 1; i <= Collectables.Count; i++)
+        // {
+        //    Collectables[i].transform.DOMoveX(Collectables[i - 1].transform.position.x, 0.1f);
+        // }
 
-                // for (int i = Collectables.Count-1; i >=1; i--)
-                // {
-                //     Collectables[i].transform.position = Vector3.Lerp(Collectables[i].transform.position,Collectables[i-1].transform.position,
-                //         Time.deltaTime * LERP_SPEED);
-                //     
-                // }
+      // for (int i = Collectables.Count-1; i >=1; i--)
+      // {
+      //     Collectables[i].transform.position = Vector3.Lerp(Collectables[i].transform.position,Collectables[i-1].transform.position,
+      //         Time.deltaTime * LERP_SPEED);
+      //     
+      // }
             
         }
 

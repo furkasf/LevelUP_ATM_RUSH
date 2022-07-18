@@ -7,7 +7,5 @@ namespace Data.ValueObject
     public class MeshData 
     {
         public MeshFilter CollectableFilter;
-        public GameObject CollectableObject;
-        public Texture   collectableTexture;
     }
 }

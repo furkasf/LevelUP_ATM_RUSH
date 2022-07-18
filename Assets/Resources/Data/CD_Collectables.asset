@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CD_Collectables
   m_EditorClassIdentifier: 
   filters:
-  - CollectableFilter: {fileID: 0}
-    CollectableObject: {fileID: 0}
-    collectableTexture: {fileID: 0}
+  - {fileID: -6749094374590335035, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
+  - {fileID: -6390563017650441280, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
+  - {fileID: 4738028301749549601, guid: 5cfe293773e94ec4390b42f3350b7b56, type: 3}
   meshState:
     meshType: 0
   collectableStateData:

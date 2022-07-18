@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Data.ValueObject;
 using UnityEngine;
 
@@ -7,10 +8,6 @@ public class CollectableManager : MonoBehaviour
     #region Self Variables
     #region Public Variables
     public CollectableTypes StateData;
-    public MeshStateData MeshData;
-
-    public GameObject go;
-
 
     #endregion
     #region Serialized Variables
@@ -29,8 +26,9 @@ public class CollectableManager : MonoBehaviour
     {
         
         StateData = GetCollectableStateData();
-        MeshData = GetMeshData();
+        
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -41,8 +39,9 @@ public class CollectableManager : MonoBehaviour
     }
 
     private CollectableTypes GetCollectableStateData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").collectableStateData.collectableTypes;
-    private MeshStateData GetMeshData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").meshState;
-    
+
+
+
 
 
     #region Event Subscription
@@ -70,9 +69,9 @@ public class CollectableManager : MonoBehaviour
 
     #endregion
 
-    public void SendCollectableStateDataToControllers()
+    public void SendMeshToControllers()
     {
-        collectableMeshController.SetMeshType(MeshData.meshType);
+        
     }
 
     public void OnCollisionWithGate()
@@ -99,11 +98,15 @@ public class CollectableManager : MonoBehaviour
         if (_collectableTypes == CollectableTypes.Money)
         {
             StateData = CollectableTypes.Gold;
+            collectableMeshController.SetMeshType(1);
+            
         }
         
         else if(_collectableTypes == CollectableTypes.Gold)
         {
             StateData = CollectableTypes.Diamond;
+            collectableMeshController.SetMeshType(2);
+            // gameObject.GetComponent<MeshFilter>().mesh = meshFilter[2].mesh;
         }
     }
     

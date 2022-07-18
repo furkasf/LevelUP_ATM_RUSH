@@ -9,6 +9,9 @@ TagManager:
   - ATM
   - Collectable
   - Obstacle
+  - Atm
+  - WinZone
+  - MiniGameArea
   layers:
   - Default
   - TransparentFX

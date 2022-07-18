@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Data.ValueObject;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CD_Collectables", menuName = "AtmRush/CD_Collectables", order = 0)]
+[CreateAssetMenu(fileName = "CD_Collectables", menuName = "ATMRush/CD_Collectables", order = 0)]
 public class CD_Collectables : ScriptableObject
 {
-    public List<MeshData> filters;
+    public List<MeshFilter> filters;
     public MeshStateData meshState;
     public CollectableStateData collectableStateData;
 
