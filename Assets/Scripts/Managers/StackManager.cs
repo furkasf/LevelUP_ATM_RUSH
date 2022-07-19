@@ -10,7 +10,7 @@ namespace Managers
         public static StackManager Instance;
         #region Self Variables
         #region public
-        public List<UnityEngine.Transform> Collectables = new List<UnityEngine.Transform>();
+        public List<GameObject> Collectables = new List<GameObject>();
         public int AtmScore;
         public int Gamescore;
         public float LERP_SPEED = 2.5f;
@@ -106,19 +106,18 @@ namespace Managers
 
         private void AddOnStack(GameObject go)
         {   
-            
-            foreach(Transform i in Collectables)
+ 
+            foreach(GameObject i in Collectables)
             {
                 i.transform.Translate(Vector3.forward);
             }
-
-            go.gameObject.GetComponent<StackData>().Type = StackData.StackType.Stack;
+            
             
             go.transform.parent = transform;
             
             go.transform.localPosition = Vector3.forward;
             
-            Collectables.Add(go.gameObject.transform);
+            Collectables.Add(go);
             
             StartCoroutine(HandleShakeOfStack());
 

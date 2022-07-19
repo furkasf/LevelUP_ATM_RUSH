@@ -83,9 +83,9 @@ public class CollectableManager : MonoBehaviour
         CollectableSignals.Instance.onCollisionWithAtm?.Invoke(transform.GetSiblingIndex());
         // pass the StateData value
     }
-    public void OnCollisionWithCollectable()
+    public void OnCollisionWithCollectable(GameObject go)
     {
-        CollectableSignals.Instance.onCollisionWithCollectable?.Invoke(this.gameObject);
+        CollectableSignals.Instance.onCollisionWithCollectable?.Invoke(go);
     }
 
     public void OnCollisionWithObstacle()

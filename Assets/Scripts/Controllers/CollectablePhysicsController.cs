@@ -32,7 +32,9 @@ public class CollectablePhysicsController : MonoBehaviour
 
         if (other.CompareTag("Collectable"))
         {
-            CollisionWithCollectable();
+            other.tag = "Collected";
+            CollisionWithCollectable(other.transform.parent.gameObject);
+            Debug.Log("Collectable Collision!");
         }
 
         if (other.CompareTag("Obstacle"))
@@ -42,7 +44,10 @@ public class CollectablePhysicsController : MonoBehaviour
 
         if (other.CompareTag("Stack"))
         {
+            other.tag = "Untagged";
+            gameObject.tag= "Collected";
             CollisionWithStack();
+            Debug.Log("Stack collision!");
         }
     }
     private void CollisionWithAtm()
@@ -50,9 +55,9 @@ public class CollectablePhysicsController : MonoBehaviour
         collectableManager.OnCollisionWithAtm();
     }
 
-    private void CollisionWithCollectable()
+    private void CollisionWithCollectable(GameObject gameObject)
     {
-        collectableManager.OnCollisionWithCollectable();
+        collectableManager.OnCollisionWithCollectable(gameObject);
     }
 
     private void CollisionWithObstacle()
