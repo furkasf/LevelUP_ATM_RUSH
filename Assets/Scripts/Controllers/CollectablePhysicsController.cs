@@ -34,7 +34,6 @@ public class CollectablePhysicsController : MonoBehaviour
         {
             other.tag = "Collected";
             CollisionWithCollectable(other.transform.parent.gameObject);
-            Debug.Log("Collectable Collision!");
         }
 
         if (other.CompareTag("Obstacle"))
@@ -47,7 +46,6 @@ public class CollectablePhysicsController : MonoBehaviour
             other.tag = "Untagged";
             gameObject.tag= "Collected";
             CollisionWithStack();
-            Debug.Log("Stack collision!");
         }
     }
     private void CollisionWithAtm()
