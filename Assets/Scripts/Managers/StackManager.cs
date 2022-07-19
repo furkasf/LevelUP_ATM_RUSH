@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 
@@ -11,6 +12,7 @@ namespace Managers
         #region Self Variables
         #region public
         public List<GameObject> Collectables = new List<GameObject>();
+        public GameObject TempHolder;
         public int AtmScore;
         public int Gamescore;
         public float LERP_SPEED = 2.5f;
@@ -65,13 +67,8 @@ namespace Managers
         private void Update()
         {
             LerpTheStack();
-            
         }
-    
-        private void FixedUpdate()
-        {
-            
-        }
+   
 
         private void ShakeScaleOfStack(Transform transform)
         {
@@ -96,11 +93,39 @@ namespace Managers
 
         public void RemoveFromStack(int index) 
         {
-            for(int i = index; i < transform.childCount; i--)
+            Debug.Log(index);
+           
+            
+            if(index == 0)
             {
-                Collectables[i].GetComponent<StackData>().Type = StackData.StackType.UnStack;
-                
-                Collectables[i].gameObject.SetActive(false);
+                transform.GetChild(0).parent = null;
+                for(int i = 0; i < Collectables.Count; i++)
+                {
+                    if(Collectables[i].transform.parent == null)
+                    {
+                        Collectables[i].transform.parent = TempHolder.transform;
+                        Collectables[i].SetActive(false);
+                        Collectables.Remove(Collectables[i]);
+                    }
+                }
+                return;
+            }
+            
+            for (int i = 0 ; i < index ; i++)
+            {
+                if (transform.childCount > i)
+                {
+                    transform.GetChild(i).parent = null;
+                }
+                else break;
+            }
+            foreach(var i in Collectables.ToArray())
+            {
+                if(i.transform.parent == null)
+                {
+                    i.transform.parent = TempHolder.transform;
+                    Collectables.Remove(i);
+                }
             }
         }
 
@@ -125,31 +150,17 @@ namespace Managers
 
         private void LerpTheStack()
         {
-            if (Collectables is null)
+            if ( Collectables.Count <= 1)
             {
                 return;
-            }
- 
-            // Debug.Log("Lerp!");
-            // Collectables[i].transform.position = Vector3.Lerp(new Vector3 (Collectables[i].transform.position.x, 0, 0),
-            //     new Vector3(Collectables[i-1].transform.position.x * 2, 0,0),
-            //     LERP_SPEED * Time.deltaTime);
-            for (int i = this.transform.childCount-1; i >= 1; i--)
+            } 
+            for (int i = Collectables.Count - 1; i >= 1; i--)
             {
-                this.transform.GetChild(i).transform
-                    .DOMoveX(this.transform.GetChild(i - 1).transform.position.x, .1f);
+                //Debug.Log(i);
+                Collectables[i - 1].transform.DOMoveX(Collectables[i].transform.position.x, 0.1f);
+                //transform.GetChild(i).transform
+                    //.DOMoveX(this.transform.GetChild(i - 1).transform.position.x, .07f);
             }
-            // for (int i = 1; i <= Collectables.Count; i++)
-            // {
-            //    Collectables[i].transform.DOMoveX(Collectables[i - 1].transform.position.x, 0.1f);
-            // }
-
-            // for (int i = Collectables.Count-1; i >=1; i--)
-            // {
-            //     Collectables[i].transform.position = Vector3.Lerp(Collectables[i].transform.position,Collectables[i-1].transform.position,
-            //         Time.deltaTime * LERP_SPEED);
-            //     
-            // }
             
         }
 
@@ -157,11 +168,5 @@ namespace Managers
         {
             
         }
-
-        private void CalculateScoreWithType()
-        {
-
-        }
-    
     }
 }
