@@ -23,7 +23,6 @@ public class PlayerManager : MonoBehaviour
         [SerializeField] private PlayerPhysicsController physicsController;
         
         [SerializeField] private PlayerAnimationController animationController;
-        // [SerializeField] private ForceBallsToPool poolForcer;
 
         #endregion
 
@@ -41,8 +40,6 @@ public class PlayerManager : MonoBehaviour
         private void SendPlayerDataToControllers()
         {
             movementController.SetMovementData(Data.MovementData);
-            //physicsController.SetPhysicsData();
-            //poolForcer.SetForceData(Data.ForceData);
         }
 
         #region Event Subscription
@@ -88,13 +85,11 @@ public class PlayerManager : MonoBehaviour
         private void OnActivateMovement()
         {
             movementController.EnableMovement();
-            //animationController.ActivatePlayerMovementAnimation();
         }
 
         private void OnDeactiveMovement()
         {
             movementController.DeactiveMovement();
-            //animationController.DeactivatePlayerMovementAnimation();
         }
 
         private void OnGetInputValues(HorizontalInputParams inputParams)
@@ -107,8 +102,8 @@ public class PlayerManager : MonoBehaviour
         private void OnPlay()
         {
             movementController.IsReadyToPlay(true);
+            
             animationController.ActivatePlayerMovementAnimation();
-            Debug.Log("Olabilir.");
         }
 
         private void OnLevelSuccessful()

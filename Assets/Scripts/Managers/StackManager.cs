@@ -27,6 +27,41 @@ namespace Managers
             if(Instance == null) Instance = this;
         }
 
+        #region Event Subscription
+    
+        private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            CollectableSignals.Instance.onCollisionWithCollectable += AddOnStack;
+            
+            CollectableSignals.Instance.onCollisionWithObstical += RemoveFromStack;
+            
+            CollectableSignals.Instance.onCollisionWithAtm += RemoveFromStack;
+
+            CollectableSignals.Instance.onCollissionWithStack += AddOnStack;
+        }
+
+        private void UnsubscribeEvents()
+        {
+            CollectableSignals.Instance.onCollisionWithCollectable -= AddOnStack;
+            
+            CollectableSignals.Instance.onCollisionWithObstical -= RemoveFromStack;
+            
+            CollectableSignals.Instance.onCollisionWithAtm -= RemoveFromStack;
+
+            CollectableSignals.Instance.onCollissionWithStack -= AddOnStack;
+        }
+
+        private void OnDisable()
+        {
+            UnsubscribeEvents();
+        }
+
+        #endregion
         private void Update()
         {
             LerpTheStack();
@@ -38,17 +73,6 @@ namespace Managers
             
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            Debug.Log("is in trigger" +
-                      "");
-            if (other.gameObject.GetComponent<StackData>().Type == StackData.StackType.UnStack)
-            {
-              
-                AddOnStack(other);
-            }
-        }
-        
         private void ShakeScaleOfStack(Transform transform)
         {
              if (scaleTween != null)
@@ -63,6 +87,7 @@ namespace Managers
             for (int i = 0; i < Collectables.Count; i++)
             { 
                 ShakeScaleOfStack(Collectables[i].transform);
+                
                 yield return new WaitForSeconds(0.3f);
             }
      
@@ -73,30 +98,28 @@ namespace Managers
         {
             for(int i = index; i < transform.childCount; i--)
             {
-                //Collectables[index].parent = null;
                 Collectables[i].GetComponent<StackData>().Type = StackData.StackType.UnStack;
+                
                 Collectables[i].gameObject.SetActive(false);
-                // Collectables.RemoveAt(index);
             }
         }
 
-        private void AddOnStack(Collider other)
+        private void AddOnStack(GameObject go)
         {   
             
-            foreach(UnityEngine.Transform i in Collectables)
+            foreach(Transform i in Collectables)
             {
-                //int index = 0;
                 i.transform.Translate(Vector3.forward);
-                // ShakeScaleOfStack(index);
-                
-                // index++;
-   
             }
 
-            other.gameObject.GetComponent<StackData>().Type = StackData.StackType.Stack;
-            other.transform.parent = transform;
-            other.transform.localPosition = Vector3.forward;
-            Collectables.Add(other.gameObject.transform);
+            go.gameObject.GetComponent<StackData>().Type = StackData.StackType.Stack;
+            
+            go.transform.parent = transform;
+            
+            go.transform.localPosition = Vector3.forward;
+            
+            Collectables.Add(go.gameObject.transform);
+            
             StartCoroutine(HandleShakeOfStack());
 
         }
@@ -108,26 +131,26 @@ namespace Managers
                 return;
             }
  
-      // Debug.Log("Lerp!");
-      // Collectables[i].transform.position = Vector3.Lerp(new Vector3 (Collectables[i].transform.position.x, 0, 0),
-      //     new Vector3(Collectables[i-1].transform.position.x * 2, 0,0),
-      //     LERP_SPEED * Time.deltaTime);
-       for (int i = this.transform.childCount-1; i >= 1; i--)
-          {
-           this.transform.GetChild(i).transform
-               .DOMoveX(this.transform.GetChild(i - 1).transform.position.x, .1f);
-       }
-        // for (int i = 1; i <= Collectables.Count; i++)
-        // {
-        //    Collectables[i].transform.DOMoveX(Collectables[i - 1].transform.position.x, 0.1f);
-        // }
+            // Debug.Log("Lerp!");
+            // Collectables[i].transform.position = Vector3.Lerp(new Vector3 (Collectables[i].transform.position.x, 0, 0),
+            //     new Vector3(Collectables[i-1].transform.position.x * 2, 0,0),
+            //     LERP_SPEED * Time.deltaTime);
+            for (int i = this.transform.childCount-1; i >= 1; i--)
+            {
+                this.transform.GetChild(i).transform
+                    .DOMoveX(this.transform.GetChild(i - 1).transform.position.x, .1f);
+            }
+            // for (int i = 1; i <= Collectables.Count; i++)
+            // {
+            //    Collectables[i].transform.DOMoveX(Collectables[i - 1].transform.position.x, 0.1f);
+            // }
 
-      // for (int i = Collectables.Count-1; i >=1; i--)
-      // {
-      //     Collectables[i].transform.position = Vector3.Lerp(Collectables[i].transform.position,Collectables[i-1].transform.position,
-      //         Time.deltaTime * LERP_SPEED);
-      //     
-      // }
+            // for (int i = Collectables.Count-1; i >=1; i--)
+            // {
+            //     Collectables[i].transform.position = Vector3.Lerp(Collectables[i].transform.position,Collectables[i-1].transform.position,
+            //         Time.deltaTime * LERP_SPEED);
+            //     
+            // }
             
         }
 
