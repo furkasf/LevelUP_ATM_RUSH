@@ -12,6 +12,7 @@ TagManager:
   - Atm
   - WinZone
   - MiniGameArea
+  - Stack
   layers:
   - Default
   - TransparentFX

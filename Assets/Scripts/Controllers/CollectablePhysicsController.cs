@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class CollectablePhysicsController : MonoBehaviour
 {
@@ -9,9 +10,6 @@ public class CollectablePhysicsController : MonoBehaviour
     [SerializeField] private CollectableManager collectableManager;
     [SerializeField] private Collider col;
     [SerializeField] private Rigidbody rb;
-
-
-
 
     #endregion
 
@@ -41,6 +39,11 @@ public class CollectablePhysicsController : MonoBehaviour
         {
             CollisionWithObstacle();
         }
+
+        if (other.CompareTag("Stack"))
+        {
+            CollisionWithStack();
+        }
     }
     private void CollisionWithAtm()
     {
@@ -60,6 +63,11 @@ public class CollectablePhysicsController : MonoBehaviour
     private void CollisionWithGate()
     {
         collectableManager.OnCollisionWithGate();
+    }
+
+    private void CollisionWithStack()
+    {
+        collectableManager.OnCollisionWithStack();
     }
 
 }

@@ -66,12 +66,12 @@ public class CollectableManager : MonoBehaviour
         UnsubscribeEvents();
     }
 
-
     #endregion
 
-    public void SendMeshToControllers()
+
+    public void OnCollisionWithStack()
     {
-        
+        CollectableSignals.Instance.onCollissionWithStack?.Invoke(this.gameObject);
     }
 
     public void OnCollisionWithGate()
@@ -80,17 +80,17 @@ public class CollectableManager : MonoBehaviour
     }
     public void OnCollisionWithAtm()
     {
-        // Invoke RemoveStack && score
+        CollectableSignals.Instance.onCollisionWithAtm?.Invoke(transform.GetSiblingIndex());
         // pass the StateData value
     }
     public void OnCollisionWithCollectable()
     {
-        //Invoke AddStack
+        CollectableSignals.Instance.onCollisionWithCollectable?.Invoke(this.gameObject);
     }
 
     public void OnCollisionWithObstacle()
     {
-        // Invoke RemoveStack
+        CollectableSignals.Instance.onCollisionWithObstical?.Invoke(transform.GetSiblingIndex());
     }
 
     public void OnChangeCollectableState(CollectableTypes _collectableTypes)
@@ -106,7 +106,7 @@ public class CollectableManager : MonoBehaviour
         {
             StateData = CollectableTypes.Diamond;
             collectableMeshController.SetMeshType(2);
-            // gameObject.GetComponent<MeshFilter>().mesh = meshFilter[2].mesh;
+            
         }
     }
     
