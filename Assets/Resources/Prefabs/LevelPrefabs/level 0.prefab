@@ -8949,10 +8949,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardParent
       objectReference: {fileID: 0}
-    - target: {fileID: 1496789555015667948, guid: 93377ab4aca380447898108e07e7defc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.38
-      objectReference: {fileID: 0}
     - target: {fileID: 2554220587934621039, guid: 93377ab4aca380447898108e07e7defc, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9079,7 +9075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1171967271734940691, guid: f490323c4922cb9429d4e34e0d8aab0e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.87
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 1171967271734940691, guid: f490323c4922cb9429d4e34e0d8aab0e, type: 3}
       propertyPath: m_LocalPosition.y
