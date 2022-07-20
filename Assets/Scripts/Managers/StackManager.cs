@@ -46,6 +46,8 @@ namespace Managers
             CollectableSignals.Instance.onCollisionWithAtm += RemoveFromStack;
 
             CollectableSignals.Instance.onCollissionWithStack += AddOnStack;
+
+            CollectableSignals.Instance.onMovementWithLerp += LerpTheStack;
         }
 
         private void UnsubscribeEvents()
@@ -57,6 +59,8 @@ namespace Managers
             CollectableSignals.Instance.onCollisionWithAtm -= RemoveFromStack;
 
             CollectableSignals.Instance.onCollissionWithStack -= AddOnStack;
+            
+            CollectableSignals.Instance.onMovementWithLerp -= LerpTheStack;
         }
 
         private void OnDisable()
@@ -65,11 +69,6 @@ namespace Managers
         }
 
         #endregion
-        private void Update()
-        {
-            LerpTheStack();
-        }
-   
 
         private void ShakeScaleOfStack(Transform transform)
         {

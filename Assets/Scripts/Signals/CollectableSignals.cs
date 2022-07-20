@@ -26,4 +26,8 @@ public class CollectableSignals : MonoBehaviour
     public UnityAction<GameObject>onCollisionWithCollectable = delegate{ };
     
     public UnityAction<GameObject> onCollissionWithStack = delegate(GameObject arg0) {  };
+    
+    public UnityAction onMovementWithLerp = delegate {  };
+    
+    
 }

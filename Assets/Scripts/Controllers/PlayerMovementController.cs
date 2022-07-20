@@ -58,6 +58,7 @@ using UnityEngine;
                if (_isReadyToMove)
                {
                    Move();
+                   
                }
                else
                {
@@ -66,6 +67,8 @@ using UnityEngine;
            }
            else
                Stop();
+              
+           CollectableSignals.Instance.onMovementWithLerp?.Invoke();
        }
 
        private void Move()
