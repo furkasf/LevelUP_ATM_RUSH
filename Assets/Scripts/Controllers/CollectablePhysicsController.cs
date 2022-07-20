@@ -30,7 +30,7 @@ public class CollectablePhysicsController : MonoBehaviour
             CollisionWithGate();
         }
 
-        if (other.CompareTag("Collectable"))
+        if (other.CompareTag("Collectable") && gameObject.tag == "Collected")
         {
             other.tag = "Collected";
             CollisionWithCollectable(other.transform.parent.gameObject);
@@ -41,10 +41,9 @@ public class CollectablePhysicsController : MonoBehaviour
             CollisionWithObstacle();
         }
 
-        if (other.CompareTag("Stack"))
+        if (other.CompareTag("Stack") && gameObject.tag == "Collectable")
         {
-            other.tag = "Untagged";
-            gameObject.tag= "Collected";
+            gameObject.tag = "Collected";
             CollisionWithStack();
         }
     }

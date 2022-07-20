@@ -19,6 +19,7 @@ namespace Managers
         public float SCALE_MULTIPLIER = .1f;
         public float SCALE_DURATION = .2f;
         public float JUMP_RADIUS;
+        public int endValue;
 
         private Tween scaleTween;
         #endregion
@@ -105,18 +106,21 @@ namespace Managers
                     {
                         Collectables[i].transform.parent = TempHolder.transform;
                         Collectables[i].SetActive(false);
+                        
                         Collectables.Remove(Collectables[i]);
                     }
                 }
                 Collectables.TrimExcess();
                 return;
             }
-
+    
             for (int i = index; i < Collectables.Count; i--)
             {
                 Collectables[i].transform.SetParent(null);
+                Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(Random.Range(-3,3),0,(Random.Range(9,15))),4.0f,2,1f);
+                Collectables[i].transform.GetChild(1).tag = "Collectable";
                 Collectables.Remove(Collectables[i]);
-               
+                
             }
             Collectables.TrimExcess();
         }
