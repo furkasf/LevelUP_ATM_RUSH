@@ -74,7 +74,7 @@ namespace Managers
             levelPanelController.SetLevelText(value);
         }
 
-        public void OnPlay()
+        private void OnPlay()
         {
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.StartPanel);
         }
