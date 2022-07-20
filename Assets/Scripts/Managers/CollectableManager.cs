@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Controllers;
 using Data.ValueObject;
 using UnityEngine;
 
@@ -18,18 +19,13 @@ public class CollectableManager : MonoBehaviour
     #region Private Variables
 
     #endregion
-
-
     #endregion
 
     private void Awake()
     {
-        
         StateData = GetCollectableStateData();
-        
     }
     
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Gate"))
@@ -39,11 +35,7 @@ public class CollectableManager : MonoBehaviour
     }
 
     private CollectableTypes GetCollectableStateData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").collectableStateData.collectableTypes;
-
-
-
-
-
+    
     #region Event Subscription
 
     private void OnEnable()
@@ -60,7 +52,6 @@ public class CollectableManager : MonoBehaviour
     {
 
     }
-
     private void OnDisable()
     {
         UnsubscribeEvents();

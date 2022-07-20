@@ -98,7 +98,7 @@ namespace Managers
             
             if(index == 0)
             {
-                transform.GetChild(0).parent = null;
+                transform.GetChild(0).SetParent(null);
                 for(int i = 0; i < Collectables.Count; i++)
                 {
                     if(Collectables[i].transform.parent == null)
@@ -108,25 +108,17 @@ namespace Managers
                         Collectables.Remove(Collectables[i]);
                     }
                 }
+                Collectables.TrimExcess();
                 return;
             }
-            
-            for (int i = 0 ; i < index ; i++)
+
+            for (int i = index; i < Collectables.Count; i--)
             {
-                if (transform.childCount > i)
-                {
-                    transform.GetChild(i).parent = null;
-                }
-                else break;
+                Collectables[i].transform.SetParent(null);
+                Collectables.Remove(Collectables[i]);
+               
             }
-            foreach(var i in Collectables.ToArray())
-            {
-                if(i.transform.parent == null)
-                {
-                    i.transform.parent = TempHolder.transform;
-                    Collectables.Remove(i);
-                }
-            }
+            Collectables.TrimExcess();
         }
 
         private void AddOnStack(GameObject go)
@@ -136,7 +128,6 @@ namespace Managers
             {
                 i.transform.Translate(Vector3.forward);
             }
-            
             
             go.transform.parent = transform;
             
@@ -150,16 +141,13 @@ namespace Managers
 
         private void LerpTheStack()
         {
-            if ( Collectables.Count <= 1)
+            if ( Collectables.Count < 1)
             {
                 return;
             } 
             for (int i = Collectables.Count - 1; i >= 1; i--)
             {
-                //Debug.Log(i);
-                Collectables[i - 1].transform.DOMoveX(Collectables[i].transform.position.x, 0.1f);
-                //transform.GetChild(i).transform
-                    //.DOMoveX(this.transform.GetChild(i - 1).transform.position.x, .07f);
+                Collectables[i - 1].transform.DOMoveX(Collectables[i].transform.position.x, .1f);
             }
             
         }

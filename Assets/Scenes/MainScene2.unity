@@ -432,8 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f471c94cdf58e4ba64b41b23ec350c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiPanelController: {fileID: 0}
-  levelPanelController: {fileID: 0}
+  uiPanelController: {fileID: 97251330}
+  levelPanelController: {fileID: 97251331}
 --- !u!1 &112705918
 GameObject:
   m_ObjectHideFlags: 0
