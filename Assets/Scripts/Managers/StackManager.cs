@@ -143,6 +143,11 @@ namespace Managers
                 Collectables.Remove(Collectables[i]);
                 
             }
+
+            if (Collectables.Count == 0)
+            {
+                return;
+            }
             Collectables.TrimExcess();
         }
 

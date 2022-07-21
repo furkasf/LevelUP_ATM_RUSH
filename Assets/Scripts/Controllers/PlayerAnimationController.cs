@@ -1,40 +1,41 @@
 using Managers;
 using UnityEngine;
 
-public class PlayerAnimationController : MonoBehaviour
+namespace Controllers
 {
-    #region Self Variables
-
-    #region Serialized Variables
-    
-    [SerializeField] private PlayerManager playerManager;
-    [SerializeField] private Animator animator;
-    
-
-    #endregion
-
-    #region Private Variables
-
-    #endregion
-
-    #endregion
-    
-
-    public void ActivatePlayerMovementAnimation()
+    public class PlayerAnimationController : MonoBehaviour
     {
-       animator.SetBool("isRunning",true);
-       Debug.Log("isRunning TRUE!");
-    }
+        #region Self Variables
 
-    public void DeactivatePlayerMovementAnimation()
-    {
-        animator.SetBool("isRunning",false);
-        Debug.Log("isRunning FALSE!");
-    }
+        #region Serialized Variables
+    
+        [SerializeField] private PlayerManager playerManager;
+        [SerializeField] private Animator animator;
     
 
-    public void ActivatePlayerDance()
-    {
-        //Dance
+        #endregion
+
+        #region Private Variables
+
+        #endregion
+
+        #endregion
+    
+
+        public void ActivatePlayerMovementAnimation()
+        {
+            animator.SetBool("isRunning",true);
+        }
+
+        public void DeactivatePlayerMovementAnimation()
+        {
+            animator.SetBool("isRunning",false);
+        }
+    
+
+        public void ActivatePlayerDance()
+        {
+            //Dance
+        }
     }
 }
