@@ -277,15 +277,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48274a997da7f934b8b1020851063005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Data:
+    scoreData:
+      AtmScore: 0
+      GameScore: 0
+    scaleData:
+      ScaleMultiplier: 0.1
+      ScaleDuration: 0.2
   Collectables: []
   TempHolder: {fileID: 4196911427388975478}
   AtmScore: 0
   Gamescore: 0
-  LERP_SPEED: 2.5
   SCALE_MULTIPLIER: 0.5
   SCALE_DURATION: 0.5
-  JUMP_RADIUS: 0
-  endValue: 0
+  scoreData:
+    AtmScore: 0
+    GameScore: 0
+  scaleData:
+    ScaleMultiplier: 0.1
+    ScaleDuration: 0.2
 --- !u!1 &72218557028906540
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +542,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4983173012836191977}
   - component: {fileID: 4237450976472732933}
-  - component: {fileID: 3953344228835476693}
   m_Layer: 0
   m_Name: CollactableManager (18)
   m_TagString: Untagged
@@ -571,19 +580,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 7709945903881321791}
   collectableMeshController: {fileID: 6151321554295943826}
---- !u!114 &3953344228835476693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353338736490107512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &359888165215233557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,7 +1105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 608434711219545864}
   - component: {fileID: 2860339360709336289}
-  - component: {fileID: 7499005685788955037}
   m_Layer: 0
   m_Name: CollactableManager (20)
   m_TagString: Untagged
@@ -1148,19 +1143,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 7720064899233087706}
   collectableMeshController: {fileID: 2497246589842864749}
---- !u!114 &7499005685788955037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650812443833870345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &713773271384153400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1296,6 @@ GameObject:
   m_Component:
   - component: {fileID: 801360333488752820}
   - component: {fileID: 2666132155055016400}
-  - component: {fileID: 5307165275375672603}
   m_Layer: 0
   m_Name: CollactableManager (10)
   m_TagString: Untagged
@@ -1353,19 +1334,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 3434845471640165868}
   collectableMeshController: {fileID: 5367655092729200516}
---- !u!114 &5307165275375672603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 892533829592626735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &894208561670838981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1344,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6734923943461021216}
   - component: {fileID: 9045966346849878513}
-  - component: {fileID: 7331044838669555073}
   m_Layer: 0
   m_Name: CollactableManager (2)
   m_TagString: Untagged
@@ -1415,19 +1382,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 6329749049055906297}
   collectableMeshController: {fileID: 3189390608274422448}
---- !u!114 &7331044838669555073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894208561670838981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &999343557486055566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,7 +1646,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8321534276908213054}
   - component: {fileID: 6701862013408643988}
-  - component: {fileID: 5854092599699415865}
   m_Layer: 0
   m_Name: CollactableManager (23)
   m_TagString: Untagged
@@ -1731,19 +1684,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 3735824757883651494}
   collectableMeshController: {fileID: 2908773774897948988}
---- !u!114 &5854092599699415865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487604304966157815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &1493741762133551884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,7 +1822,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7643122643952327184}
   - component: {fileID: 436677706962032113}
-  - component: {fileID: 8116886584401917961}
   m_Layer: 0
   m_Name: CollactableManager (8)
   m_TagString: Untagged
@@ -1921,19 +1860,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 614939290622155615}
   collectableMeshController: {fileID: 6184763893510265539}
---- !u!114 &8116886584401917961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595668434922373454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &1614174046696583062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,7 +1870,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7537164091759011023}
   - component: {fileID: 7849929008350720832}
-  - component: {fileID: 426709763089473642}
   m_Layer: 0
   m_Name: CollactableManager (3)
   m_TagString: Untagged
@@ -1983,19 +1908,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 6625893178594268020}
   collectableMeshController: {fileID: 8773432234360600758}
---- !u!114 &426709763089473642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614174046696583062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &1679692837058990800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,7 +2157,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6875586647673169891}
   - component: {fileID: 1724816755140417411}
-  - component: {fileID: 4667458504145798723}
   m_Layer: 0
   m_Name: CollactableManager (22)
   m_TagString: Untagged
@@ -2284,19 +2195,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 6768836866832438617}
   collectableMeshController: {fileID: 1224901008714953901}
---- !u!114 &4667458504145798723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942242575455144886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &2009362369061656028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3712,7 +3610,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3183914134501149681}
   - component: {fileID: 8655380869714629211}
-  - component: {fileID: 2862858289226464183}
   m_Layer: 0
   m_Name: CollactableManager (16)
   m_TagString: Untagged
@@ -3751,19 +3648,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 3489581675018466043}
   collectableMeshController: {fileID: 3559370551082400004}
---- !u!114 &2862858289226464183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3765366697543399044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &3778712720850480451
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,7 +3766,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4236668919564981927}
   - component: {fileID: 315276925533286776}
-  - component: {fileID: 7438440587498842851}
   m_Layer: 0
   m_Name: CollactableManager (11)
   m_TagString: Untagged
@@ -3921,19 +3804,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 3495512624677271806}
   collectableMeshController: {fileID: 3716399470904674919}
---- !u!114 &7438440587498842851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3848762837823988383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &3874287480681633748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4181,7 +4051,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1746298695895095658}
   - component: {fileID: 6814837433646887428}
-  - component: {fileID: 7674439901631481630}
   m_Layer: 0
   m_Name: CollactableManager (1)
   m_TagString: Untagged
@@ -4220,19 +4089,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 3284332952480991806}
   collectableMeshController: {fileID: 8802854815936851299}
---- !u!114 &7674439901631481630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4107551612468273678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &4111511378871914010
 GameObject:
   m_ObjectHideFlags: 0
@@ -4411,7 +4267,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2129985095084202033}
   - component: {fileID: 7460898551410803665}
-  - component: {fileID: 1345302235078964341}
   m_Layer: 0
   m_Name: CollactableManager (5)
   m_TagString: Untagged
@@ -4450,19 +4305,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 6991619674530177294}
   collectableMeshController: {fileID: 6976965925759300940}
---- !u!114 &1345302235078964341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4260036437813752361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &4312760226463616291
 GameObject:
   m_ObjectHideFlags: 0
@@ -4821,7 +4663,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6227296359363241694}
   - component: {fileID: 1747927329732174622}
-  - component: {fileID: 3884832127720585545}
   m_Layer: 0
   m_Name: CollactableManager (9)
   m_TagString: Untagged
@@ -4860,19 +4701,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 8092889151162287137}
   collectableMeshController: {fileID: 11717708642410467}
---- !u!114 &3884832127720585545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4478407712155237623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &4483278620914601941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5150,7 +4978,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2260432429396519943}
   - component: {fileID: 6537448889015418318}
-  - component: {fileID: 5000982803896291362}
   m_Layer: 0
   m_Name: CollactableManager (12)
   m_TagString: Untagged
@@ -5189,19 +5016,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 2663903835077886844}
   collectableMeshController: {fileID: 144373425090377342}
---- !u!114 &5000982803896291362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4651176754019493109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &4676488324195271183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5310,7 +5124,6 @@ GameObject:
   m_Component:
   - component: {fileID: 677150051526822409}
   - component: {fileID: 1103651164383762532}
-  - component: {fileID: 6703688924470080677}
   m_Layer: 0
   m_Name: CollactableManager (4)
   m_TagString: Untagged
@@ -5349,19 +5162,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 6805421534442747068}
   collectableMeshController: {fileID: 8012070341309120407}
---- !u!114 &6703688924470080677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4689054398815889773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &4735046686565203345
 GameObject:
   m_ObjectHideFlags: 0
@@ -5593,7 +5393,6 @@ GameObject:
   m_Component:
   - component: {fileID: 510091646062205822}
   - component: {fileID: 6218100931765387996}
-  - component: {fileID: 1871660793146025145}
   m_Layer: 0
   m_Name: CollactableManager (19)
   m_TagString: Untagged
@@ -5632,19 +5431,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 4467723170463523529}
   collectableMeshController: {fileID: 2679879667433272851}
---- !u!114 &1871660793146025145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5155205325400292706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &5177866774619047957
 GameObject:
   m_ObjectHideFlags: 0
@@ -5820,7 +5606,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6182629826094062086}
   - component: {fileID: 6007166865870192150}
-  - component: {fileID: 6316531318957695325}
   m_Layer: 0
   m_Name: CollactableManager (14)
   m_TagString: Untagged
@@ -5859,19 +5644,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 3906673896099490353}
   collectableMeshController: {fileID: 6650562346043561136}
---- !u!114 &6316531318957695325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5372634023227096716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &5375073254014370841
 GameObject:
   m_ObjectHideFlags: 0
@@ -6275,7 +6047,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3760183853546024928}
   - component: {fileID: 8760210921417663309}
-  - component: {fileID: 2499093857621053701}
   m_Layer: 0
   m_Name: CollactableManager (6)
   m_TagString: Untagged
@@ -6314,19 +6085,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 5736780274212203161}
   collectableMeshController: {fileID: 4108457877245788365}
---- !u!114 &2499093857621053701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5821220187466107502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &5840385997933894144
 GameObject:
   m_ObjectHideFlags: 0
@@ -6445,7 +6203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5204288607311170812}
   - component: {fileID: 6389001056138067986}
-  - component: {fileID: 3911499860520573119}
   m_Layer: 0
   m_Name: CollactableManager (17)
   m_TagString: Untagged
@@ -6484,19 +6241,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 2181245075304158202}
   collectableMeshController: {fileID: 7669534543713155793}
---- !u!114 &3911499860520573119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5910733067524236216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &6198242932121582713
 GameObject:
   m_ObjectHideFlags: 0
@@ -6667,7 +6411,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3371386188684571366}
   - component: {fileID: 4783814994281582747}
-  - component: {fileID: 6877982070759206346}
   m_Layer: 0
   m_Name: CollactableManager (13)
   m_TagString: Untagged
@@ -6706,19 +6449,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 6257657380126096779}
   collectableMeshController: {fileID: 2337858418648087895}
---- !u!114 &6877982070759206346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6514796995732223414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &6628285757048763919
 GameObject:
   m_ObjectHideFlags: 0
@@ -6837,7 +6567,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1385263337942967751}
   - component: {fileID: 1401677674758238781}
-  - component: {fileID: 7918419993326450977}
   m_Layer: 0
   m_Name: CollactableManager (21)
   m_TagString: Untagged
@@ -6876,19 +6605,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 1740599353673056972}
   collectableMeshController: {fileID: 1669333569350727648}
---- !u!114 &7918419993326450977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6830527811646187600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &6885157480961854467
 GameObject:
   m_ObjectHideFlags: 0
@@ -7078,7 +6794,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9107742400403903018}
   - component: {fileID: 7719167629471042487}
-  - component: {fileID: 8320887204475515220}
   m_Layer: 0
   m_Name: CollactableManager (15)
   m_TagString: Untagged
@@ -7117,19 +6832,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 2238127993288747814}
   collectableMeshController: {fileID: 5904357839060753280}
---- !u!114 &8320887204475515220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6943219161695236339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &7023657437681199376
 GameObject:
   m_ObjectHideFlags: 0
@@ -8159,7 +7861,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8315003657753955819}
   - component: {fileID: 8315003657753955818}
-  - component: {fileID: 8315003657753955812}
   m_Layer: 0
   m_Name: CollactableManager
   m_TagString: Untagged
@@ -8198,19 +7899,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 8315003658505232365}
   collectableMeshController: {fileID: 8315003657360893386}
---- !u!114 &8315003657753955812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8315003657753955817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &8315003658505232371
 GameObject:
   m_ObjectHideFlags: 0
@@ -8298,7 +7986,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4746942670713064370}
   - component: {fileID: 2894018107754113037}
-  - component: {fileID: 227298536584495005}
   m_Layer: 0
   m_Name: CollactableManager (7)
   m_TagString: Untagged
@@ -8337,19 +8024,6 @@ MonoBehaviour:
   StateData: 1
   collectablePhysicsController: {fileID: 8730836117838222739}
   collectableMeshController: {fileID: 6016172503277362054}
---- !u!114 &227298536584495005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8369524298108450741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b86e6324301c24386ce643d0abcc03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
 --- !u!1 &8471294512663596348
 GameObject:
   m_ObjectHideFlags: 0

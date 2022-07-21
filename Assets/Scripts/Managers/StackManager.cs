@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Data.UnityObject;
 using UnityEngine;
 using DG.Tweening;
+using Random = UnityEngine.Random;
 
 namespace Managers
 {
@@ -11,15 +14,23 @@ namespace Managers
         public static StackManager Instance;
         #region Self Variables
         #region public
+
+        [Header("Data")] public StackData Data;
+        
         public List<GameObject> Collectables = new List<GameObject>();
         public GameObject TempHolder;
         public int AtmScore;
         public int Gamescore;
-        public float LERP_SPEED = 2.5f;
         public float SCALE_MULTIPLIER = .1f;
         public float SCALE_DURATION = .2f;
-        public float JUMP_RADIUS;
-        public int endValue;
+
+        #region Serialized Variables
+
+        [SerializeField] private StackScoreData scoreData;
+        
+        [SerializeField] private StackScaleData scaleData;
+
+        #endregion
 
         private Tween scaleTween;
         #endregion
@@ -27,9 +38,18 @@ namespace Managers
 
         private void Awake()
         {
+            Data = GetStackData();
             if(Instance == null) Instance = this;
+            SetStackData();
         }
 
+        private StackData GetStackData() => Resources.Load<CD_Stack>("Data/CD_Stack").data;
+
+        private void SetStackData()
+        {
+            scoreData = Data.scoreData;
+            scaleData = Data.scaleData;
+        }
         #region Event Subscription
     
         private void OnEnable()
@@ -70,13 +90,13 @@ namespace Managers
             LerpTheStack();
         }
    
-
+        
         private void ShakeScaleOfStack(Transform transform)
         {
              if (scaleTween != null)
                  scaleTween.Kill(true);
              
-             scaleTween = transform.DOPunchScale(Vector3.one * SCALE_MULTIPLIER, SCALE_DURATION, 1);
+             scaleTween = transform.DOPunchScale(Vector3.one * scaleData.ScaleMultiplier, scaleData.ScaleDuration, 1);
              
         }
 
