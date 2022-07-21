@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Data.UnityObject;
 using UnityEngine;
 using DG.Tweening;
+using Signals;
+using Random = UnityEngine.Random;
 
 namespace Managers
 {
@@ -10,26 +12,49 @@ namespace Managers
     {
         public static StackManager Instance;
         #region Self Variables
-        #region public
-        public List<GameObject> Collectables = new List<GameObject>();
-        public GameObject TempHolder;
-        public int AtmScore;
-        public int Gamescore;
-        public float LERP_SPEED = 2.5f;
-        public float SCALE_MULTIPLIER = .1f;
-        public float SCALE_DURATION = .2f;
-        public float JUMP_RADIUS;
-        public int endValue;
+        #region Public Variables
 
-        private Tween scaleTween;
+        [Header("Data")] public StackData Data;
+        
+        [Space]
+        public List<GameObject> Collectables = new List<GameObject>();
+        
+        public GameObject TempHolder;
+        
         #endregion
+
+        #region Serialized Variables
+
+        [SerializeField] private StackScoreData scoreData;
+        
+        [SerializeField] private StackScaleData scaleData;
+
+        #endregion
+
+        #region Private Variables
+
+        private Tween _scaleTween;
+
+        #endregion
+        
         #endregion
 
         private void Awake()
         {
-            if(Instance == null) Instance = this;
+            Data = GetStackData();
+            
+            if(Instance == null) Instance = this; //Use MonoSingleton
+            
+            SetStackData();
         }
 
+        private StackData GetStackData() => Resources.Load<CD_Stack>("Data/CD_Stack").data;
+
+        private void SetStackData()
+        {
+            scoreData = Data.scoreData;
+            scaleData = Data.scaleData;
+        }
         #region Event Subscription
     
         private void OnEnable()
@@ -39,28 +64,28 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-            CollectableSignals.Instance.onCollisionWithCollectable += AddOnStack;
+            CollectableSignals.Instance.onCollisionWithCollectable += OnAddOnStack;
             
-            CollectableSignals.Instance.onCollisionWithObstical += RemoveFromStack;
+            CollectableSignals.Instance.onCollisionWithObstical += OnRemoveFromStack;
             
-            CollectableSignals.Instance.onCollisionWithAtm += RemoveFromStack;
+            CollectableSignals.Instance.onCollisionWithAtm += OnRemoveFromStack;
 
-            CollectableSignals.Instance.onCollissionWithStack += AddOnStack;
+            CollectableSignals.Instance.onCollissionWithStack += OnAddOnStack;
 
-            CollectableSignals.Instance.onMovementWithLerp += LerpTheStack;
+            CollectableSignals.Instance.onMovementWithLerp += OnLerpTheStack;
         }
 
         private void UnsubscribeEvents()
         {
-            CollectableSignals.Instance.onCollisionWithCollectable -= AddOnStack;
+            CollectableSignals.Instance.onCollisionWithCollectable -= OnAddOnStack;
             
-            CollectableSignals.Instance.onCollisionWithObstical -= RemoveFromStack;
+            CollectableSignals.Instance.onCollisionWithObstical -= OnRemoveFromStack;
             
-            CollectableSignals.Instance.onCollisionWithAtm -= RemoveFromStack;
+            CollectableSignals.Instance.onCollisionWithAtm -= OnRemoveFromStack;
 
-            CollectableSignals.Instance.onCollissionWithStack -= AddOnStack;
+            CollectableSignals.Instance.onCollissionWithStack -= OnAddOnStack;
             
-            CollectableSignals.Instance.onMovementWithLerp -= LerpTheStack;
+            CollectableSignals.Instance.onMovementWithLerp -= OnLerpTheStack;
         }
 
         private void OnDisable()
@@ -69,14 +94,14 @@ namespace Managers
         }
 
         #endregion
-
-        private void ShakeScaleOfStack(Transform transform)
-        {
-             if (scaleTween != null)
-                 scaleTween.Kill(true);
-             
-             scaleTween = transform.DOPunchScale(Vector3.one * SCALE_MULTIPLIER, SCALE_DURATION, 1);
-             
+        
+        
+        private void ShakeScaleOfStack(Transform _transform)
+        {   
+            if (_scaleTween != null)
+                _scaleTween.Kill(true);
+            
+            _scaleTween = _transform.DOPunchScale(Vector3.one * scaleData.ScaleMultiplier, scaleData.ScaleDuration, 1).SetAutoKill(true);
         }
 
         IEnumerator HandleShakeOfStack()
@@ -84,17 +109,14 @@ namespace Managers
             for (int i = 0; i < Collectables.Count; i++)
             { 
                 ShakeScaleOfStack(Collectables[i].transform);
-                
+
                 yield return new WaitForSeconds(0.3f);
             }
-     
         }
 
 
-        public void RemoveFromStack(int index) 
+        public void OnRemoveFromStack(int index) 
         {
-            Debug.Log(index);
-           
             
             if(index == 0)
             {
@@ -103,7 +125,7 @@ namespace Managers
                 {
                     if(Collectables[i].transform.parent == null)
                     {
-                        Collectables[i].transform.parent = TempHolder.transform;
+                        Collectables[i].transform.SetParent(TempHolder.transform);
                         Collectables[i].SetActive(false);
                         
                         Collectables.Remove(Collectables[i]);
@@ -115,16 +137,16 @@ namespace Managers
     
             for (int i = index; i < Collectables.Count; i--)
             {
-                Collectables[i].transform.SetParent(null);
+                Collectables[i].transform.SetParent(TempHolder.transform);
                 Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(Random.Range(-3,3),0,(Random.Range(9,15))),4.0f,2,1f);
-                Collectables[i].transform.GetChild(1).tag = "Collectable";
+                Collectables[i].transform.GetChild(1).gameObject.tag ="Collectable";
                 Collectables.Remove(Collectables[i]);
                 
             }
             Collectables.TrimExcess();
         }
 
-        private void AddOnStack(GameObject go)
+        private void OnAddOnStack(GameObject gO)
         {   
  
             foreach(GameObject i in Collectables)
@@ -132,17 +154,17 @@ namespace Managers
                 i.transform.Translate(Vector3.forward);
             }
             
-            go.transform.parent = transform;
+            gO.transform.parent = transform;
             
-            go.transform.localPosition = Vector3.forward;
+            gO.transform.localPosition = Vector3.forward;
             
-            Collectables.Add(go);
+            Collectables.Add(gO);
             
             StartCoroutine(HandleShakeOfStack());
 
         }
 
-        private void LerpTheStack()
+        private void OnLerpTheStack()
         {
             if ( Collectables.Count < 1)
             {
@@ -154,7 +176,8 @@ namespace Managers
             }
             
         }
-
+        
+        // tamamen bağımsız yapalım.
         private void StartMiniGame(int GameScore)
         {
             

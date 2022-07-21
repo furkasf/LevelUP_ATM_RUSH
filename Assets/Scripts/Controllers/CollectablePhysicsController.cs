@@ -1,75 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
+using Managers;
 using UnityEngine;
-using UnityEngine.Video;
 
-public class CollectablePhysicsController : MonoBehaviour
+namespace Controllers
 {
-    #region Self Variables
-    #region Serializefield Variables
-    [SerializeField] private CollectableManager collectableManager;
-    [SerializeField] private Collider col;
-    [SerializeField] private Rigidbody rb;
+    public class CollectablePhysicsController : MonoBehaviour
+    {
+        #region Self Variables
+        #region Serializefield Variables
+    
+        [SerializeField] private CollectableManager manager;
+        // [SerializeField] private Collider col;
+        // [SerializeField] private new Rigidbody rigidbody;
 
-    #endregion
+        #endregion
 
 
-    #endregion
+        #endregion
    
 
-    private void OnTriggerEnter(Collider other)
-    {
+        private void OnTriggerEnter(Collider other)
+        {
         
-        if (other.CompareTag("Atm"))
+            if (other.CompareTag("Atm"))
+            {
+                CollisionWithAtm();
+            }
+
+            if (other.CompareTag("Gate"))
+            {
+                CollisionWithGate();
+            }
+
+            if (other.CompareTag("Collectable") && CompareTag("Collected"))
+            {
+                other.tag = "Collected";
+                CollisionWithCollectable(other.transform.parent.gameObject);
+            }
+
+            if (other.CompareTag("Obstacle"))
+            {
+                CollisionWithObstacle();
+            }
+
+            if (other.CompareTag("Stack") && CompareTag("Collectable"))
+            {
+                tag = "Collected";
+                CollisionWithStack();
+            }
+        }
+        private void CollisionWithAtm()
         {
-            CollisionWithAtm();
+            manager.CollisionWithAtm();
         }
 
-        if (other.CompareTag("Gate"))
+        private void CollisionWithCollectable(GameObject gO)
         {
-            CollisionWithGate();
+            manager.CollisionWithCollectable(gO);
         }
 
-        if (other.CompareTag("Collectable") && gameObject.tag == "Collected")
+        private void CollisionWithObstacle()
         {
-            other.tag = "Collected";
-            CollisionWithCollectable(other.transform.parent.gameObject);
+            manager.CollisionWithObstacle();
         }
-
-        if (other.CompareTag("Obstacle"))
-        {
-            CollisionWithObstacle();
-        }
-
-        if (other.CompareTag("Stack") && gameObject.tag == "Collectable")
-        {
-            gameObject.tag = "Collected";
-            CollisionWithStack();
-        }
-    }
-    private void CollisionWithAtm()
-    {
-        collectableManager.OnCollisionWithAtm();
-    }
-
-    private void CollisionWithCollectable(GameObject gameObject)
-    {
-        collectableManager.OnCollisionWithCollectable(gameObject);
-    }
-
-    private void CollisionWithObstacle()
-    {
-        collectableManager.OnCollisionWithObstacle();
-    }
     
-    private void CollisionWithGate()
-    {
-        collectableManager.OnCollisionWithGate();
-    }
+        private void CollisionWithGate()
+        {
+            manager.CollisionWithGate();
+        }
 
-    private void CollisionWithStack()
-    {
-        collectableManager.OnCollisionWithStack();
-    }
+        private void CollisionWithStack()
+        {
+            manager.CollisionWithStack();
+        }
 
+    }
 }

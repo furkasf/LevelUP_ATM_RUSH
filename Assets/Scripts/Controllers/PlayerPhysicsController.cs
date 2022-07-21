@@ -1,48 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
 using Enums;
+using Managers;
 using Signals;
 using UnityEngine;
 
-public class PlayerPhysicsController : MonoBehaviour
+namespace Controllers
 {
-    #region Self Variables
-
-    #region Serialized Variables
-
-    [SerializeField] private PlayerManager manager;
-    [SerializeField] private new Collider collider;
-    [SerializeField] private new Rigidbody rigidbody;
-
-    #endregion
-
-    #endregion
-
-    private void OnTriggerEnter(Collider other)
+    public class PlayerPhysicsController : MonoBehaviour
     {
-        if (other.CompareTag("StageArea"))
-        {
-            //CoreGameSignals.Instance.onStageAreaReached?.Invoke();
-            InputSignals.Instance.onDisableInput?.Invoke();
-            //DOVirtual.DelayedCall(3, other.transform.parent.GetComponent<PoolController>().ControlSuccessCondition);
-        }
+        #region Self Variables
 
-        if (other.CompareTag("MiniGameArea"))
-        {
-            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.MiniGamePanel);
-        }
+        #region Serialized Variables
 
-        if (other.CompareTag("WinZone"))
-        {
-            CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
-        }
+        [SerializeField] private PlayerManager manager;
+        [SerializeField] private new Collider collider;
+        [SerializeField] private new Rigidbody rigidbody;
 
-        if (other.CompareTag("Booster"))
-        {
-                
-        }
+        #endregion
 
-    }
+        #endregion
+
+        private void OnTriggerEnter(Collider other)
+        {
+         
+
+            if (other.CompareTag("MiniGameArea"))
+            {
+                UISignals.Instance.onOpenPanel?.Invoke(UIPanels.MiniGamePanel);
+            }
+
+            if (other.CompareTag("WinZone"))
+            {
+                CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
+            }
+
+          
+
+        }
     
+    }
 }

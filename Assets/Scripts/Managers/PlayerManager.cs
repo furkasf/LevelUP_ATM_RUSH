@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using Controllers;
 using Data.UnityObject;
 using Data.ValueObject;
 using Keys;
 using Signals;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+namespace Managers
 {
-     #region Self Variables
+    public class PlayerManager : MonoBehaviour
+    {
+        #region Self Variables
 
         #region Public Variables
 
@@ -125,4 +126,5 @@ public class PlayerManager : MonoBehaviour
         {
             //End level dance
         }
+    }
 }

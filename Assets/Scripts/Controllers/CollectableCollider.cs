@@ -14,7 +14,7 @@ public class CollectableCollider : MonoBehaviour
             Debug.Log(nextIndex); 
             int currentindex = nextIndex - 1;
             
-            StackManager.Instance.RemoveFromStack(nextIndex);
+            StackManager.Instance.OnRemoveFromStack(nextIndex);
             Debug.Log("trigger");
         }
     }
