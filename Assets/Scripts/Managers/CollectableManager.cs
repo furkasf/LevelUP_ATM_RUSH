@@ -9,7 +9,17 @@ namespace Managers
     {
         #region Self Variables
         #region Public Variables
-        public CollectableTypes StateData;
+        public CollectableTypes StateData
+        {
+            get
+            {
+                return StateData;
+            }
+            set
+            {
+                StateData = value;
+            }
+        }
 
         #endregion
         #region Serialized Variables
@@ -96,6 +106,18 @@ namespace Managers
             
             }
         }
+        /*
+        public void ChangeCollectableScore(string state)
+        {
+            if(CompareTag(state))
+            {
+                ScoreSignals.Instance.onChangePlayerScore?.Invoke((int) StateData);
+            }
+            else if(!CompareTag(state))
+            {
+                ScoreSignals.Instance.onChangePlayerScore?.Invoke(-(int)StateData);
+            }
+        }*/
     
     }
 }

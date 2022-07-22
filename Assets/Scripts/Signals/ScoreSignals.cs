@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScoreSignals : MonoBehaviour
 {
@@ -11,6 +12,6 @@ public class ScoreSignals : MonoBehaviour
         if(Instance == null ) Instance = this;
     }
 
-    public event Action<int> onChangeAtmScore;
-    public event Action<int> onChangePlayerScore;
+    public  UnityAction<int> onChangeAtmScore = delegate { };
+    public UnityAction<int> onChangePlayerScore = delegate { };
 }
