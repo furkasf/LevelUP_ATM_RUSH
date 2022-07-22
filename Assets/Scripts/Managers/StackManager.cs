@@ -66,7 +66,7 @@ namespace Managers
         {
             CollectableSignals.Instance.onCollisionWithCollectable += OnAddOnStack;
             
-            CollectableSignals.Instance.onCollisionWithObstical += OnRemoveFromStack;
+            CollectableSignals.Instance.onCollisionWithObstacle += OnRemoveFromStack;
             
             CollectableSignals.Instance.onCollisionWithAtm += OnRemoveFromStack;
 
@@ -79,7 +79,7 @@ namespace Managers
         {
             CollectableSignals.Instance.onCollisionWithCollectable -= OnAddOnStack;
             
-            CollectableSignals.Instance.onCollisionWithObstical -= OnRemoveFromStack;
+            CollectableSignals.Instance.onCollisionWithObstacle -= OnRemoveFromStack;
             
             CollectableSignals.Instance.onCollisionWithAtm -= OnRemoveFromStack;
 
@@ -121,34 +121,37 @@ namespace Managers
             if(index == 0)
             {
                 transform.GetChild(0).SetParent(null);
-                for(int i = 0; i < Collectables.Count; i++)
-                {
-                    if(Collectables[i].transform.parent == null)
-                    {
-                        Collectables[i].transform.SetParent(TempHolder.transform);
-                        Collectables[i].SetActive(false);
-                        
-                        Collectables.Remove(Collectables[i]);
-                    }
-                }
+                
+                Collectables[0].transform.SetParent(TempHolder.transform);
+                
+                Collectables[0].SetActive(false);
+                
+                Collectables.Remove(Collectables[0]);
+
                 Collectables.TrimExcess();
+                
                 return;
             }
     
             for (int i = index; i < Collectables.Count; i--)
             {
-                Collectables[i].transform.SetParent(TempHolder.transform);
-                Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(Random.Range(-3,3),0,(Random.Range(9,15))),4.0f,2,1f);
-                Collectables[i].transform.GetChild(1).gameObject.tag ="Collectable";
-                Collectables.Remove(Collectables[i]);
+                if (i < 0)  // when index lower than 0 it cause trouble(null excep.)
+                {
+                    return;
+                }
                 
+                Collectables[i].transform.SetParent(TempHolder.transform);
+                
+                Collectables[i].transform.GetChild(1).gameObject.tag ="Collectable";
+                
+                Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(Random.Range(-3,3),0,(Random.Range(9,15))),4.0f,2,1f);
+
+                Collectables.Remove(Collectables[i]);
+
             }
 
-            if (Collectables.Count == 0)
-            {
-                return;
-            }
             Collectables.TrimExcess();
+            
         }
 
         private void OnAddOnStack(GameObject gO)
