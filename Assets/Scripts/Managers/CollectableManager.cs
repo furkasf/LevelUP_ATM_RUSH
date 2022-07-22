@@ -68,7 +68,7 @@ namespace Managers
         public void CollisionWithAtm()
         {
             CollectableSignals.Instance.onCollisionWithAtm?.Invoke(transform.GetSiblingIndex());
-            // pass the StateData value
+            //pass the StateData value
         }
         public void CollisionWithCollectable(GameObject gO) // private and -On
         {
@@ -77,7 +77,7 @@ namespace Managers
 
         public void CollisionWithObstacle()
         {
-            CollectableSignals.Instance.onCollisionWithObstical?.Invoke(transform.GetSiblingIndex());
+            CollectableSignals.Instance.onCollisionWithObstacle?.Invoke(transform.GetSiblingIndex());
         }
 
         private void ChangeCollectableState(CollectableTypes _collectableTypes)
