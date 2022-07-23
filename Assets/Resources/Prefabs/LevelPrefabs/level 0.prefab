@@ -56,6 +56,7 @@ MonoBehaviour:
   movementController: {fileID: 1505952123}
   physicsController: {fileID: 1581102058}
   animationController: {fileID: 1237976184770740223}
+  scoreController: {fileID: 7371657934256903643}
 --- !u!114 &1505952123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2593,7 +2594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36528571229fd6048ae54c429d4204cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerScoreText: {fileID: 0}
+  playerScoreText: {fileID: 9149285404839539313}
 --- !u!1 &7191523511467176447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,7 +2652,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7295374369382810877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.443}
+  m_LocalPosition: {x: 0, y: 0, z: -0.606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2726269820251297972}
@@ -2659,7 +2660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.008, y: 1.227}
+  m_AnchoredPosition: {x: -0.008, y: 1.468}
   m_SizeDelta: {x: 1.1066, y: 0.8826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &941066077202370924
@@ -2756,7 +2757,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

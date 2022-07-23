@@ -21,7 +21,7 @@ namespace Controllers
         private void OnTriggerEnter(Collider other)
         {
         
-            if (other.CompareTag("Atm"))
+            if (other.CompareTag("ATM"))
             {
                 CollisionWithAtm();
             }
@@ -35,13 +35,11 @@ namespace Controllers
             {
                 other.tag = "Collected";
                 CollisionWithCollectable(other.transform.parent.gameObject);
-                //manager.ChangeCollectableScore("Collected");
             }
 
             if (other.CompareTag("Obstacle"))
             {
                 CollisionWithObstacle();
-                //manager.ChangeCollectableScore("Obstacle");
             }
 
             if (other.CompareTag("Stack") && CompareTag("Collectable"))

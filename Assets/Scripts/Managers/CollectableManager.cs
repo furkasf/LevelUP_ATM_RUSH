@@ -9,17 +9,8 @@ namespace Managers
     {
         #region Self Variables
         #region Public Variables
-        public CollectableTypes StateData
-        {
-            get
-            {
-                return StateData;
-            }
-            set
-            {
-                StateData = value;
-            }
-        }
+        public CollectableTypes StateData;
+   
 
         #endregion
         #region Serialized Variables
@@ -77,17 +68,18 @@ namespace Managers
         }
         public void CollisionWithAtm()
         {
-            CollectableSignals.Instance.onCollisionWithAtm?.Invoke(transform.GetSiblingIndex());
-            //pass the StateData value
+            CollectableSignals.Instance.onCollisionWithAtm?.Invoke(transform.GetSiblingIndex(), (int)StateData);
         }
-        public void CollisionWithCollectable(GameObject gO) // private and -On
+        public void CollisionWithCollectable(GameObject go) 
         {
-            CollectableSignals.Instance.onCollisionWithCollectable?.Invoke(gO);
+            CollectableSignals.Instance.onCollisionWithCollectable?.Invoke(go);
+            ScoreSignals.Instance.onChangePlayerScore?.Invoke((int)StateData);
         }
 
         public void CollisionWithObstacle()
         {
             CollectableSignals.Instance.onCollisionWithObstacle?.Invoke(transform.GetSiblingIndex());
+            ScoreSignals.Instance.onChangePlayerScore?.Invoke(-(int)StateData);
         }
 
         private void ChangeCollectableState(CollectableTypes _collectableTypes)
@@ -96,28 +88,16 @@ namespace Managers
             {
                 StateData = CollectableTypes.Gold; // get-set yazılabilir,statedata üzerinden enumun değerini gönder
                 collectableMeshController.SetMeshType(1);
-            
+                ScoreSignals.Instance.onChangePlayerScore?.Invoke((int)StateData -1);
             }
         
             else if(_collectableTypes == CollectableTypes.Gold)
             {
                 StateData = CollectableTypes.Diamond;
                 collectableMeshController.SetMeshType(2);
-            
+                ScoreSignals.Instance.onChangePlayerScore?.Invoke((int)StateData -1);
             }
         }
-        /*
-        public void ChangeCollectableScore(string state)
-        {
-            if(CompareTag(state))
-            {
-                ScoreSignals.Instance.onChangePlayerScore?.Invoke((int) StateData);
-            }
-            else if(!CompareTag(state))
-            {
-                ScoreSignals.Instance.onChangePlayerScore?.Invoke(-(int)StateData);
-            }
-        }*/
     
     }
 }

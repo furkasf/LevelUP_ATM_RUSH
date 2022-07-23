@@ -68,11 +68,11 @@ namespace Managers
             
             CollectableSignals.Instance.onCollisionWithObstacle += OnRemoveFromStack;
             
-            CollectableSignals.Instance.onCollisionWithAtm += OnRemoveFromStack;
-
             CollectableSignals.Instance.onCollissionWithStack += OnAddOnStack;
 
             CollectableSignals.Instance.onMovementWithLerp += OnLerpTheStack;
+
+            CollectableSignals.Instance.onCollisionWithAtm += OnCollisionWithATM;
         }
 
         private void UnsubscribeEvents()
@@ -80,12 +80,12 @@ namespace Managers
             CollectableSignals.Instance.onCollisionWithCollectable -= OnAddOnStack;
             
             CollectableSignals.Instance.onCollisionWithObstacle -= OnRemoveFromStack;
-            
-            CollectableSignals.Instance.onCollisionWithAtm -= OnRemoveFromStack;
 
             CollectableSignals.Instance.onCollissionWithStack -= OnAddOnStack;
             
             CollectableSignals.Instance.onMovementWithLerp -= OnLerpTheStack;
+
+            CollectableSignals.Instance.onCollisionWithAtm -= OnCollisionWithATM;
         }
 
         private void OnDisable()
@@ -154,7 +154,10 @@ namespace Managers
                 Collectables[i].transform.SetParent(TempHolder.transform);
                 
                 Collectables[i].transform.GetChild(1).gameObject.tag ="Collectable";
-                
+
+                //skore burada azalt
+                ScoreSignals.Instance.onChangePlayerScore(-1);
+
                 Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(randomValue,0,(Random.Range(9,15))),4.0f,2,1f);
 
                 Collectables.Remove(Collectables[i]);
@@ -164,6 +167,28 @@ namespace Managers
             Collectables.TrimExcess();
             
         }
+
+        public void OnCollisionWithATM(int index, int value)
+        {
+            if (index == 0)
+            {
+                transform.GetChild(0).SetParent(null);
+
+                Collectables[0].transform.SetParent(TempHolder.transform);
+
+                Collectables[0].SetActive(false);
+
+                ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
+
+                Collectables.Remove(Collectables[0]);
+
+                Collectables.TrimExcess();
+
+                return;
+            }
+
+        }
+
 
         private void OnAddOnStack(GameObject gO)
         {   

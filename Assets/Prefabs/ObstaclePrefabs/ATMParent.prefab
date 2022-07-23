@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8763137351424439444}
   - component: {fileID: 5692874406283990604}
+  - component: {fileID: 3623141812292834417}
   m_Layer: 0
   m_Name: ATMParent
   m_TagString: ATM
@@ -46,6 +47,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.394442, y: 4.759416, z: 2.3832855}
   m_Center: {x: 0.050199986, y: 0.23984408, z: -0.30120087}
+--- !u!114 &3623141812292834417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598265826626184840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3013dc16e818e72418fab340c5c29b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _atmScoreText: {fileID: 1549469420968303946}
 --- !u!1 &4305355745802947173
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,8 +94,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 20, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.06}
-  m_SizeDelta: {x: 1.8163, y: 0.6713}
+  m_AnchoredPosition: {x: 0.0459, y: 1.0742}
+  m_SizeDelta: {x: 4.1372, y: 1.469}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &896475066827427355
 MeshRenderer:
@@ -144,7 +158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DEPOSIT
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -171,13 +185,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.9
-  m_fontSizeBase: 3.9
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -207,7 +221,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -0.23171484, z: 0, w: -0.23948199}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

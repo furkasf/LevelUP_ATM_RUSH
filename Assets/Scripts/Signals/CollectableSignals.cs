@@ -6,10 +6,9 @@ namespace Signals
 {
     public class CollectableSignals : MonoSingleton<CollectableSignals>
     {
-        
-        public UnityAction<int> onCollisionWithAtm = delegate(int arg0) {  };
-
         public UnityAction<int> onCollisionWithObstacle = delegate(int arg0) {  };
+
+        public UnityAction<int, int> onCollisionWithAtm = delegate (int index, int value) { };
 
         public UnityAction<GameObject>onCollisionWithCollectable = delegate{ };
     

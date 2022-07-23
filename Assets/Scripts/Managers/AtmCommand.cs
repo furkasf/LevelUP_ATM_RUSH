@@ -8,7 +8,8 @@ namespace Controllers
     {
         #region Self Variables
         #region Serialize
-        [SerializeField] TMP_Text m_Text;
+        [SerializeField] private TMP_Text _atmScoreText;
+        private int _atmScore;
         #endregion
         #endregion
 
@@ -34,9 +35,10 @@ namespace Controllers
         }
         #endregion
 
-        private void OnChangeAtmScore(int AtmScore)
+        private void OnChangeAtmScore(int moneyValue)
         {
-
+            _atmScore += moneyValue;
+            _atmScoreText.text = _atmScore.ToString();
         }
     }
 }
