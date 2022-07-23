@@ -1,16 +1,19 @@
 using System;
-using UnityEngine;
+using Extentions;
 
-public class ScoreSignals : MonoBehaviour
+namespace Signals
 {
-    public static ScoreSignals Instance;
-   
-
-    private void Awake()
+    public class ScoreSignals : MonoSingleton<ScoreSignals>
     {
-        if(Instance == null ) Instance = this;
-    }
+    
 
-    public event Action<int> onChangeAtmScore;
-    public event Action<int> onChangePlayerScore;
+        public event Action<int> onChangeAtmScore;
+        public event Action<int> onChangePlayerScore;
+
+        protected override void Awake()
+        {
+            base.Awake();
+        }
+        
+    }
 }

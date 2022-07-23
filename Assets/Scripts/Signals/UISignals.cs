@@ -10,5 +10,12 @@ namespace Signals
         public UnityAction<UIPanels> onClosePanel;
         public UnityAction<int> onUpdateStageData;
         public UnityAction<int> onSetLevelText;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+        }
     }
+    
 }

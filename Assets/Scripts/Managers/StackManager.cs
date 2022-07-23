@@ -139,12 +139,22 @@ namespace Managers
                 {
                     return;
                 }
-                
+
+                int randomValue = Random.Range(-3, 3);
+                if (randomValue + gameObject.transform.parent.position.x <= -2.6)
+                {
+                    randomValue = 0;
+                }
+
+                if (randomValue +gameObject.transform.parent.position.x >= 2.6)
+                {
+                    randomValue = 0;
+                }
                 Collectables[i].transform.SetParent(TempHolder.transform);
                 
                 Collectables[i].transform.GetChild(1).gameObject.tag ="Collectable";
                 
-                Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(Random.Range(-3,3),0,(Random.Range(9,15))),4.0f,2,1f);
+                Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(randomValue,0,(Random.Range(9,15))),4.0f,2,1f);
 
                 Collectables.Remove(Collectables[i]);
 

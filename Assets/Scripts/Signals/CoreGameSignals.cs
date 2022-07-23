@@ -22,5 +22,10 @@ namespace Signals
         public UnityAction onSetCameraTarget = delegate { };
 
         public Func<int> onGetLevelID = delegate { return 0; };
+
+        protected override void Awake()
+        {
+            base.Awake();
+        }
     }
 }
