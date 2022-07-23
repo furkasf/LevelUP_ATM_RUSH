@@ -9,13 +9,14 @@ namespace Controllers
     {
         #region Self Variables
         #region Serialize
-        [SerializeField] TMP_Text m_Text;
+
+        [SerializeField] private TMP_Text PlayerScoreText;
         #endregion
         #endregion
 
-        private void ChangePlayerScore()
+        public void ChangePlayerScore(int _score)
         {
-
+            PlayerScoreText.text += _score.ToString();
         }
     }
 }

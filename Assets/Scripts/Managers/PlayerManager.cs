@@ -3,6 +3,7 @@ using Data.UnityObject;
 using Data.ValueObject;
 using Keys;
 using Signals;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Managers
@@ -24,6 +25,8 @@ namespace Managers
         [SerializeField] private PlayerPhysicsController physicsController;
         
         [SerializeField] private PlayerAnimationController animationController;
+
+        [SerializeField] private PlayerScoreController scoreController;
 
         #endregion
 
@@ -59,7 +62,7 @@ namespace Managers
             CoreGameSignals.Instance.onReset += OnReset;
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
             CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
-   
+            ScoreSignals.Instance.onChangePlayerScore += OnChangePlayerScore;
         }
 
         private void UnsubscribeEvents()
@@ -71,7 +74,7 @@ namespace Managers
             CoreGameSignals.Instance.onReset -= OnReset;
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
             CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
- 
+            ScoreSignals.Instance.onChangePlayerScore -= OnChangePlayerScore;
         }
 
         private void OnDisable()
@@ -120,6 +123,19 @@ namespace Managers
         private void OnReset()
         {
             movementController.OnReset();
+        }
+
+        private void OnChangePlayerScore(int score)
+        {
+            scoreController.ChangePlayerScore(score);
+        }
+
+        public void PushAndShakeThePlayer()
+        {
+            movementController.IsReadyToPlay(false);
+            transform.DOShakePosition(0.5f, 0.6f, 6);
+            transform.DOMoveZ(transform.position.z - 8, 0.5f).OnComplete(() =>
+            movementController.IsReadyToPlay(true));
         }
 
         public void DanceActivePlayer()

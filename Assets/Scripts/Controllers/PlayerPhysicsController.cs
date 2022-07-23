@@ -32,9 +32,14 @@ namespace Controllers
             {
                 CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
             }
-
-          
-
+            if(other.CompareTag("ATM"))
+            { 
+                
+            }
+            if (other.CompareTag("Obstacle"))
+            {
+                manager.PushAndShakeThePlayer();
+            }
         }
     
     }
