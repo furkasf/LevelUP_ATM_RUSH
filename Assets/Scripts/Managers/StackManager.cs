@@ -100,8 +100,8 @@ namespace Managers
         {   
             if (_scaleTween != null)
                 _scaleTween.Kill(true);
-            
-            _scaleTween = _transform.DOPunchScale(Vector3.one * scaleData.ScaleMultiplier, scaleData.ScaleDuration, 1).SetAutoKill(true);
+
+            _scaleTween = _transform.DOPunchScale(Vector3.one * scaleData.ScaleMultiplier, scaleData.ScaleDuration, 1);
         }
 
         IEnumerator HandleShakeOfStack()
@@ -110,7 +110,7 @@ namespace Managers
             { 
                 ShakeScaleOfStack(Collectables[i].transform);
 
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.4f);
             }
         }
 
@@ -141,12 +141,13 @@ namespace Managers
                 }
 
                 int randomValue = Random.Range(-3, 3);
+                
                 if (randomValue + gameObject.transform.parent.position.x <= -2.6)
                 {
                     randomValue = 0;
                 }
 
-                if (randomValue +gameObject.transform.parent.position.x >= 2.6)
+                if (randomValue + gameObject.transform.parent.position.x >= 2.6)
                 {
                     randomValue = 0;
                 }
