@@ -12,5 +12,11 @@ namespace Signals
         public UnityAction onInputTaken = delegate { };
         public UnityAction<HorizontalInputParams> onInputDragged = delegate { };
         public UnityAction onInputReleased = delegate { };
+
+
+        protected override void Awake()
+        {
+            base.Awake();
+        }
     }
 }

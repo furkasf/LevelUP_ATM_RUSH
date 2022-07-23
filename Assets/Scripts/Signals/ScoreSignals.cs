@@ -1,17 +1,9 @@
 using System;
-using UnityEngine;
-using UnityEngine.Events;
 
-public class ScoreSignals : MonoBehaviour
+
+namespace Signals
 {
-    public static ScoreSignals Instance;
-   
-
-    private void Awake()
+    public class ScoreSignals : MonoSingleton<ScoreSignals>
     {
-        if(Instance == null ) Instance = this;
-    }
-
-    public  UnityAction<int> onChangeAtmScore = delegate { };
-    public UnityAction<int> onChangePlayerScore = delegate { };
+    
 }
