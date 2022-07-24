@@ -21,6 +21,11 @@ namespace Controllers
         private void OnTriggerEnter(Collider other)
         {
         
+            if(other.CompareTag("MoneyTransform"))
+            {
+                CollisionWithBand();
+            }
+
             if (other.CompareTag("ATM"))
             {
                 CollisionWithAtm();
@@ -73,5 +78,9 @@ namespace Controllers
             manager.CollisionWithStack();
         }
 
+        private void CollisionWithBand()
+        {
+            manager.CollisionWithBand();
+        }
     }
 }

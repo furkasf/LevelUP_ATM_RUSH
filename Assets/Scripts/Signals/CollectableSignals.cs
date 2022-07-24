@@ -10,6 +10,8 @@ namespace Signals
 
         public UnityAction<int, int> onCollisionWithAtm = delegate (int index, int value) { };
 
+        public UnityAction<int, int> onCollisionWithBand = delegate (int index, int value) { };
+
         public UnityAction<GameObject>onCollisionWithCollectable = delegate{ };
     
         public UnityAction<GameObject> onCollissionWithStack = delegate(GameObject arg0) {  };

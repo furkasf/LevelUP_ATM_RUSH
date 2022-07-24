@@ -73,6 +73,8 @@ namespace Managers
             CollectableSignals.Instance.onMovementWithLerp += OnLerpTheStack;
 
             CollectableSignals.Instance.onCollisionWithAtm += OnCollisionWithATM;
+
+            CollectableSignals.Instance.onCollisionWithBand += OnCollisionWithBand;
         }
 
         private void UnsubscribeEvents()
@@ -86,6 +88,8 @@ namespace Managers
             CollectableSignals.Instance.onMovementWithLerp -= OnLerpTheStack;
 
             CollectableSignals.Instance.onCollisionWithAtm -= OnCollisionWithATM;
+
+            CollectableSignals.Instance.onCollisionWithBand -= OnCollisionWithBand;
         }
 
         private void OnDisable()
@@ -172,8 +176,7 @@ namespace Managers
         {
             if (index == 0)
             {
-                transform.GetChild(0).SetParent(null);
-
+               
                 Collectables[0].transform.SetParent(TempHolder.transform);
 
                 Collectables[0].SetActive(false);
@@ -189,6 +192,27 @@ namespace Managers
 
         }
 
+        public void OnCollisionWithBand(int index, int value)
+        {
+            if (index == 0)
+            {
+                GameObject temp = transform.GetChild(0).gameObject;
+
+                transform.GetChild(0).SetParent(TempHolder.transform);
+
+                Collectables[0].transform.DOMoveX(-6, 0.7f).OnComplete(() =>
+                {
+                    temp.SetActive(false);
+                    //nice good trick
+                    ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
+                }) ;
+
+                Collectables.Remove(Collectables[0]);
+
+                return;
+            }
+
+        }
 
         private void OnAddOnStack(GameObject gO)
         {   

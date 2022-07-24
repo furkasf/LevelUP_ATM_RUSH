@@ -82,6 +82,11 @@ namespace Managers
             ScoreSignals.Instance.onChangePlayerScore?.Invoke(-(int)StateData);
         }
 
+        public void CollisionWithBand()
+        {
+            CollectableSignals.Instance.onCollisionWithBand?.Invoke(transform.GetSiblingIndex(), (int)StateData);
+        }
+
         private void ChangeCollectableState(CollectableTypes _collectableTypes)
         {
             if (_collectableTypes == CollectableTypes.Money)
