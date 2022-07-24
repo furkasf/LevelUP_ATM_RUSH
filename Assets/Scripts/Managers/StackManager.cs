@@ -19,8 +19,6 @@ namespace Managers
         [Space]
         public List<GameObject> Collectables = new List<GameObject>();
         
-        public GameObject TempHolder;
-        
         #endregion
 
         #region Serialized Variables
@@ -35,8 +33,10 @@ namespace Managers
 
         private Tween _scaleTween;
 
+        public GameObject _tempHolder;
+
         #endregion
-        
+
         #endregion
 
         private void Awake()
@@ -44,7 +44,9 @@ namespace Managers
             Data = GetStackData();
             
             if(Instance == null) Instance = this; //Use MonoSingleton
-            
+
+            _tempHolder = GameObject.FindGameObjectWithTag("PoolHolder").transform.GetChild(0).gameObject;
+
             SetStackData();
         }
 
@@ -126,10 +128,12 @@ namespace Managers
             {
                 transform.GetChild(0).SetParent(null);
                 
-                Collectables[0].transform.SetParent(TempHolder.transform);
+                Collectables[0].transform.SetParent(_tempHolder.transform);
                 
                 Collectables[0].SetActive(false);
-                
+
+                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
+
                 Collectables.Remove(Collectables[0]);
 
                 Collectables.TrimExcess();
@@ -155,9 +159,11 @@ namespace Managers
                 {
                     randomValue = 0;
                 }
-                Collectables[i].transform.SetParent(TempHolder.transform);
+                Collectables[i].transform.SetParent(_tempHolder.transform);
                 
                 Collectables[i].transform.GetChild(1).gameObject.tag ="Collectable";
+
+                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 
                 //skore burada azalt
                 ScoreSignals.Instance.onChangePlayerScore(-1);
@@ -177,9 +183,11 @@ namespace Managers
             if (index == 0)
             {
                
-                Collectables[0].transform.SetParent(TempHolder.transform);
+                Collectables[0].transform.SetParent(_tempHolder.transform);
 
                 Collectables[0].SetActive(false);
+
+                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 
                 ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
 
@@ -198,7 +206,7 @@ namespace Managers
             {
                 GameObject temp = transform.GetChild(0).gameObject;
 
-                transform.GetChild(0).SetParent(TempHolder.transform);
+                transform.GetChild(0).SetParent(_tempHolder.transform);
 
                 Collectables[0].transform.DOMoveX(-6, 0.7f).OnComplete(() =>
                 {
@@ -206,6 +214,8 @@ namespace Managers
                     //nice good trick
                     ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
                 }) ;
+
+                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 
                 Collectables.Remove(Collectables[0]);
 
@@ -245,10 +255,5 @@ namespace Managers
             
         }
         
-        // tamamen bağımsız yapalım.
-        private void StartMiniGame(int GameScore)
-        {
-            
-        }
     }
 }
