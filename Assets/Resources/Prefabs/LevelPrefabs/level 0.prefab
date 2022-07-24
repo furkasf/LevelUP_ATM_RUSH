@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1505952124}
   - component: {fileID: 1505952123}
   - component: {fileID: 1505952122}
+  - component: {fileID: 2260813558066908972}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,6 +95,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!65 &2260813558066908972
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505952120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.6381173, z: 1.2944311}
+  m_Center: {x: 0, y: 0.81905866, z: 0.14721555}
 --- !u!1 &1581102056
 GameObject:
   m_ObjectHideFlags: 0
