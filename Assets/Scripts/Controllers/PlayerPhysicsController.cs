@@ -26,6 +26,7 @@ namespace Controllers
             if (other.CompareTag("MiniGame"))
             {
                 UISignals.Instance.onOpenPanel?.Invoke(UIPanels.MiniGamePanel);
+                manager.StopPlayerMove();
                 manager.OnStartMiniGame();
             }
 
