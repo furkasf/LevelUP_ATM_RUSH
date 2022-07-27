@@ -163,7 +163,7 @@ namespace Managers
                 
                 Collectables[i].transform.GetChild(1).gameObject.tag ="Collectable";
 
-                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
+                //MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 
                 //skore burada azalt
                 int value = (int)Collectables[i].GetComponent<CollectableManager>().StateData;

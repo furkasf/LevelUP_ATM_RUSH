@@ -54,7 +54,7 @@ public class CameraManager : MonoBehaviour
             }
     
             #endregion
-    
+            
     
             private void GetInitialPosition()
             {
@@ -75,7 +75,7 @@ public class CameraManager : MonoBehaviour
             {
                 var playerManager = FindObjectOfType<PlayerManager>().transform;
                 virtualCamera.Follow = playerManager;
-                //virtualCamera.LookAt = playerManager;
+                virtualCamera.LookAt = playerManager;
             }
     
             private void OnReset()

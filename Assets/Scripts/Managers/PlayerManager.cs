@@ -144,6 +144,8 @@ namespace Managers
             scoreController.StartMiniGame();
         }
 
+        public void StopPlayerMove() => movementController.OnReset();
+
         public void DanceActivePlayer()
         {
             //End level dance
