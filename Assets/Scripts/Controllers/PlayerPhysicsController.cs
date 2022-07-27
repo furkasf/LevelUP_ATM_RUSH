@@ -23,9 +23,10 @@ namespace Controllers
         {
          
 
-            if (other.CompareTag("MiniGameArea"))
+            if (other.CompareTag("MiniGame"))
             {
                 UISignals.Instance.onOpenPanel?.Invoke(UIPanels.MiniGamePanel);
+                manager.OnStartMiniGame();
             }
 
             if (other.CompareTag("WinZone"))

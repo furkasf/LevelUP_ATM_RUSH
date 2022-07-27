@@ -10,10 +10,10 @@ public class Minigame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Mini(20, 4));
+        StartCoroutine(Mini(20));
     }
 
-    public IEnumerator Mini(int score, float delay = 0.2f)
+    public IEnumerator Mini(int score)
     {
         
         for(int i = 0; i < score; i++)
