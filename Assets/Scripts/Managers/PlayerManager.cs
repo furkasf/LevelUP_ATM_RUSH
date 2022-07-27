@@ -30,6 +30,7 @@ namespace Managers
 
         #endregion
 
+
         #endregion
 
 
@@ -136,6 +137,11 @@ namespace Managers
             transform.DOShakePosition(0.5f, 0.6f, 6);
             transform.DOMoveZ(transform.position.z - 8, 0.5f).OnComplete(() =>
             movementController.IsReadyToPlay(true));
+        }
+
+        public void OnStartMiniGame()
+        {
+            scoreController.StartMiniGame();
         }
 
         public void DanceActivePlayer()

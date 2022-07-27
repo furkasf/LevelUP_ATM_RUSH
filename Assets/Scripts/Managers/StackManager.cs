@@ -166,7 +166,8 @@ namespace Managers
                 MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 
                 //skore burada azalt
-                ScoreSignals.Instance.onChangePlayerScore(-1);
+                int value = (int)Collectables[i].GetComponent<CollectableManager>().StateData;
+                ScoreSignals.Instance.onChangePlayerScore(-value);
 
                 Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(randomValue,0,(Random.Range(9,15))),4.0f,2,1f);
 
