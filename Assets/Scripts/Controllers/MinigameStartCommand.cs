@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Managers;
+using Enums;
+using Signals;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,6 +12,8 @@ public class MinigameStartCommand
     {
 
         _transform.rotation = new Quaternion(0, 180, 0, 0);
+        CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.Runner);
+
         for (int i = 0; i < score; i++)
         {
             GameObject obj = MoneyPoolManager.instance.GetMoneyFromPool();
