@@ -104,7 +104,9 @@ public class CameraManager : MonoBehaviour
         {
             _currentState = CameraStates.MiniGame;
             var playerManager = FindObjectOfType<PlayerManager>().transform;
-            MiniGameCamera.Follow = playerManager;
+            MiniGameCamera.Follow = playerManager; 
+            var pos = new Vector3(-5, 6, 10);
+            MiniGameCamera.m_Follow.position = pos;
             MiniGameCamera.LookAt= playerManager;
             animator.Play("MiniGameCam");
         }
