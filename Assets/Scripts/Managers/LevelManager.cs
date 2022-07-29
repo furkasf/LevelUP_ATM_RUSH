@@ -30,6 +30,7 @@ namespace Managers
 
         // [ShowInInspector] private int _levelID;
         private int _levelID;
+        private int _gameScore;
         #endregion
 
         #endregion
@@ -37,6 +38,7 @@ namespace Managers
         private void Awake()
         {
             _levelID = GetActiveLevel();
+            _gameScore = GetGameScore();
             Data = GetLevelData();
         }
 
@@ -50,6 +52,12 @@ namespace Managers
         {
             var newLevelData = _levelID % Resources.Load<CD_Level>("Data/CD_Level").Levels.Count;
             return Resources.Load<CD_Level>("Data/CD_Level").Levels[newLevelData];
+        }
+
+        private int GetGameScore()
+        {
+            if (!ES3.FileExists()) return 0;
+            return ES3.KeyExists("score") ? ES3.Load<int>("score") : 0;
         }
 
         #region Event Subscription

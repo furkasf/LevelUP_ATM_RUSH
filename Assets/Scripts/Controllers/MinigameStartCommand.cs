@@ -26,5 +26,9 @@ public class MinigameStartCommand
             yield return new WaitForSeconds(0.09f);
             Debug.Log("index : " + i);
         }
+        //update Score
+        if (!ES3.FileExists()) yield return null;
+        score += (int)ES3.Load("score");
+        ES3.Save("Score", score);
     }
 }
