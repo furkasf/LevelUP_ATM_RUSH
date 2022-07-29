@@ -165,7 +165,7 @@ namespace Managers
 
                 //MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 
-                //skore burada azalt
+               
                 int value = (int)Collectables[i].GetComponent<CollectableManager>().StateData;
                 ScoreSignals.Instance.onChangePlayerScore(-value);
 
@@ -226,22 +226,22 @@ namespace Managers
         }
 
         private void OnAddOnStack(GameObject gO)
-        {   
- 
-            foreach(GameObject i in Collectables)
-            {
-                i.transform.Translate(Vector3.forward);
-            }
-            
-            gO.transform.parent = transform;
-            
-            gO.transform.localPosition = Vector3.forward;
-            
-            Collectables.Add(gO);
-            
-            StartCoroutine(HandleShakeOfStack());
-
-        }
+                 {   
+          
+                     foreach(GameObject i in Collectables)
+                     {
+                         i.transform.Translate(Vector3.forward);
+                     }
+                     
+                     gO.transform.parent = transform;
+                     
+                     gO.transform.localPosition = Vector3.forward;
+                     
+                     Collectables.Add(gO);
+                     
+                     StartCoroutine(HandleShakeOfStack());
+         
+                 }
 
         private void OnLerpTheStack()
         {

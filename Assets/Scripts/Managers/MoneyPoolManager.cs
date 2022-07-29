@@ -54,12 +54,10 @@ namespace Managers
                 if (ball.activeInHierarchy == false)
                 {
                     ball.SetActive(true);
-                    Debug.Log("pool has object");
                     return ball;
                     
                 }
             }
-            Debug.Log("pool has object not enoug object");
             //if doesnt have extra ball in pool creat new ball and pool
             GameObject newBall = Instantiate(unUsedMoney);
             newBall.transform.parent = moneyContainer.transform;

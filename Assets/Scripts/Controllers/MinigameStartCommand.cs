@@ -20,7 +20,6 @@ public class MinigameStartCommand
             // DOVirtual.DelayedCall(5, () => transform.DOMoveY(1, 0.5f).SetRelative(obj.transform));
             _transform.DOMoveY(1, 0.1f).SetRelative(obj.transform);
             yield return new WaitForSeconds(0.09f);
-            Debug.Log("index : " + i);
         }
     }
 }

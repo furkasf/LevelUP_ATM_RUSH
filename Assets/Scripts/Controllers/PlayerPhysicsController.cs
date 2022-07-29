@@ -11,12 +11,12 @@ namespace Controllers
 
         #region Serialized Variables
 
+
         [SerializeField] private PlayerManager manager;
         [SerializeField] private new Collider collider;
         [SerializeField] private new Rigidbody rigidbody;
 
         #endregion
-
         #endregion
 
         private void OnTriggerEnter(Collider other)
