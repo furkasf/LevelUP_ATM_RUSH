@@ -25,5 +25,9 @@ public class MinigameStartCommand
             _transform.DOMoveY(1, 0.1f).SetRelative(obj.transform);
             yield return new WaitForSeconds(0.09f);
         }
+        //update Score
+        if (!ES3.FileExists()) yield return null;
+        score += (int)ES3.Load("score");
+        ES3.Save("Score", score);
     }
 }
