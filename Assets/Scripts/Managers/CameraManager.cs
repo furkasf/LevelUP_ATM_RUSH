@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+
     #region Self Variables
 
     #region Serialized Variables
@@ -111,4 +112,5 @@ public class CameraManager : MonoBehaviour
             animator.Play("MiniGameCam");
         }
     }
+
 }
