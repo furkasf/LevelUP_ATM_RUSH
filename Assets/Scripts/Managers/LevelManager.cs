@@ -57,7 +57,7 @@ namespace Managers
         private int GetGameScore()
         {
             if (!ES3.FileExists()) return 0;
-            return ES3.KeyExists("score") ? ES3.Load<int>("score") : 0;
+            return ES3.KeyExists("Score") ? ES3.Load<int>("Score") : 0;
         }
 
         #region Event Subscription
@@ -104,7 +104,8 @@ namespace Managers
             CoreGameSignals.Instance.onReset?.Invoke();
             CoreGameSignals.Instance.onSaveGameData?.Invoke(new SaveGameDataParams()
             {
-                Level = _levelID
+                Level = _levelID,
+                Score = _gameScore
             });
             CoreGameSignals.Instance.onLevelInitialize?.Invoke();
         }
@@ -115,7 +116,8 @@ namespace Managers
             CoreGameSignals.Instance.onReset?.Invoke();
             CoreGameSignals.Instance.onSaveGameData?.Invoke(new SaveGameDataParams()
             {
-                Level = _levelID
+                Level = _levelID,
+                Score = _gameScore
             });
             CoreGameSignals.Instance.onLevelInitialize?.Invoke();
         }

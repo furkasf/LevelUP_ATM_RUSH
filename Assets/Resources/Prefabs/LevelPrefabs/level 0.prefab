@@ -392,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5627754415673941718, guid: 1180442d4108f2643890be06a21dbb91, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 172.4
+      value: 43.2
       objectReference: {fileID: 0}
     - target: {fileID: 5627754415673941718, guid: 1180442d4108f2643890be06a21dbb91, type: 3}
       propertyPath: m_LocalRotation.w
@@ -426,7 +426,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoneyTransformPath
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7555480877832040295, guid: 1180442d4108f2643890be06a21dbb91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1180442d4108f2643890be06a21dbb91, type: 3}
 --- !u!4 &4867411912511447447 stripped
 Transform:
@@ -1145,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4922631598213467538, guid: 29281b91c53760b47a03c022451d1e11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 4922631598213467538, guid: 29281b91c53760b47a03c022451d1e11, type: 3}
       propertyPath: m_LocalPosition.y
