@@ -209,16 +209,12 @@ namespace Managers
 
                 transform.GetChild(0).SetParent(_tempHolder.transform);
 
-                Collectables[0].transform.DOMoveX(-6, 0.7f).OnComplete(() =>
+                Collectables[0].transform.DOMoveX(-6, 0.6f).OnComplete(() =>
                 {
-                    temp.SetActive(false);
                     //nice good trick
                     ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
-                }) ;
-
-                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
-
-                Collectables.Remove(Collectables[0]);
+                    MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
+                }).OnComplete(() => Collectables.Remove(Collectables[0]));
 
                 return;
             }
