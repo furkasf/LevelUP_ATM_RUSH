@@ -94,6 +94,7 @@ namespace Managers
         public void Play()
         {
             CoreGameSignals.Instance.onPlay?.Invoke();
+            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.Initial);
         }
 
         public void NextLevel()
