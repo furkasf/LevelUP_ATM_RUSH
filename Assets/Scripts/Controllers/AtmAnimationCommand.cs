@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Assets.Scripts.Controllers
+namespace Controllers
 {
     public class AtmAnimationCommand : MonoBehaviour
     {

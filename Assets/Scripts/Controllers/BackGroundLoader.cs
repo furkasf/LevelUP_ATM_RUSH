@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Data.UnityObject;
 using Data.ValueObject;
 using Enums;
+using Signals;
 using UnityEngine;
 using TMPro;
 
@@ -27,6 +28,8 @@ namespace Controllers
         [SerializeField] private List<GameObject> cubeList = new List<GameObject>();
         
         [SerializeField] private int predictedCubeCount;
+        
+        [SerializeField] private int mostValuableObjectValue = 3;
 
 
         #endregion
@@ -50,7 +53,7 @@ namespace Controllers
         // Levelden cekilecekler
         [SerializeField] private int levelCollactableCount = 60;
 
-        [SerializeField] private int mostValuableObjectValue = 3;
+        
 
    
         private void Awake()
@@ -59,13 +62,36 @@ namespace Controllers
             _indexMinFactor = Data.indexMinFactor;
         }
 
+        #region Event Subscription
+
+        private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            MiniGameSignals.Instance.onCollisionWithBlock += SetColor;
+        }
+
+        private void UnsubscribeEvents()
+        {
+            MiniGameSignals.Instance.onCollisionWithBlock -= SetColor;
+        }
+        private void OnDisable()
+        {
+            UnsubscribeEvents();
+        }
+
+        #endregion
+        
         private void Start()
         {
             Data.cubePrefab.transform.localScale = Data.CubeScale;
             
             targetTransform.position = new Vector3(0,(Data.cubePrefab.transform.localScale.y / 2) -1f,195);
 
-            SetCubesToScene(SetPredictedCubeCount());
+            SetCubesToScene(SetPredictedCubeCount()); // Yapilabilecek max puana gore cubeleri sahneye diz.
             
             OnLoadTower(backgroundAxis); // Invoke
         }
@@ -82,7 +108,6 @@ namespace Controllers
             for (int i = 0; i < cubeCount; i++)
             {
                 cubeList.Add(Instantiate(Data.cubePrefab,targetTransform));
-                SetColor(cubeList[i]);
             }
         }
         private void SetColor(GameObject gO)
@@ -154,13 +179,15 @@ namespace Controllers
             {   
                 SetTextOnCubes(cubeList[i].gameObject,_backgroundAxis);
                 
+                SetTowerCollider(_backgroundAxis,cubeList[i]);
+                
                 if (i == 0)
                 {
                     cubeList[i].transform.position = targetTransform.position;
                 }
                 else
                 {
-                    SetTowerCollider(_backgroundAxis,cubeList[i]);
+                   
                     cubeList[i].transform.position = cubeList[i - 1].transform.position + SetStackDirection(_backgroundAxis,i);
                 }
             }
