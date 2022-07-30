@@ -12,6 +12,7 @@ namespace Managers
     {
         public static StackManager Instance;
         #region Self Variables
+
         #region Public Variables
 
         [Header("Data")] public StackData Data;
@@ -185,8 +186,6 @@ namespace Managers
             {
                
                 Collectables[0].transform.SetParent(_tempHolder.transform);
-
-                Collectables[0].SetActive(false);
 
                 MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 

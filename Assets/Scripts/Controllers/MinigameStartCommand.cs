@@ -26,12 +26,10 @@ public class MinigameStartCommand
             yield return new WaitForSeconds(0.09f);
         }
         //update Score
-        //if (!ES3.FileExists()) yield return null;
-        if (ES3.KeyExists("Score")) Debug.Log("tahat key is exist");
-        else Debug.Log("tahat key doesnt exist");
-        score += ES3.Load<int>("Score");
-        ES3.Save("Score", score);
-        Debug.Log(ES3.Load<int>("Score"));
-        //CoreGameSignals.Instance.onSaveGameData?.Invoke("Score",score);*/
+
+        CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, score);
+        UISignals.Instance.onChangeScoreText(score);
+
+        UISignals.Instance.onOpenPanel(UIPanels.WinPanel);
     }
 }

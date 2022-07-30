@@ -9,7 +9,6 @@ namespace Signals
     public class CoreGameSignals : MonoSingleton<CoreGameSignals>
     {
         public UnityAction<GameStates> onChangeGameState = delegate { };
-        public UnityAction<SaveGameDataParams> onSaveGameData = delegate { };
         public UnityAction onLevelInitialize = delegate { };
         public UnityAction onClearActiveLevel = delegate { };
         public UnityAction onLevelFailed = delegate { };
@@ -23,6 +22,10 @@ namespace Signals
         public UnityAction<CameraStates> onSetCameraState = delegate { };
 
         public Func<int> onGetLevelID = delegate { return 0; };
+
+        //save references
+        public  Action<SaveStates, int> onSaveGameData = delegate { };
+        public  Func<SaveStates, int> onLoadGameData = delegate { return 0; };
 
         protected override void Awake()
         {
