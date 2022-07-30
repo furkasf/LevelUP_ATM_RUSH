@@ -76,5 +76,17 @@ namespace Managers
             moneyPool.Add(money);
         }
 
+        public void HideAllActiveMoney()
+        {
+            foreach(GameObject money in moneyPool)
+            {
+                if(money.active)
+                {
+                    money.SetActive(false);
+                    money.transform.parent = moneyContainer.transform;
+                }
+            }
+        }
+
     }
 }

@@ -2,6 +2,7 @@ using Controllers;
 using Data.UnityObject;
 using Data.ValueObject;
 using Keys;
+using Enums;
 using Signals;
 //using Sirenix.OdinInspector;
 using UnityEngine;
@@ -38,7 +39,6 @@ namespace Managers
         private void Awake()
         {
             _levelID = GetActiveLevel();
-            _gameScore = GetGameScore();
             Data = GetLevelData();
         }
 
@@ -52,12 +52,6 @@ namespace Managers
         {
             var newLevelData = _levelID % Resources.Load<CD_Level>("Data/CD_Level").Levels.Count;
             return Resources.Load<CD_Level>("Data/CD_Level").Levels[newLevelData];
-        }
-
-        private int GetGameScore()
-        {
-            if (!ES3.FileExists()) return 0;
-            return ES3.KeyExists("score") ? ES3.Load<int>("score") : 0;
         }
 
         #region Event Subscription
@@ -102,21 +96,17 @@ namespace Managers
             _levelID++;
             CoreGameSignals.Instance.onClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.onReset?.Invoke();
-            CoreGameSignals.Instance.onSaveGameData?.Invoke(new SaveGameDataParams()
-            {
-                Level = _levelID
-            });
+            CoreGameSignals.Instance.onSaveGameData?.Invoke(SaveStates.Level, _levelID);
             CoreGameSignals.Instance.onLevelInitialize?.Invoke();
+            UISignals.Instance.onChangeLevelText(_levelID + 1);
+            MoneyPoolManager.instance.HideAllActiveMoney();
         }
 
         private void OnRestartLevel()
         {
             CoreGameSignals.Instance.onClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.onReset?.Invoke();
-            CoreGameSignals.Instance.onSaveGameData?.Invoke(new SaveGameDataParams()
-            {
-                Level = _levelID
-            });
+            CoreGameSignals.Instance.onSaveGameData?.Invoke(SaveStates.Level, _levelID);
             CoreGameSignals.Instance.onLevelInitialize?.Invoke();
         }
 

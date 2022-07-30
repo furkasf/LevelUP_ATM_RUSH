@@ -13,6 +13,7 @@ namespace Managers
     {
         public static StackManager Instance;
         #region Self Variables
+
         #region Public Variables
 
         [Header("Data")] public StackData Data;
@@ -187,8 +188,6 @@ namespace Managers
                
                 Collectables[0].transform.SetParent(_tempHolder.transform);
 
-                Collectables[0].SetActive(false);
-
                 MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 
                 ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
@@ -208,6 +207,7 @@ namespace Managers
             {
                 GameObject temp = transform.GetChild(0).gameObject;
 
+<<<<<<< HEAD
                 temp.gameObject.transform.SetParent(_tempHolder.transform);
                 
                 Collectables.Remove(Collectables[0]);
@@ -219,6 +219,16 @@ namespace Managers
                     ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
                     
                 }) ;
+=======
+                transform.GetChild(0).SetParent(_tempHolder.transform);
+
+                Collectables[0].transform.DOMoveX(-6, 0.6f).OnComplete(() =>
+                {
+                    //nice good trick
+                    ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
+                    MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
+                }).OnComplete(() => Collectables.Remove(Collectables[0]));
+>>>>>>> 2d8e85b74b7a4b8838e92490c633674df39b7865
 
                 return;
             }
