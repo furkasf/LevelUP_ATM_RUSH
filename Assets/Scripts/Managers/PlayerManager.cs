@@ -48,9 +48,12 @@ namespace Managers
             Data = GetPlayerData();
             
             SendPlayerDataToControllers();
-            
-            fakePlayer = GameObject.FindGameObjectWithTag("FakePlayer");
-            
+
+            Debug.Log("aweake work");
+            /*fakePlayer = GameObject.FindGameObjectWithTag("FakePlayer");
+
+            if (fakePlayer == null) Debug.Log("referencing doenst worked");
+            */
             fakePlayer.SetActive(false);
         }
 
@@ -65,6 +68,7 @@ namespace Managers
 
         private void OnEnable()
         {
+            fakePlayer.SetActive(false);
             SubscribeEvents();
         }
 

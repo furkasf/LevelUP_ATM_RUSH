@@ -31,7 +31,6 @@ public class MinigameStartCommand
 
         CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, score);
         UISignals.Instance.onChangeScoreText(score);
-
         UISignals.Instance.onOpenPanel(UIPanels.WinPanel);
     }
 }
