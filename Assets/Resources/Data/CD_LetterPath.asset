@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: CD_LetterPath
   m_EditorClassIdentifier: 
   LetterPathData:
-    CubeScale: {x: 10, y: 10, z: 10}
+    CubeScale: {x: 8, y: 3.5, z: 5}
     cubePrefab: {fileID: 3419000008792991366, guid: 4001d04c8f906d0438ee9cf5db7acfc5, type: 3}
     cubeScaleFactor: 10
-    indexMinFactor: 28
+    indexMinFactor: 10
     indexMaxFactor: 100
     colliderSize: 2
     colliderCenter: 0.5

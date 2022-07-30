@@ -814,13 +814,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:RightFoot'\n\tTransform
-    'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftHand'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
-    'mixamorig:Spine2'\n\tTransform 'mixamorig:RightUpLeg'\n\tTransform 'mixamorig:RightForeArm'\n\tTransform
-    'mixamorig:LeftUpLeg'\n\tTransform 'mixamorig:Head'\n\tand more ...\n\tFrom animation
-    clip 'Sitting'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1279,6 +1273,8 @@ MonoBehaviour:
     MovementData:
       ForwardSpeed: 5
       SidewaysSpeed: 2
+  playerScoreController: {fileID: 6065231691093691325}
+  fakePlayer: {fileID: 0}
   movementController: {fileID: 3630301261859217181}
   physicsController: {fileID: 3630301261833432460}
   animationController: {fileID: 2544330400224862617}
@@ -2250,8 +2246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36528571229fd6048ae54c429d4204cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManager: {fileID: 0}
+  playerManager: {fileID: 3630301261859217178}
   playerScoreText: {fileID: 5519620230082866199}
+  _playerScore: 0
 --- !u!1 &5885086832505958297
 GameObject:
   m_ObjectHideFlags: 0

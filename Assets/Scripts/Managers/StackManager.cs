@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Data.UnityObject;
+using Data.ValueObject;
 using UnityEngine;
 using DG.Tweening;
 using Signals;
@@ -169,7 +170,7 @@ namespace Managers
                 int value = (int)Collectables[i].GetComponent<CollectableManager>().StateData;
                 ScoreSignals.Instance.onChangePlayerScore(-value);
 
-                Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(randomValue,0,(Random.Range(9,15))),4.0f,2,1f);
+                Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(randomValue,0,(Random.Range(6,12))),4.0f,2,1f);
 
                 Collectables.Remove(Collectables[i]);
 
@@ -207,18 +208,17 @@ namespace Managers
             {
                 GameObject temp = transform.GetChild(0).gameObject;
 
-                transform.GetChild(0).SetParent(_tempHolder.transform);
-
-                Collectables[0].transform.DOMoveX(-6, 0.7f).OnComplete(() =>
+                temp.gameObject.transform.SetParent(_tempHolder.transform);
+                
+                Collectables.Remove(Collectables[0]);
+                
+                temp.transform.DOMoveX(-4, 0.5f).OnComplete(() =>
                 {
                     temp.SetActive(false);
-                    //nice good trick
+                    
                     ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
+                    
                 }) ;
-
-                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
-
-                Collectables.Remove(Collectables[0]);
 
                 return;
             }
@@ -226,22 +226,22 @@ namespace Managers
         }
 
         private void OnAddOnStack(GameObject gO)
-                 {   
-          
-                     foreach(GameObject i in Collectables)
-                     {
-                         i.transform.Translate(Vector3.forward);
-                     }
-                     
-                     gO.transform.parent = transform;
-                     
-                     gO.transform.localPosition = Vector3.forward;
-                     
-                     Collectables.Add(gO);
-                     
-                     StartCoroutine(HandleShakeOfStack());
-         
-                 }
+        {   
+      
+            foreach(GameObject i in Collectables)
+            {
+                i.transform.Translate(Vector3.forward);
+            }
+            
+            gO.transform.parent = transform;
+            
+            gO.transform.localPosition = Vector3.forward;
+            
+            Collectables.Add(gO);
+            
+            StartCoroutine(HandleShakeOfStack());
+      
+        }
 
         private void OnLerpTheStack()
         {

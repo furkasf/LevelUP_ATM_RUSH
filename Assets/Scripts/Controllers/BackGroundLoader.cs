@@ -28,7 +28,7 @@ namespace Controllers
         
         [SerializeField] private int predictedCubeCount;
 
-        
+
         #endregion
 
         #region Private Variables
@@ -40,6 +40,8 @@ namespace Controllers
         private Vector3 forwardStack;
 
         private Vector3 upwardsStack;
+
+        private float _indexMinFactor;
 
         #endregion
 
@@ -54,13 +56,14 @@ namespace Controllers
         private void Awake()
         {
             Data = GetLetterPathData();
+            _indexMinFactor = Data.indexMinFactor;
         }
 
         private void Start()
         {
             Data.cubePrefab.transform.localScale = Data.CubeScale;
             
-            targetTransform.position = new Vector3(0,Data.cubePrefab.transform.localScale.y / 2,0);
+            targetTransform.position = new Vector3(0,(Data.cubePrefab.transform.localScale.y / 2) -1f,195);
 
             SetCubesToScene(SetPredictedCubeCount());
             
@@ -110,12 +113,14 @@ namespace Controllers
         }
         private void SetTextOnCubes(GameObject gO,BackGroundAxis _backgroundAxis)
         {   
-            if (Data.indexMinFactor > Data.indexMaxFactor)
+            
+            
+            if (_indexMinFactor > Data.indexMaxFactor)
             {
                 return;
             }
-                
-            float _value = Data.indexMinFactor / 10;
+         
+            float _value = _indexMinFactor / 10;
             
             if (_backgroundAxis == BackGroundAxis.Vertical)
             {
@@ -130,7 +135,7 @@ namespace Controllers
                 gO.transform.GetChild(1).GetComponentInChildren<TextMeshPro>().text = _value.ToString() + "X";
             }
 
-            Data.indexMinFactor++;
+            _indexMinFactor++;
         }
         private Vector3 SetStackDirection(BackGroundAxis _backgroundAxis,int index)
         {

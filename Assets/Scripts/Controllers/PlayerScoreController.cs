@@ -18,9 +18,8 @@ namespace Controllers
 
         #region Private Variables
 
-        private int _playerScore;
-        private MinigameStartCommand _miniGame = new MinigameStartCommand();
-
+        public int _playerScore;
+        
         #endregion
         #endregion
 
@@ -34,9 +33,5 @@ namespace Controllers
             playerScoreText.text = _playerScore.ToString();  
         }
 
-        public void StartMiniGame()
-        {
-            StartCoroutine(_miniGame.StartMiniGame(_playerScore, transform.parent));
-        }
     }
 }

@@ -13,8 +13,12 @@ namespace Managers
         #region Self Variables
 
         #region Public Variables
-
+        
         [Header("Data")] public PlayerData Data;
+
+        public PlayerScoreController playerScoreController;
+        [SerializeField] private GameObject fakePlayer;
+        
 
         #endregion
 
@@ -30,7 +34,12 @@ namespace Managers
 
         #endregion
 
+        #region MyRegion
+        
+        private MinigameStartCommand _miniGame = new MinigameStartCommand();
+        
 
+        #endregion
         #endregion
 
 
@@ -38,6 +47,9 @@ namespace Managers
         {
             Data = GetPlayerData();
             SendPlayerDataToControllers();
+            fakePlayer = GameObject.FindGameObjectWithTag("FinalPlayer");
+            fakePlayer.SetActive(false);
+            Debug.Log(fakePlayer.name);
         }
 
         private PlayerData GetPlayerData() => Resources.Load<CD_Player>("Data/CD_Player").data;
@@ -141,14 +153,13 @@ namespace Managers
 
         public void OnStartMiniGame()
         {
-            scoreController.StartMiniGame();
+            StartCoroutine(_miniGame.StartMiniGame(playerScoreController._playerScore, fakePlayer));
+            animationController.DeactivatePlayerMovementAnimation();
+            animationController.DeactivatePlayerMesh();
+            
         }
 
         public void StopPlayerMove() => movementController.OnReset();
-
-        public void DanceActivePlayer()
-        {
-            //End level dance
-        }
+        
     }
 }

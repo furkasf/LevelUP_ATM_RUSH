@@ -33,9 +33,9 @@ namespace Controllers
         }
     
 
-        public void ActivatePlayerDance()
+        public void DeactivatePlayerMesh()
         {
-            //Dance
+            gameObject.SetActive(false);
         }
     }
 }

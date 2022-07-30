@@ -13,7 +13,9 @@ public class CameraManager : MonoBehaviour
 
     public CinemachineVirtualCamera virtualCamera;
     public CinemachineVirtualCamera MiniGameCamera;
+    
     public Animator animator;
+    
 
     #endregion
 
@@ -22,17 +24,21 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private Vector3 _initialPosition;
 
     private CameraStates _currentState = CameraStates.Initial;
+
+    private CinemachineTransposer minigameTransposer;
     #endregion
 
     #endregion
-
+    
+    
+    
     #region Event Subscriptions
 
     private void Awake()
     {
-        //virtualCamera = GetComponent<CinemachineVirtualCamera>();
+      
         animator = GetComponent<Animator>();
-        //OnSetCameraState(_currentState);
+        minigameTransposer = MiniGameCamera.GetCinemachineComponent<CinemachineTransposer>();
         GetInitialPosition();
     }
 
@@ -63,8 +69,7 @@ public class CameraManager : MonoBehaviour
     }
 
     #endregion
-
-
+    
     private void GetInitialPosition()
     {
         _initialPosition = transform.localPosition;
@@ -83,8 +88,9 @@ public class CameraManager : MonoBehaviour
     private void OnSetCameraTarget()
     {
         var playerManager = FindObjectOfType<PlayerManager>().transform;
+        
         virtualCamera.Follow = playerManager;
-        //virtualCamera.LookAt = playerManager;
+
     }
 
     private void OnReset()
@@ -104,11 +110,11 @@ public class CameraManager : MonoBehaviour
         else if(state == CameraStates.Runner)
         {
             _currentState = CameraStates.MiniGame;
-            var playerManager = FindObjectOfType<PlayerManager>().transform;
-            MiniGameCamera.Follow = playerManager; 
-            var pos = new Vector3(-5, 6, 10);
-            MiniGameCamera.m_Follow.position = pos;
-            MiniGameCamera.LookAt= playerManager;
+
+            var _fakePlayer = GameObject.FindGameObjectWithTag("FinalPlayer");
+            
+            MiniGameCamera.m_Follow = _fakePlayer.transform;
+            
             animator.Play("MiniGameCam");
         }
     }

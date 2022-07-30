@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Controllers
+namespace Controllers
 {
     public class BandAnimationCommand : MonoBehaviour
     {
         #region Self Variables
 
         #region Serialize Variables
-        [SerializeField] private float scrollSpeed = 0.5f;
+        [SerializeField] private float scrollSpeed = 0.05f;
         [SerializeField] private Renderer renderer;
         #endregion
 
@@ -22,7 +21,7 @@ namespace Assets.Scripts.Controllers
         private void Update()
         {
             float offset = Time.time * scrollSpeed;
-            renderer.material.SetTextureOffset("_MainTex", new Vector2(0, -offset));
+            renderer.material.SetTextureOffset("_BaseMap", new Vector2(0, -offset));
         }
     }
 }

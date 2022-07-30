@@ -17,6 +17,7 @@ TagManager:
   - MoneyTransform
   - MiniGame
   - PoolHolder
+  - FinalPlayer
   layers:
   - Default
   - TransparentFX

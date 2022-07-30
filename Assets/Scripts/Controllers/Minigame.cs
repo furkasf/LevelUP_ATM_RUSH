@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Minigame : MonoBehaviour
 {
-    // Start is called before the first frame update
+ 
     void Start()
     {
         StartCoroutine(Mini(20));
@@ -19,10 +19,13 @@ public class Minigame : MonoBehaviour
         for(int i = 0; i < score; i++)
         {
             GameObject obj = MoneyPoolManager.instance.GetMoneyFromPool();
+            
             obj.SetActive(true);
+            
             obj.transform.position = transform.position;
-            // DOVirtual.DelayedCall(5, () => transform.DOMoveY(1, 0.5f).SetRelative(obj.transform));
+            
             transform.DOMoveY(1, 0.1f).SetRelative(obj.transform);
+            
             yield return new WaitForSeconds(0.09f);
         }
         

@@ -23,7 +23,7 @@ namespace Controllers
         {
          
 
-            if (other.CompareTag("MiniGame"))
+            if (other.CompareTag("MoneyTransform"))
             {
                 UISignals.Instance.onOpenPanel?.Invoke(UIPanels.MiniGamePanel);
                 manager.StopPlayerMove();

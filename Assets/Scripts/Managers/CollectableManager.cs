@@ -84,7 +84,7 @@ namespace Managers
 
         public void CollisionWithBand()
         {
-            CollectableSignals.Instance.onCollisionWithBand?.Invoke(transform.GetSiblingIndex(), (int)StateData);
+            CollectableSignals.Instance.onCollisionWithBand?.Invoke(transform.GetSiblingIndex(),(int)StateData);
         }
 
         private void ChangeCollectableState(CollectableTypes _collectableTypes)
