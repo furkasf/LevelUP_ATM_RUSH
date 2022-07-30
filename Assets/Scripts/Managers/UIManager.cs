@@ -20,6 +20,11 @@ namespace Managers
 
         #endregion
 
+        private void Start()
+        {
+            ReplaceSaveDatasToUI();
+        }
+
         #region Event Subscriptions
 
         private void OnEnable()
@@ -127,6 +132,13 @@ namespace Managers
             CoreGameSignals.Instance.onRestartLevel?.Invoke();
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.FailPanel);
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
+        }
+
+        private void ReplaceSaveDatasToUI()
+        {
+            if (!ES3.FileExists()) return;
+            OnChangeLevelText(ES3.Load<int>("Level"));
+            OnChangeScoreText(ES3.Load<int>("Score"));
         }
     }
 }
