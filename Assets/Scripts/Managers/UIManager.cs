@@ -13,6 +13,8 @@ namespace Managers
 
         [SerializeField] private UIPanelController uiPanelController;
         [SerializeField] private LevelPanelController levelPanelController;
+        [SerializeField] private TMPro.TMP_Text Score;
+        [SerializeField] private TMPro.TMP_Text Level;
 
         #endregion
 
@@ -31,6 +33,8 @@ namespace Managers
             UISignals.Instance.onClosePanel += OnClosePanel;
             UISignals.Instance.onUpdateStageData += OnUpdateStageData;
             UISignals.Instance.onSetLevelText += OnSetLevelText;
+            UISignals.Instance.onChangeLevelText += OnChangeLevelText;
+            UISignals.Instance.onChangeScoreText += OnChangeScoreText;
             CoreGameSignals.Instance.onPlay += OnPlay;
             CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
@@ -42,6 +46,8 @@ namespace Managers
             UISignals.Instance.onClosePanel -= OnClosePanel;
             UISignals.Instance.onUpdateStageData -= OnUpdateStageData;
             UISignals.Instance.onSetLevelText -= OnSetLevelText;
+            UISignals.Instance.onChangeLevelText -= OnChangeLevelText;
+            UISignals.Instance.onChangeScoreText -= OnChangeScoreText;
             CoreGameSignals.Instance.onPlay -= OnPlay;
             CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
@@ -72,6 +78,16 @@ namespace Managers
         private void OnSetLevelText(int value)
         {
             levelPanelController.SetLevelText(value);
+        }
+
+        private void OnChangeScoreText(int score)
+        {
+            Score.text += score.ToString();
+        }
+
+        private void OnChangeLevelText(int level)
+        {
+            Level.text = "Level : " + level.ToString();
         }
 
         public void OnPlay()
