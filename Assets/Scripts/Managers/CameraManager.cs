@@ -117,6 +117,11 @@ public class CameraManager : MonoBehaviour
             
             animator.Play("MiniGameCam");
         }
+        else if(state == CameraStates.MiniGame)
+        {
+            _currentState = CameraStates.Initial;
+            animator.Play("InitializeCam");
+        }
     }
 
 }

@@ -115,9 +115,11 @@ namespace Managers
 
         public void NextLevel()
         {
-            CoreGameSignals.Instance.onNextLevel?.Invoke();
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.WinPanel);
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
+            CoreGameSignals.Instance.onClearActiveLevel?.Invoke();
+            CoreGameSignals.Instance.onNextLevel?.Invoke();
+            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.MiniGame);
         }
 
         public void RestartLevel()
