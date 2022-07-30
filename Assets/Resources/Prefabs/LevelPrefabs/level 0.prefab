@@ -619,8 +619,8 @@ MonoBehaviour:
   levelCollactableHolder: {fileID: 0}
   cubeList: []
   predictedCubeCount: 0
-  levelCollactableCount: 60
   mostValuableObjectValue: 3
+  levelCollactableCount: 60
 --- !u!1 &6937295238351825238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2620862763658531975, guid: d3cc3535cc2c04f41921c1c32c5c7b38, type: 3}
       propertyPath: m_TagString
-      value: FinalPlayer
+      value: FakePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 3392613911421914685, guid: d3cc3535cc2c04f41921c1c32c5c7b38, type: 3}
       propertyPath: m_RootOrder

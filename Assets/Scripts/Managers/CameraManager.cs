@@ -111,7 +111,7 @@ public class CameraManager : MonoBehaviour
         {
             _currentState = CameraStates.MiniGame;
 
-            var _fakePlayer = GameObject.FindGameObjectWithTag("FinalPlayer");
+            var _fakePlayer = GameObject.FindGameObjectWithTag("FakePlayer");
             
             MiniGameCamera.m_Follow = _fakePlayer.transform;
             

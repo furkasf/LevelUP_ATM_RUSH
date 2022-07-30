@@ -46,10 +46,12 @@ namespace Managers
         private void Awake()
         {
             Data = GetPlayerData();
+            
             SendPlayerDataToControllers();
-            fakePlayer = GameObject.FindGameObjectWithTag("FinalPlayer");
+            
+            fakePlayer = GameObject.FindGameObjectWithTag("FakePlayer");
+            
             fakePlayer.SetActive(false);
-            Debug.Log(fakePlayer.name);
         }
 
         private PlayerData GetPlayerData() => Resources.Load<CD_Player>("Data/CD_Player").data;

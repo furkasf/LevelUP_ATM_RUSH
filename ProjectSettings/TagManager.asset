@@ -5,11 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gate
-  - Obstical
   - ATM
   - Collectable
   - Obstacle
-  - Atm
   - WinZone
   - MiniGameArea
   - Stack
@@ -17,6 +15,7 @@ TagManager:
   - MoneyTransform
   - MiniGame
   - PoolHolder
+  - FakePlayer
   - FinalPlayer
   layers:
   - Default
