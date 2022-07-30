@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Enums;
+using Commands;
 using Signals;
 using UnityEngine;
 
@@ -11,12 +12,21 @@ namespace Assets.Scripts.Managers
         #region Self Variables
 
         #region Private Variables
+
+        private LoadGameCommand _loadGameCommand;
+        private SaveGameCommand _SaveGameCommand;
+
         #endregion
 
         #endregion
 
         private void Awake()
         {
+
+            _loadGameCommand = new LoadGameCommand();
+            _SaveGameCommand = new SaveGameCommand();
+
+            //if there is no save file created
             if(!ES3.FileExists())
             {
                 ES3.Save("Score", 0);
@@ -38,37 +48,15 @@ namespace Assets.Scripts.Managers
 
         private void Subscribe()
         {
-            CoreGameSignals.Instance.onSaveGameData += OnSaveGameData;
-            CoreGameSignals.Instance.onLoadGameData += OnLoadGameData;
+            CoreGameSignals.Instance.onSaveGameData += _SaveGameCommand.OnSaveGameData;
+            CoreGameSignals.Instance.onLoadGameData += _loadGameCommand.OnLoadGameData;
         }
 
         private void UnSubscribe()
         {
-            CoreGameSignals.Instance.onSaveGameData -= OnSaveGameData;
-            CoreGameSignals.Instance.onLoadGameData -= OnLoadGameData;
+            CoreGameSignals.Instance.onSaveGameData -= _SaveGameCommand.OnSaveGameData;
+            CoreGameSignals.Instance.onLoadGameData -= _loadGameCommand.OnLoadGameData;
         }
         #endregion]
 
-        private void OnSaveGameData(SaveStates state, int data)
-        {
-            if(state == SaveStates.Score)
-            {
-                int totalScore = ES3.Load<int>("Score") + data; 
-                ES3.Save("Score", totalScore);
-            }
-            if(state == SaveStates.Level)
-            {
-                ES3.Save("Level", data);
-            }
-        }
-
-        private int OnLoadGameData(SaveStates state)
-        {
-            if (state != SaveStates.Score) return ES3.Load<int>("Score");
-            else if (state == SaveStates.Level) return ES3.Load<int>("Level");
-            else return 0;
-        }
-    }
-
-   
 }
