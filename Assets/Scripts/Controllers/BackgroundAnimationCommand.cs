@@ -16,6 +16,11 @@ namespace Controllers
                 MiniGameSignals.Instance.onCollisionWithBlock?.Invoke(gameObject);
             }
         }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            PlayBackAnim();
+        }
 
         public void PlayForwardAnim()
         {
@@ -24,7 +29,7 @@ namespace Controllers
 
         public void PlayBackAnim()
         {
-            transform.DOLocalMoveZ(-4.0f, .2f);
+            transform.DOLocalMoveZ(0f, 1.2f);
         }
         public void PlayUpwardAnim()
         {
