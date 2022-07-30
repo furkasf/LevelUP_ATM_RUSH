@@ -27,7 +27,7 @@ namespace Assets.Scripts.Managers
             _SaveGameCommand = new SaveGameCommand();
 
             //if there is no save file created
-            if(!ES3.FileExists())
+            if (!ES3.FileExists())
             {
                 ES3.Save("Score", 0);
                 ES3.Save("Level", 0);
@@ -57,6 +57,8 @@ namespace Assets.Scripts.Managers
             CoreGameSignals.Instance.onSaveGameData -= _SaveGameCommand.OnSaveGameData;
             CoreGameSignals.Instance.onLoadGameData -= _loadGameCommand.OnLoadGameData;
         }
+
         #endregion]
 
+    }
 }

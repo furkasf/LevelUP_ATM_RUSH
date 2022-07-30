@@ -206,8 +206,7 @@ namespace Managers
             if (index == 0)
             {
                 GameObject temp = transform.GetChild(0).gameObject;
-
-<<<<<<< HEAD
+                
                 temp.gameObject.transform.SetParent(_tempHolder.transform);
                 
                 Collectables.Remove(Collectables[0]);
@@ -219,7 +218,7 @@ namespace Managers
                     ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
                     
                 }) ;
-=======
+
                 transform.GetChild(0).SetParent(_tempHolder.transform);
 
                 Collectables[0].transform.DOMoveX(-6, 0.6f).OnComplete(() =>
@@ -228,7 +227,7 @@ namespace Managers
                     ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
                     MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
                 }).OnComplete(() => Collectables.Remove(Collectables[0]));
->>>>>>> 2d8e85b74b7a4b8838e92490c633674df39b7865
+
 
                 return;
             }
