@@ -28,8 +28,10 @@ public class MinigameStartCommand
         }
 
         //update Score
-        if (!ES3.FileExists()) yield return null;
-        score += (int)ES3.Load("score");
-        ES3.Save("Score", score);
+
+        CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, score);
+        UISignals.Instance.onChangeScoreText(score);
+
+        UISignals.Instance.onOpenPanel(UIPanels.WinPanel);
     }
 }
