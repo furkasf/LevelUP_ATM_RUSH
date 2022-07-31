@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using DG.Tweening;
+
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 namespace Controllers
@@ -12,8 +12,10 @@ namespace Controllers
 
         #region Serialized Variables
 
-        [SerializeField] private TextMeshProUGUI levelTextLeft, levelTextRight;
-        [SerializeField] private List<Image> stageImages;
+        [SerializeField] private TextMeshProUGUI levelText;
+
+        [SerializeField] private TMP_Text score;
+        
 
         #endregion
 
@@ -22,13 +24,13 @@ namespace Controllers
 
         public void SetLevelText(int value)
         {
-            levelTextLeft.text = value.ToString();
-            levelTextRight.text = (value + 1).ToString();
+            levelText.text = "level "+ value.ToString();
         }
 
-        public void UpdateStageData(int value)
+        public void SetScoreText(int value)
         {
-            stageImages[value].DOColor(Color.green, .5f).SetEase(Ease.Linear);
+            score.text = value.ToString();
         }
+
     }
 }

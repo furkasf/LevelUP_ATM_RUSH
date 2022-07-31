@@ -9,9 +9,7 @@ namespace Signals
     {
         public UnityAction<UIPanels> onOpenPanel;
         public UnityAction<UIPanels> onClosePanel;
-        public UnityAction<int> onUpdateStageData;
         public UnityAction<int> onSetLevelText;
-
         //score and level signals
         public Action<int> onChangeLevelText;
         public Action<int> onChangeScoreText;

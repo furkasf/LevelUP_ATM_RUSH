@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using Data.UnityObject;
 using Data.ValueObject;
 using Enums;
+using Extentions;
 using Signals;
 using UnityEngine;
 using TMPro;
 
 namespace Controllers
 {
-    public class BackGroundLoader : MonoBehaviour
+    public class BackGroundLoader : MonoSingleton<BackGroundLoader>
     {
         #region Self Variables
 
@@ -18,8 +19,7 @@ namespace Controllers
         public BackGroundAxis backgroundAxis = BackGroundAxis.Vertical;
 
         public Transform targetTransform;
-
-        public Transform levelCollactableHolder; // Level
+        
         
         #endregion
 
@@ -31,7 +31,10 @@ namespace Controllers
         
         [SerializeField] private int mostValuableObjectValue = 3;
 
-
+        [SerializeField] private Transform levelCollactableHolder ;
+        
+        private int levelCollactableCount = 80;
+        
         #endregion
 
         #region Private Variables
@@ -50,11 +53,6 @@ namespace Controllers
 
         #endregion
         
-        // Levelden cekilecekler
-        [SerializeField] private int levelCollactableCount = 60;
-
-        
-
    
         private void Awake()
         {
@@ -87,13 +85,14 @@ namespace Controllers
         
         private void Start()
         {
+
             Data.cubePrefab.transform.localScale = Data.CubeScale;
             
             targetTransform.position = new Vector3(0,(Data.cubePrefab.transform.localScale.y / 2) -1f,195);
 
-            SetCubesToScene(SetPredictedCubeCount()); // Yapilabilecek max puana gore cubeleri sahneye diz.
+            SetCubesToScene(SetPredictedCubeCount()); 
             
-            OnLoadTower(backgroundAxis); // Invoke
+            OnLoadTower(backgroundAxis); 
         }
 
         private LetterPathData GetLetterPathData() => Resources.Load<CD_LetterPath>("Data/CD_LetterPath").LetterPathData;
@@ -108,6 +107,7 @@ namespace Controllers
             for (int i = 0; i < cubeCount; i++)
             {
                 cubeList.Add(Instantiate(Data.cubePrefab,targetTransform));
+                
             }
         }
         private void SetColor(GameObject gO)
@@ -118,7 +118,7 @@ namespace Controllers
             {
                 colorValue = 0;
             }
-
+            
             gO.GetComponent<Renderer>().material.color = Color.HSVToRGB(colorValue, 1, 1);
         }
         private void SetTowerCollider(BackGroundAxis _backgroundAxis,GameObject gO)
@@ -127,13 +127,13 @@ namespace Controllers
             
             if (_backgroundAxis == BackGroundAxis.Vertical)
             {
-                cubeCollider.center = new Vector3(0, 0, Data.colliderCenter);
-                cubeCollider.size = new Vector3(1,1,Data.colliderSize);
+                cubeCollider.center = Data.cubeColliderCenter;
+                cubeCollider.size = Data.cubeColliderSize;
             }
             else
             {
-                cubeCollider.center = new Vector3(0, Data.colliderCenter, 0);
-                cubeCollider.size = new Vector3(1,Data.colliderSize,1);
+                cubeCollider.center = Data.cubeColliderCenter;
+                cubeCollider.size = Data.cubeColliderSize;
             }
         }
         private void SetTextOnCubes(GameObject gO,BackGroundAxis _backgroundAxis)

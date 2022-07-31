@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Managers;
 using Enums;
 using Signals;
@@ -11,9 +10,12 @@ public class MinigameStartCommand
   
     public IEnumerator StartMiniGame(int score, GameObject _fakePlayer)
     {
-
+        
+        yield return new WaitForSeconds(1f);
+        
         _fakePlayer.gameObject.SetActive(true);
-
+        
+        
         CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.Runner);
 
         for (int i = 0; i < score; i++)
@@ -30,8 +32,11 @@ public class MinigameStartCommand
         //update Score
 
         CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, score);
+        
         UISignals.Instance.onChangeScoreText(score);
+        
         Debug.Log(ES3.Load<int>("Score"));
+        
         UISignals.Instance.onOpenPanel(UIPanels.WinPanel);
     }
 }
