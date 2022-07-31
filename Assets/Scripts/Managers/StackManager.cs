@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Data.UnityObject;
 using Data.ValueObject;
 using UnityEngine;
+using Commands;
+using Keys;
 using DG.Tweening;
 using Signals;
 using Random = UnityEngine.Random;
@@ -17,25 +19,29 @@ namespace Managers
         #region Public Variables
 
         [Header("Data")] public StackData Data;
-        
+        public GameObject _tempHolder;
+
         [Space]
         public List<GameObject> Collectables = new List<GameObject>();
-        
+
         #endregion
 
         #region Serialized Variables
 
         [SerializeField] private StackScoreData scoreData;
-        
+
         [SerializeField] private StackScaleData scaleData;
 
         #endregion
 
         #region Private Variables
 
-        private Tween _scaleTween;
-
-        public GameObject _tempHolder;
+        private LerpStackCommand _lerpStackCommand;
+        private ShakeStackCommand _shakeStackCommand;
+        private AddStackCommand _addStackCommand;
+        private RemoveStackCommand _removeStackCommand;
+        private RemoveStackATMCommand _removeStackATMCommand;
+        private RemoveStackBand _removeStackBand;
 
         #endregion
 
@@ -44,12 +50,19 @@ namespace Managers
         private void Awake()
         {
             Data = GetStackData();
-            
-            if(Instance == null) Instance = this; //Use MonoSingleton
+
+            if (Instance == null) Instance = this; //Use MonoSingleton
 
             _tempHolder = GameObject.FindGameObjectWithTag("PoolHolder").transform.GetChild(0).gameObject;
 
             SetStackData();
+
+            _shakeStackCommand = new ShakeStackCommand(ref Collectables);
+            _addStackCommand = new AddStackCommand(new AddStackKeyParams(ref Collectables, transform, this, ref _shakeStackCommand));
+            _lerpStackCommand = new LerpStackCommand(ref Collectables);
+            _removeStackCommand = new RemoveStackCommand(transform, gameObject, _tempHolder, ref Collectables);
+            _removeStackATMCommand = new RemoveStackATMCommand(ref Collectables, _tempHolder);
+            _removeStackBand = new RemoveStackBand(ref Collectables, _tempHolder, transform);
         }
 
         private StackData GetStackData() => Resources.Load<CD_Stack>("Data/CD_Stack").data;
@@ -60,7 +73,7 @@ namespace Managers
             scaleData = Data.scaleData;
         }
         #region Event Subscription
-    
+
         private void OnEnable()
         {
             SubscribeEvents();
@@ -68,32 +81,32 @@ namespace Managers
 
         private void SubscribeEvents()
         {
-            CollectableSignals.Instance.onCollisionWithCollectable += OnAddOnStack;
-            
-            CollectableSignals.Instance.onCollisionWithObstacle += OnRemoveFromStack;
-            
-            CollectableSignals.Instance.onCollissionWithStack += OnAddOnStack;
+            CollectableSignals.Instance.onCollisionWithCollectable += _addStackCommand.OnAddOnStack;
 
-            CollectableSignals.Instance.onMovementWithLerp += OnLerpTheStack;
+            CollectableSignals.Instance.onCollisionWithObstacle += _removeStackCommand.OnRemoveFromStack;
 
-            CollectableSignals.Instance.onCollisionWithAtm += OnCollisionWithATM;
+            CollectableSignals.Instance.onCollissionWithStack += _addStackCommand.OnAddOnStack;
 
-            CollectableSignals.Instance.onCollisionWithBand += OnCollisionWithBand;
+            CollectableSignals.Instance.onMovementWithLerp += _lerpStackCommand.OnLerpTheStack;
+
+            CollectableSignals.Instance.onCollisionWithAtm += _removeStackATMCommand.OnCollisionWithATM;
+
+            CollectableSignals.Instance.onCollisionWithBand += _removeStackBand.OnCollisionWithBand;
         }
 
         private void UnsubscribeEvents()
         {
-            CollectableSignals.Instance.onCollisionWithCollectable -= OnAddOnStack;
-            
-            CollectableSignals.Instance.onCollisionWithObstacle -= OnRemoveFromStack;
+            CollectableSignals.Instance.onCollisionWithCollectable -= _addStackCommand.OnAddOnStack;
 
-            CollectableSignals.Instance.onCollissionWithStack -= OnAddOnStack;
-            
-            CollectableSignals.Instance.onMovementWithLerp -= OnLerpTheStack;
+            CollectableSignals.Instance.onCollisionWithObstacle -= _removeStackCommand.OnRemoveFromStack;
 
-            CollectableSignals.Instance.onCollisionWithAtm -= OnCollisionWithATM;
+            CollectableSignals.Instance.onCollissionWithStack -= _addStackCommand.OnAddOnStack;
 
-            CollectableSignals.Instance.onCollisionWithBand -= OnCollisionWithBand;
+            CollectableSignals.Instance.onMovementWithLerp -= _lerpStackCommand.OnLerpTheStack;
+
+            CollectableSignals.Instance.onCollisionWithAtm -= _removeStackATMCommand.OnCollisionWithATM;
+
+            CollectableSignals.Instance.onCollisionWithBand -= _removeStackBand.OnCollisionWithBand;
         }
 
         private void OnDisable()
@@ -102,150 +115,8 @@ namespace Managers
         }
 
         #endregion
-        
 
-        IEnumerator HandleShakeOfStack()
-        {
-            for (int i = Collectables.Count - 1 ; i >= 0 ; i--)
-            {
-                int index = i;// (Collectables.Count - 1) - i;
-                Collectables[index].transform.DOScale(new Vector3(2, 2, 2), 0.14f).SetEase(Ease.Flash);
-                Collectables[index].transform.DOScale(Vector3.one, 0.14f).SetDelay(0.14f).SetEase(Ease.Flash);
-                yield return new WaitForSeconds(0.05f);
-            }
-        }
-
-
-        private void OnRemoveFromStack(int index) 
-        {
-            
-            if(index == 0)
-            {
-                transform.GetChild(0).SetParent(null);
-                
-                Collectables[0].transform.SetParent(_tempHolder.transform);
-                
-                Collectables[0].SetActive(false);
-
-                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
-
-                Collectables.Remove(Collectables[0]);
-
-                Collectables.TrimExcess();
-                
-                return;
-            }
-    
-            for (int i = index; i < Collectables.Count; i--)
-            {
-                if (i < 0)  // when index lower than 0 it cause trouble(null excep.)
-                {
-                    return;
-                }
-
-                int randomValue = Random.Range(-3, 3);
-                
-                if (randomValue + gameObject.transform.parent.position.x <= -2.6)
-                {
-                    randomValue = 0;
-                }
-
-                if (randomValue + gameObject.transform.parent.position.x >= 2.6)
-                {
-                    randomValue = 0;
-                }
-                Collectables[i].transform.SetParent(_tempHolder.transform);
-                
-                Collectables[i].transform.GetChild(1).gameObject.tag ="Collectable";
-
-                //MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
-
-                int value = (int)Collectables[i].GetComponent<CollectableManager>().StateData;
-                ScoreSignals.Instance.onChangePlayerScore(-value);
-
-                Collectables[i].transform.DOJump(Collectables[i].transform.position + new Vector3(randomValue,0,(Random.Range(6,12))),4.0f,2,1f);
-
-                Collectables.Remove(Collectables[i]);
-
-            }
-
-            Collectables.TrimExcess();
-            
-        }
-
-        private void OnCollisionWithATM(int index, int value)
-        {
-            if (index == 0)
-            {
-               
-                Collectables[0].transform.SetParent(_tempHolder.transform);
-
-                MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
-
-                ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
-
-                Collectables.Remove(Collectables[0]);
-
-                Collectables.TrimExcess();
-
-                return;
-            }
-
-        }
-
-        private void OnCollisionWithBand(int index, int value)
-        {
-            if (index == 0)
-            {
-                GameObject temp = transform.GetChild(0).gameObject;
-                
-                temp.gameObject.transform.SetParent(_tempHolder.transform);
-                
-                Collectables.Remove(Collectables[0]);
-                
-                temp.transform.DOMoveX(-4, 0.4f).OnComplete(() =>
-                {
-                    temp.SetActive(false);
-                    
-                    ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
-                    
-                }) ;
- 
-                return;
-            }
-
-        }
-
-        private void OnAddOnStack(GameObject gO)
-        {   
-      
-            foreach(GameObject i in Collectables)
-            {
-                i.transform.Translate(Vector3.forward);
-            }
-            
-            gO.transform.parent = transform;
-            
-            gO.transform.localPosition = Vector3.forward;
-            
-            Collectables.Add(gO);
-            
-            StartCoroutine(HandleShakeOfStack());
-      
-        }
-
-        private void OnLerpTheStack()
-        {
-            if ( Collectables.Count < 1)
-            {
-                return;
-            } 
-            for (int i = Collectables.Count - 1; i >= 1; i--)
-            {
-                Collectables[i - 1].transform.DOMoveX(Collectables[i].transform.position.x, .1f);
-            }
-            
-        }
+       
 
     }
 }
