@@ -1,19 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using Data.UnityObject;
-using Data.ValueObject;
 using UnityEngine;
 using Commands;
 using Keys;
-using DG.Tweening;
 using Signals;
-using Random = UnityEngine.Random;
 
 namespace Managers
 {
     public class StackManager : MonoBehaviour
     {
-        public static StackManager Instance;
+       
         #region Self Variables
 
         #region Public Variables
@@ -50,8 +46,6 @@ namespace Managers
         private void Awake()
         {
             Data = GetStackData();
-
-            if (Instance == null) Instance = this; //Use MonoSingleton
 
             _tempHolder = GameObject.FindGameObjectWithTag("PoolHolder").transform.GetChild(0).gameObject;
 
