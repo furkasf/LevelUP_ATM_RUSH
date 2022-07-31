@@ -277,7 +277,7 @@ Transform:
   - {fileID: 7412984824267287741}
   - {fileID: 7730258197011800625}
   m_Father: {fileID: 8425789295118447918}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2586947495632445462
 GameObject:
@@ -391,36 +391,6 @@ Transform:
   m_Father: {fileID: 8524202079163602383}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4642491202050759718
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6037459052844671905}
-  m_Layer: 0
-  m_Name: TowerTransform
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6037459052844671905
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4642491202050759718}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.31, z: -111.579994}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8425789295118447918}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5261461384689838010
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +457,7 @@ Transform:
   m_Children:
   - {fileID: 7819077381811622958}
   m_Father: {fileID: 8425789295118447918}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6147137727620049734
 GameObject:
@@ -570,56 +540,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6863620658910708907
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 552225035490866884}
-  - component: {fileID: 4914059648990539735}
-  m_Layer: 0
-  m_Name: TowerBuilder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &552225035490866884
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6863620658910708907}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 83.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8425789295118447918}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4914059648990539735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6863620658910708907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487a99506a9b47eb85b6b2a6b811c64d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundAxis: 1
-  targetTransform: {fileID: 6037459052844671905}
-  levelCollactableHolder: {fileID: 0}
-  cubeList: []
-  predictedCubeCount: 0
-  mostValuableObjectValue: 3
-  levelCollactableCount: 60
 --- !u!1 &6937295238351825238
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +570,7 @@ Transform:
   m_LocalScale: {x: 4, y: 9, z: 37}
   m_Children: []
   m_Father: {fileID: 8425789295118447918}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2166087453196151845
 MeshFilter:
@@ -711,7 +631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8524202079163602383}
   m_Layer: 0
-  m_Name: Level 0
+  m_Name: level 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,7 +748,7 @@ GameObject:
   - component: {fileID: 1822206849041720803}
   m_Layer: 0
   m_Name: CollectableHolder
-  m_TagString: Untagged
+  m_TagString: CollectableHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -898,8 +818,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 83.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 552225035490866884}
-  - {fileID: 6037459052844671905}
   - {fileID: 3263556593940623300}
   - {fileID: 3643715269779072180}
   - {fileID: 2990563931009934497}

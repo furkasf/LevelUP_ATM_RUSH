@@ -17,6 +17,8 @@ TagManager:
   - PoolHolder
   - FakePlayer
   - FinalPlayer
+  - CollectableHolder
+  - StairStep
   layers:
   - Default
   - TransparentFX

@@ -12,9 +12,9 @@ namespace Managers
         #region Serialized Variables
 
         [SerializeField] private UIPanelController uiPanelController;
+        
         [SerializeField] private LevelPanelController levelPanelController;
-        [SerializeField] private TMPro.TMP_Text Score;
-        [SerializeField] private TMPro.TMP_Text Level;
+
 
         #endregion
 
@@ -36,7 +36,6 @@ namespace Managers
         {
             UISignals.Instance.onOpenPanel += OnOpenPanel;
             UISignals.Instance.onClosePanel += OnClosePanel;
-            UISignals.Instance.onUpdateStageData += OnUpdateStageData;
             UISignals.Instance.onSetLevelText += OnSetLevelText;
             UISignals.Instance.onChangeLevelText += OnChangeLevelText;
             UISignals.Instance.onChangeScoreText += OnChangeScoreText;
@@ -49,7 +48,6 @@ namespace Managers
         {
             UISignals.Instance.onOpenPanel -= OnOpenPanel;
             UISignals.Instance.onClosePanel -= OnClosePanel;
-            UISignals.Instance.onUpdateStageData -= OnUpdateStageData;
             UISignals.Instance.onSetLevelText -= OnSetLevelText;
             UISignals.Instance.onChangeLevelText -= OnChangeLevelText;
             UISignals.Instance.onChangeScoreText -= OnChangeScoreText;
@@ -74,11 +72,7 @@ namespace Managers
         {
             uiPanelController.ClosePanel(panelParam);
         }
-
-        private void OnUpdateStageData(int value)
-        {
-            levelPanelController.UpdateStageData(value);
-        }
+        
 
         private void OnSetLevelText(int value)
         {
@@ -87,17 +81,19 @@ namespace Managers
 
         private void OnChangeScoreText(int score)
         {
-            Score.text += score.ToString();
+           levelPanelController.SetScoreText(score);
         }
 
         private void OnChangeLevelText(int level)
         {
-            Level.text = "Level : " + level.ToString();
+            levelPanelController.SetLevelText(level);
         }
 
         public void OnPlay()
         {
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.StartPanel);
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.LevelPanel);
+            
         }
 
         private void OnLevelFailed()
@@ -108,8 +104,8 @@ namespace Managers
 
         private void OnLevelSuccessful()
         {
-            UISignals.Instance.onClosePanel?.Invoke(UIPanels.LevelPanel);
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.WinPanel);
+            UISignals.Instance.onClosePanel?.Invoke(UIPanels.LevelPanel);
         }
 
         public void Play()
@@ -122,6 +118,7 @@ namespace Managers
         {
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.WinPanel);
             UISignals.Instance.onOpenPanel?.Invoke(UIPanels.StartPanel);
+            UISignals.Instance.onClosePanel?.Invoke(UIPanels.LevelPanel);
             CoreGameSignals.Instance.onClearActiveLevel?.Invoke();
             CoreGameSignals.Instance.onNextLevel?.Invoke();
             CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.MiniGame);

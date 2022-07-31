@@ -116,7 +116,7 @@ namespace Managers
         }
 
 
-        public void OnRemoveFromStack(int index) 
+        private void OnRemoveFromStack(int index) 
         {
             
             if(index == 0)
@@ -160,7 +160,6 @@ namespace Managers
 
                 //MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
 
-               
                 int value = (int)Collectables[i].GetComponent<CollectableManager>().StateData;
                 ScoreSignals.Instance.onChangePlayerScore(-value);
 
@@ -174,7 +173,7 @@ namespace Managers
             
         }
 
-        public void OnCollisionWithATM(int index, int value)
+        private void OnCollisionWithATM(int index, int value)
         {
             if (index == 0)
             {
@@ -194,7 +193,7 @@ namespace Managers
 
         }
 
-        public void OnCollisionWithBand(int index, int value)
+        private void OnCollisionWithBand(int index, int value)
         {
             if (index == 0)
             {
@@ -204,24 +203,14 @@ namespace Managers
                 
                 Collectables.Remove(Collectables[0]);
                 
-                temp.transform.DOMoveX(-4, 0.5f).OnComplete(() =>
+                temp.transform.DOMoveX(-4, 0.4f).OnComplete(() =>
                 {
                     temp.SetActive(false);
                     
                     ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
                     
                 }) ;
-
-                transform.GetChild(0).SetParent(_tempHolder.transform);
-
-                Collectables[0].transform.DOMoveX(-6, 0.6f).OnComplete(() =>
-                {
-                    //nice good trick
-                    ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
-                    MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
-                }).OnComplete(() => Collectables.Remove(Collectables[0]));
-
-
+ 
                 return;
             }
 
@@ -257,7 +246,6 @@ namespace Managers
             }
             
         }
-        
-       
+
     }
 }

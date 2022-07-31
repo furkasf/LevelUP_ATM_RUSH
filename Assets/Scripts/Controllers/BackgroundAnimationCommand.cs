@@ -10,30 +10,26 @@ namespace Controllers
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("FakePlayer"))
+            if (other.CompareTag("StairStep"))
             {
-                PlayForwardAnim();
-                MiniGameSignals.Instance.onCollisionWithBlock?.Invoke(gameObject);
+                PlayForwardAnim(other.gameObject);
+                MiniGameSignals.Instance.onCollisionWithBlock?.Invoke(other.gameObject);
             }
         }
-        
         private void OnTriggerExit(Collider other)
         {
-            PlayBackAnim();
+            PlayBackAnim(other.gameObject);
         }
 
-        public void PlayForwardAnim()
+        private void PlayForwardAnim(GameObject gameObject)
         {
-            transform.DOLocalMoveZ(4.0f, .2f);
+            gameObject.transform.DOLocalMoveZ(4.0f, .2f);
         }
 
-        public void PlayBackAnim()
+        private void PlayBackAnim(GameObject gameObject)
         {
-            transform.DOLocalMoveZ(0f, 1.2f);
+            gameObject.transform.DOLocalMoveZ(0f, 1.2f);
         }
-        public void PlayUpwardAnim()
-        {
-            
-        }
+
     }
 }

@@ -8,6 +8,10 @@ namespace Data.ValueObject
     {   
         public Vector3 CubeScale;
 
+        public Vector3 cubeColliderCenter;
+
+        public Vector3 cubeColliderSize;
+
         public GameObject cubePrefab;
         
         public int cubeScaleFactor = 10;
