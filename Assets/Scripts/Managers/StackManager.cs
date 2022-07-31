@@ -103,22 +103,15 @@ namespace Managers
 
         #endregion
         
-        
-        private void ShakeScaleOfStack(Transform _transform)
-        {   
-            if (_scaleTween != null)
-                _scaleTween.Kill(true);
-
-            _scaleTween = _transform.DOPunchScale(Vector3.one * scaleData.ScaleMultiplier, scaleData.ScaleDuration, 1);
-        }
 
         IEnumerator HandleShakeOfStack()
         {
-            for (int i = 0; i < Collectables.Count; i++)
-            { 
-                ShakeScaleOfStack(Collectables[i].transform);
-
-                yield return new WaitForSeconds(0.4f);
+            for (int i = 0; i <= Collectables.Count - 1; i++)
+            {
+                int index = (Collectables.Count - 1) - i;
+                Collectables[index].transform.DOScale(new Vector3(2, 2, 2), 0.14f).SetEase(Ease.Flash);
+                Collectables[index].transform.DOScale(Vector3.one, 0.14f).SetDelay(0.14f).SetEase(Ease.Flash);
+                yield return new WaitForSeconds(0.05f);
             }
         }
 
