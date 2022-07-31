@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3972922825188506654}
   - component: {fileID: 6048961378322490224}
   - component: {fileID: 6771232154190298359}
+  - component: {fileID: 5462420831639225743}
   m_Layer: 0
   m_Name: Swimging_Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,6 +190,19 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
+--- !u!65 &5462420831639225743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128300230081649040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0000005, y: 6.5227118, z: 0.050000094}
+  m_Center: {x: -0.00000026822096, y: -3.2386484, z: 0.000000006519258}
 --- !u!1 &6387640388263814344
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +216,7 @@ GameObject:
   - component: {fileID: 1145682068209415845}
   m_Layer: 0
   m_Name: Card_still
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +295,7 @@ GameObject:
   - component: {fileID: 1610652311508130603}
   m_Layer: 0
   m_Name: Axe
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
