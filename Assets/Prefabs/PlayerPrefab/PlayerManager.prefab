@@ -1113,8 +1113,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.59950393, z: 1.3494015}
+  m_Center: {x: 0, y: 0.2457082, z: 0.66103315}
 --- !u!114 &3630301260997336786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,7 +1274,6 @@ MonoBehaviour:
       ForwardSpeed: 5
       SidewaysSpeed: 2
   playerScoreController: {fileID: 6065231691093691325}
-  fakePlayer: {fileID: 0}
   movementController: {fileID: 3630301261859217181}
   physicsController: {fileID: 3630301261833432460}
   animationController: {fileID: 2544330400224862617}
