@@ -106,9 +106,9 @@ namespace Managers
 
         IEnumerator HandleShakeOfStack()
         {
-            for (int i = 0; i <= Collectables.Count - 1; i++)
+            for (int i = Collectables.Count - 1 ; i >= 0 ; i--)
             {
-                int index = (Collectables.Count - 1) - i;
+                int index = i;// (Collectables.Count - 1) - i;
                 Collectables[index].transform.DOScale(new Vector3(2, 2, 2), 0.14f).SetEase(Ease.Flash);
                 Collectables[index].transform.DOScale(Vector3.one, 0.14f).SetDelay(0.14f).SetEase(Ease.Flash);
                 yield return new WaitForSeconds(0.05f);
