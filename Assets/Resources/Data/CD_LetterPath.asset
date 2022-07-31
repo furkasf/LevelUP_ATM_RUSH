@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LetterPathData:
     CubeScale: {x: 8, y: 3.5, z: 5}
+    cubeColliderCenter: {x: 0, y: -0.4, z: 0.5}
+    cubeColliderSize: {x: 1, y: 0.4, z: 2}
     cubePrefab: {fileID: 3419000008792991366, guid: 4001d04c8f906d0438ee9cf5db7acfc5, type: 3}
     cubeScaleFactor: 10
     indexMinFactor: 10

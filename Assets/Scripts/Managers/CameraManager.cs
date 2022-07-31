@@ -13,6 +13,8 @@ public class CameraManager : MonoBehaviour
 
     public CinemachineVirtualCamera virtualCamera;
     public CinemachineVirtualCamera MiniGameCamera;
+
+    public CinemachineStateDrivenCamera stateDrivenCamera;
     
     public Animator animator;
     
@@ -26,6 +28,7 @@ public class CameraManager : MonoBehaviour
     private CameraStates _currentState = CameraStates.Initial;
 
     private CinemachineTransposer minigameTransposer;
+    
     #endregion
 
     #endregion
@@ -36,7 +39,7 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
-      
+        stateDrivenCamera = GetComponent<CinemachineStateDrivenCamera>();
         animator = GetComponent<Animator>();
         minigameTransposer = MiniGameCamera.GetCinemachineComponent<CinemachineTransposer>();
         GetInitialPosition();
@@ -123,5 +126,5 @@ public class CameraManager : MonoBehaviour
             animator.Play("InitializeCam");
         }
     }
-
+    
 }
