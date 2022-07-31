@@ -60,6 +60,7 @@ namespace Controllers
             playerManager.gameObject.SetActive(false);
         
             fakePlayer.SetActive(true);
+            fakePlayer.transform.GetComponent<BoxCollider>().enabled = true;
         
             CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.Runner);
 
@@ -73,7 +74,6 @@ namespace Controllers
                 fakePlayer.transform.DOMoveY(.75f, 0.1f).SetRelative(obj.transform);
                 yield return new WaitForSeconds(0.09f);
             }
-        
 
             CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, score);
         

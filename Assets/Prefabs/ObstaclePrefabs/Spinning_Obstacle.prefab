@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5429681657542276710}
   - component: {fileID: 2374477471315510653}
   - component: {fileID: 5391223491555482863}
+  - component: {fileID: -7035395095005895914}
   m_Layer: 0
   m_Name: Spinning_Obstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,3 +191,16 @@ MonoBehaviour:
   optionalRotationMode: 0
   optionalScrambleMode: 0
   optionalString: 
+--- !u!65 &-7035395095005895914
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259789771236886976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4, y: 1.76, z: 0.88000005}
+  m_Center: {x: 0, y: 0, z: 0}
