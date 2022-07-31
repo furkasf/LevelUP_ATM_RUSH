@@ -17,8 +17,7 @@ namespace Managers
         [Header("Data")] public PlayerData Data;
 
         public PlayerScoreController playerScoreController;
-        [SerializeField] private GameObject fakePlayer;
-        
+
 
         #endregion
 
@@ -48,8 +47,7 @@ namespace Managers
             Data = GetPlayerData();
             
             SendPlayerDataToControllers();
-            
-            fakePlayer.SetActive(false);
+
         }
 
         private PlayerData GetPlayerData() => Resources.Load<CD_Player>("Data/CD_Player").data;
@@ -63,7 +61,6 @@ namespace Managers
 
         private void OnEnable()
         {
-            fakePlayer.SetActive(false);
             SubscribeEvents();
         }
 
@@ -77,6 +74,8 @@ namespace Managers
             CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
             CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
             ScoreSignals.Instance.onChangePlayerScore += OnChangePlayerScore;
+            MiniGameSignals.Instance.onCollisionWithStack += OnStartMiniGame;
+            
         }
 
         private void UnsubscribeEvents()
@@ -89,6 +88,8 @@ namespace Managers
             CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
             CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
             ScoreSignals.Instance.onChangePlayerScore -= OnChangePlayerScore;
+            MiniGameSignals.Instance.onCollisionWithStack -= OnStartMiniGame;
+
         }
 
         private void OnDisable()
@@ -154,10 +155,11 @@ namespace Managers
 
         public void OnStartMiniGame()
         {
-            StartCoroutine(_miniGame.StartMiniGame(playerScoreController._playerScore, fakePlayer));
+            //StartCoroutine(_miniGame.StartMiniGame(playerScoreController._playerScore, fakePlayer));
             animationController.DeactivatePlayerMovementAnimation();
-            animationController.DeactivatePlayerMesh();
-            
+            movementController.IsReadyToPlay(false);
+            MiniGameSignals.Instance.onStartMiniGame?.Invoke(playerScoreController._playerScore,transform);
+
         }
 
         public void StopPlayerMove() => movementController.OnReset();

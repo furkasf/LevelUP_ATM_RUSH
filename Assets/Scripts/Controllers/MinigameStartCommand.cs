@@ -1,41 +1,90 @@
+using System;
 using System.Collections;
-using Managers;
-using Enums;
-using Signals;
 using DG.Tweening;
+using Enums;
+using Managers;
+using Signals;
 using UnityEngine;
 
-public class MinigameStartCommand 
-{   
-  
-    public IEnumerator StartMiniGame(int score, GameObject _fakePlayer)
+namespace Controllers
+{
+    public class MinigameStartCommand : MonoBehaviour
     {
-        
-        yield return new WaitForSeconds(1f);
-        
-        _fakePlayer.gameObject.SetActive(true);
-        
-        
-        CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.Runner);
+        #region Self Variables
 
-        for (int i = 0; i < score; i++)
-        {
-            GameObject obj = MoneyPoolManager.instance.GetMoneyFromPool();
-            obj.SetActive(true);
-            obj.transform.position = _fakePlayer.transform.position;
-            obj.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
-            obj.transform.SetParent(null);
-            _fakePlayer.transform.DOMoveY(.75f, 0.1f).SetRelative(obj.transform);
-            yield return new WaitForSeconds(0.09f);
+        #region Serialized Variables
+    
+        [SerializeField] private GameObject fakePlayer;
+
+        #endregion
+    
+
+        #endregion
+        
+
+        private void Start()
+        {   
+            fakePlayer.SetActive(false);
+
         }
 
-        //update Score
+        #region Event Subscription
 
-        CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, score);
-        
-        UISignals.Instance.onChangeScoreText(score);
+        private void OnEnable()
+        {
+            SubscribeEvents();
 
-        UISignals.Instance.onOpenPanel(UIPanels.WinPanel);
+        }
+
+        private void SubscribeEvents()
+        {
+            MiniGameSignals.Instance.onStartMiniGame += OnChangeActor;
+        }
+        private void UnsubscribeEvents()
+        {
+            MiniGameSignals.Instance.onStartMiniGame -= OnChangeActor;
+        }
+    
+        private void OnDisable()
+        {
+            UnsubscribeEvents();
+        }
+
+        #endregion
+    
+
+        private IEnumerator StartMiniGame(int score,Transform playerManager)
+        {
+            yield return new WaitForSeconds(1f);
         
+            playerManager.gameObject.SetActive(false);
+        
+            fakePlayer.SetActive(true);
+        
+            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.Runner);
+
+            for (int i = 0; i < score; i++)
+            {
+                GameObject obj = MoneyPoolManager.instance.GetMoneyFromPool();
+                obj.SetActive(true);
+                obj.transform.position = fakePlayer.transform.position;
+                obj.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
+                obj.transform.SetParent(null);
+                fakePlayer.transform.DOMoveY(.75f, 0.1f).SetRelative(obj.transform);
+                yield return new WaitForSeconds(0.09f);
+            }
+        
+
+            CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, score);
+        
+            UISignals.Instance.onChangeScoreText(score);
+
+            CoreGameSignals.Instance.onLevelSuccessful();
+        }
+    
+        private void OnChangeActor(int score, Transform playerManager)
+        {
+            StartCoroutine(StartMiniGame(score,playerManager));
+        }
     }
 }
