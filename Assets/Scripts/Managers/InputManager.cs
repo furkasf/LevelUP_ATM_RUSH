@@ -126,6 +126,8 @@ namespace Managers
                     }
                 }
             }
+
+            CoreGameSignals.Instance.onAnimateBandTile();
         }
 
         private void OnEnableInput()

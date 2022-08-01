@@ -4,7 +4,7 @@ using Commands;
 using Signals;
 using UnityEngine;
 
-namespace Assets.Scripts.Managers
+namespace Managers
 {
     public class SaveManager : MonoBehaviour
     {

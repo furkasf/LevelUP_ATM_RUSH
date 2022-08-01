@@ -26,6 +26,8 @@ namespace Signals
         public  Action<SaveStates, int> onSaveGameData = delegate { };
         public  Func<SaveStates, int> onLoadGameData = delegate { return 0; };
 
+        public Action onAnimateBandTile = delegate { };
+
         protected override void Awake()
         {
             base.Awake();

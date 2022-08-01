@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Controllers
+namespace Commands
 {
     public class AtmAnimationCommand : MonoBehaviour
     {

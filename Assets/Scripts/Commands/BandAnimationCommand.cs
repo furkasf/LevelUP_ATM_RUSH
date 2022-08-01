@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using Signals;
 
-namespace Controllers
+namespace Commands
 {
     public class BandAnimationCommand : MonoBehaviour
     {
@@ -18,7 +19,21 @@ namespace Controllers
             renderer = GetComponent<Renderer>();
         }
 
-        private void Update()
+        #region Subscription
+
+        private void OnEnable()
+        {
+            CoreGameSignals.Instance.onAnimateBandTile += OnAnimateBandTile;
+        }
+
+        private void OnDisable()
+        {
+            CoreGameSignals.Instance.onAnimateBandTile -= OnAnimateBandTile;
+        }
+
+        #endregion
+
+        private void OnAnimateBandTile()
         {
             float offset = Time.time * scrollSpeed;
             renderer.material.SetTextureOffset("_BaseMap", new Vector2(0, -offset));
