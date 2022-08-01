@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38810048, g: 0.72781575, b: 0.73249876, a: 1}
+  m_IndirectSpecularColor: {r: 0.3880867, g: 0.7278094, b: 0.7325043, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -304,7 +304,7 @@ Transform:
   m_Children:
   - {fileID: 288061777}
   m_Father: {fileID: 1921236443}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &92477163
 MonoBehaviour:
@@ -970,7 +970,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1921236443}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &153621030
 MonoBehaviour:
@@ -1096,7 +1096,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1921236443}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288061776
 GameObject:
@@ -2792,7 +2792,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456486751}
   m_CullTransparentMesh: 1
-
 --- !u!1 &1541291335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,7 +2864,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1921236443}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1587138048
 MonoBehaviour:
@@ -3154,12 +3153,13 @@ Transform:
   m_Children:
   - {fileID: 1390693024}
   - {fileID: 169412704}
-  - {fileID: 92477162}
+  - {fileID: 982048386}
   - {fileID: 1960917911}
   - {fileID: 192889014}
   - {fileID: 153621029}
   - {fileID: 1587138047}
   - {fileID: 2063223456}
+  - {fileID: 92477162}
   - {fileID: 1387741972}
   - {fileID: 1006865067}
   m_Father: {fileID: 0}
@@ -3196,7 +3196,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1921236443}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1960917912
 MonoBehaviour:
@@ -3330,7 +3330,7 @@ Transform:
   - {fileID: 489099499}
   - {fileID: 1313622077}
   m_Father: {fileID: 1921236443}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2063223457
 Animator:
