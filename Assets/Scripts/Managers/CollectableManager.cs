@@ -9,6 +9,7 @@ namespace Managers
     {
         #region Self Variables
         #region Public Variables
+        
         public CollectableTypes StateData;
    
 
@@ -28,38 +29,16 @@ namespace Managers
         private void Awake()
         {
             StateData = GetCollectableStateData();
+            
         }
         
 
         private CollectableTypes GetCollectableStateData() => Resources.Load<CD_Collectables>("Data/CD_Collectables").collectableStateData.collectableTypes;
-    
-        #region Event Subscription
-
-        private void OnEnable()
-        {
-            SubscribeEvents();
-
-        }
-
-        private void SubscribeEvents()
-        {
         
-        }
-        private void UnsubscribeEvents()
-        {
-
-        }
-        private void OnDisable()
-        {
-            UnsubscribeEvents();
-        }
-
-        #endregion
-
-
         public void CollisionWithStack()
         {
-            CollectableSignals.Instance.onCollissionWithStack?.Invoke(this.gameObject);
+            CollectableSignals.Instance.onCollissionWithStack?.Invoke(gameObject);
+            ScoreSignals.Instance.onChangePlayerScore?.Invoke((int)gameObject.GetComponent<CollectableManager>().StateData);
         }
 
         public void CollisionWithGate()
@@ -70,10 +49,10 @@ namespace Managers
         {
             CollectableSignals.Instance.onCollisionWithAtm?.Invoke(transform.GetSiblingIndex(), (int)StateData);
         }
-        public void CollisionWithCollectable(GameObject go) 
+        public void CollisionWithCollectable(GameObject gO) 
         {
-            CollectableSignals.Instance.onCollisionWithCollectable?.Invoke(go);
-            ScoreSignals.Instance.onChangePlayerScore?.Invoke((int)StateData);
+            CollectableSignals.Instance.onCollisionWithCollectable?.Invoke(gO);
+            ScoreSignals.Instance.onChangePlayerScore?.Invoke((int)gO.GetComponent<CollectableManager>().StateData);
         }
 
         public void CollisionWithObstacle()

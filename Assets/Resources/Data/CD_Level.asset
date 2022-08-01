@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CD_Level
   m_EditorClassIdentifier: 
   Levels:
-  - StageList: []
+  - StageList:
+    - RequiredObjectCount: 0
   - StageList: []
