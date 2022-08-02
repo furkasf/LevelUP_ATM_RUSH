@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38810048, g: 0.72781575, b: 0.73249876, a: 1}
+  m_IndirectSpecularColor: {r: 0.38810045, g: 0.72781575, b: 0.73249876, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1222,14 +1222,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerBuilder
       objectReference: {fileID: 0}
-    - target: {fileID: 8098357366651598932, guid: 17974f4f7495efd42bcde82c89b64b6f, type: 3}
-      propertyPath: backgroundAxis
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8098357366651598932, guid: 17974f4f7495efd42bcde82c89b64b6f, type: 3}
-      propertyPath: TargetTransform
-      value: 
-      objectReference: {fileID: 1006865067}
     - target: {fileID: 8098357366651598932, guid: 17974f4f7495efd42bcde82c89b64b6f, type: 3}
       propertyPath: targetTransform
       value: 

@@ -59,7 +59,7 @@ namespace Managers
 
         public void CollisionWithStack()
         {
-            CollectableSignals.Instance.onCollissionWithStack?.Invoke(this.gameObject);
+            CollectableSignals.Instance.onCollissionWithStack?.Invoke(gameObject);
         }
 
         public void CollisionWithGate()
@@ -100,7 +100,7 @@ namespace Managers
             {
                 StateData = CollectableTypes.Diamond;
                 collectableMeshController.SetMeshType(2);
-                ScoreSignals.Instance.onChangePlayerScore?.Invoke((int)StateData -1);
+                ScoreSignals.Instance.onChangePlayerScore?.Invoke((int)StateData -2);
             }
         }
     

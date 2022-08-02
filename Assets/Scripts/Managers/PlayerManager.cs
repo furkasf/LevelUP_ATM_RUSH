@@ -4,6 +4,7 @@ using Data.ValueObject;
 using Keys;
 using Signals;
 using DG.Tweening;
+using Enums;
 using UnityEngine;
 
 namespace Managers
@@ -35,7 +36,7 @@ namespace Managers
 
         #region MyRegion
         
-        private MinigameStartCommand _miniGame = new MinigameStartCommand();
+        private MinigameStartController _miniGame = new MinigameStartController();
         
 
         #endregion
@@ -75,7 +76,8 @@ namespace Managers
             CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
             ScoreSignals.Instance.onChangePlayerScore += OnChangePlayerScore;
             MiniGameSignals.Instance.onCollisionWithStack += OnStartMiniGame;
-            
+            MiniGameSignals.Instance.onCollisionWithStack += OnSetPlayerScore;
+
         }
 
         private void UnsubscribeEvents()
@@ -89,6 +91,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
             ScoreSignals.Instance.onChangePlayerScore -= OnChangePlayerScore;
             MiniGameSignals.Instance.onCollisionWithStack -= OnStartMiniGame;
+            MiniGameSignals.Instance.onCollisionWithStack -= OnSetPlayerScore;
 
         }
 
@@ -155,13 +158,26 @@ namespace Managers
 
         public void OnStartMiniGame()
         {
-            //StartCoroutine(_miniGame.StartMiniGame(playerScoreController._playerScore, fakePlayer));
             animationController.DeactivatePlayerMovementAnimation();
+            
             movementController.IsReadyToPlay(false);
-            MiniGameSignals.Instance.onStartMiniGame?.Invoke(playerScoreController._playerScore,transform);
+            
+            DOVirtual.DelayedCall(1, () =>
+            {
+                MiniGameSignals.Instance.onStartMiniGame?.Invoke(playerScoreController._playerScore);
+                
+                gameObject.SetActive(false);
+            });
 
         }
 
+        private void OnSetPlayerScore()
+        {
+            CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, playerScoreController._playerScore);
+        
+            UISignals.Instance.onChangeScoreText(playerScoreController._playerScore);
+        }
+        
         public void StopPlayerMove() => movementController.OnReset();
         
     }

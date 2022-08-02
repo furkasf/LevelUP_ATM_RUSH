@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Commands;
 using UnityEngine;
-
 namespace Keys
 {
     public class AddStackKeyParams
@@ -14,7 +11,7 @@ namespace Keys
         public Transform _transform;
         public MonoBehaviour _monoBehaviour;
 
-        
+        //ctor
         public AddStackKeyParams(ref List<GameObject> collectables, Transform transform, MonoBehaviour monoBehaviour, ref ShakeStackCommand shakeStackCommand)
         {
             _collectables = collectables;
@@ -22,5 +19,6 @@ namespace Keys
             _monoBehaviour = monoBehaviour;
             _shakeStackCommand = shakeStackCommand;
         }
+        
     }
 }
