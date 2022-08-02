@@ -4,6 +4,7 @@ using Data.ValueObject;
 using Keys;
 using Signals;
 using DG.Tweening;
+using Enums;
 using UnityEngine;
 
 namespace Managers
@@ -155,13 +156,27 @@ namespace Managers
 
         public void OnStartMiniGame()
         {
-            //StartCoroutine(_miniGame.StartMiniGame(playerScoreController._playerScore, fakePlayer));
             animationController.DeactivatePlayerMovementAnimation();
+            
             movementController.IsReadyToPlay(false);
-            MiniGameSignals.Instance.onStartMiniGame?.Invoke(playerScoreController._playerScore,transform);
+            
+            DOVirtual.DelayedCall(1, () =>
+            {
+                MiniGameSignals.Instance.onStartMiniGame?.Invoke(playerScoreController._playerScore);
+                
+                gameObject.SetActive(false);
+            });
+            
+            SetPlayerScore();
 
         }
 
+        private void SetPlayerScore()
+        {
+            CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, playerScoreController._playerScore);
+        
+            UISignals.Instance.onChangeScoreText(playerScoreController._playerScore);
+        }
         public void StopPlayerMove() => movementController.OnReset();
         
     }
