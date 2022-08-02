@@ -60,7 +60,7 @@ namespace Controllers
             
             for (int i = 0; i < score; i++)
             {
-                GameObject obj = MoneyPoolManager.instance.GetMoneyFromPool();
+                GameObject obj = MoneyPoolManager.Instance.GetMoneyFromPool();
                 
                 obj.SetActive(true);
                 
