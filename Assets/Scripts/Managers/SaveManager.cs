@@ -14,7 +14,7 @@ namespace Managers
         #region Private Variables
 
         private LoadGameCommand _loadGameCommand;
-        private SaveGameCommand _SaveGameCommand;
+        private SaveGameCommand _saveGameCommand;
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace Managers
         {
 
             _loadGameCommand = new LoadGameCommand();
-            _SaveGameCommand = new SaveGameCommand();
+            _saveGameCommand = new SaveGameCommand();
 
             //if there is no save file created
             if (!ES3.FileExists())
@@ -48,13 +48,13 @@ namespace Managers
 
         private void Subscribe()
         {
-            CoreGameSignals.Instance.onSaveGameData += _SaveGameCommand.OnSaveGameData;
+            CoreGameSignals.Instance.onSaveGameData += _saveGameCommand.OnSaveGameData;
             CoreGameSignals.Instance.onLoadGameData += _loadGameCommand.OnLoadGameData;
         }
 
         private void UnSubscribe()
         {
-            CoreGameSignals.Instance.onSaveGameData -= _SaveGameCommand.OnSaveGameData;
+            CoreGameSignals.Instance.onSaveGameData -= _saveGameCommand.OnSaveGameData;
             CoreGameSignals.Instance.onLoadGameData -= _loadGameCommand.OnLoadGameData;
         }
 

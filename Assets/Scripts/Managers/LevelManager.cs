@@ -100,7 +100,7 @@ namespace Managers
             CoreGameSignals.Instance.onSaveGameData?.Invoke(SaveStates.Level, _levelID);
             CoreGameSignals.Instance.onLevelInitialize?.Invoke();
             UISignals.Instance.onChangeLevelText(_levelID + 1);
-            MoneyPoolManager.instance.HideAllActiveMoney();
+            MoneyPoolManager.Instance.HideAllActiveMoney();
         }
 
         private void OnRestartLevel()

@@ -14,6 +14,7 @@ namespace Keys
         public Transform _transform;
         public MonoBehaviour _monoBehaviour;
 
+        
         public AddStackKeyParams(ref List<GameObject> collectables, Transform transform, MonoBehaviour monoBehaviour, ref ShakeStackCommand shakeStackCommand)
         {
             _collectables = collectables;
