@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Enums;
 using Managers;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class MinigameStartCommand : MonoBehaviour
+    public class MinigameStartController : MonoBehaviour
     {
         #region Self Variables
 
@@ -17,7 +18,10 @@ namespace Controllers
         [SerializeField] private GameObject fakePlayer;
 
         #endregion
-    
+
+        #region Private Variables
+
+        #endregion
 
         #endregion
         
@@ -25,7 +29,6 @@ namespace Controllers
         private void Start()
         {   
             fakePlayer.SetActive(false);
-
         }
 
         #region Event Subscription
@@ -38,11 +41,11 @@ namespace Controllers
 
         private void SubscribeEvents()
         {
-            MiniGameSignals.Instance.onStartMiniGame += OnChangeActor;
+            MiniGameSignals.Instance.onStartMiniGame += OnRaiseFakePlayer;
         }
         private void UnsubscribeEvents()
         {
-            MiniGameSignals.Instance.onStartMiniGame -= OnChangeActor;
+            MiniGameSignals.Instance.onStartMiniGame -= OnRaiseFakePlayer;
         }
     
         private void OnDisable()
@@ -53,7 +56,6 @@ namespace Controllers
 
         private IEnumerator StartMiniGame(int score)
         {
-            
             fakePlayer.SetActive(true);
             
             fakePlayer.GetComponent<BoxCollider>().enabled = true;
@@ -61,23 +63,22 @@ namespace Controllers
             for (int i = 0; i < score; i++)
             {
                 GameObject obj = MoneyPoolManager.Instance.GetMoneyFromPool();
-                
+               
                 obj.SetActive(true);
                 
                 obj.transform.position = fakePlayer.transform.position;
-                
-                obj.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
-                
-                obj.transform.SetParent(null);
-                
+
                 fakePlayer.transform.DOMoveY(.75f, 0.1f).SetRelative(obj.transform)
-                    .OnComplete(() => CoreGameSignals.Instance.onLevelSuccessful());
-                
-                yield return new WaitForSeconds(0.09f);
+                 .OnComplete(() =>
+                 {   
+                     CoreGameSignals.Instance.onLevelSuccessful();
+                 });
+                yield return new WaitForSeconds(0.05f);
+
             }
         }
         
-        private void OnChangeActor(int score)
+        private void OnRaiseFakePlayer(int score)
         {
             StartCoroutine(StartMiniGame(score));
         }

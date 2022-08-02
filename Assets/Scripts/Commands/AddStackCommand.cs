@@ -9,7 +9,7 @@ namespace Commands
     {
         private AddStackKeyParams _params;
 
-        public AddStackCommand (AddStackKeyParams param)
+        public AddStackCommand(AddStackKeyParams param)
         {
             _params = param;
         }

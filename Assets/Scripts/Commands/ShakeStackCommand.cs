@@ -20,7 +20,7 @@ namespace Commands
             for (int i = _collectables.Count - 1; i >= 0; i--)
             {
                 int index = i; ;
-                _collectables[index].transform.DOScale(new Vector3(2, 2, 2), 0.14f).SetEase(Ease.Flash);
+                _collectables[index].transform.DOScale(new Vector3(1.7f, 1.7f, 1.7f), 0.14f).SetEase(Ease.Flash);
                 _collectables[index].transform.DOScale(Vector3.one, 0.14f).SetDelay(0.14f).SetEase(Ease.Flash);
                 yield return new WaitForSeconds(0.05f);
             }

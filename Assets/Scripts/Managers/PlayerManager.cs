@@ -36,7 +36,7 @@ namespace Managers
 
         #region MyRegion
         
-        private MinigameStartCommand _miniGame = new MinigameStartCommand();
+        private MinigameStartController _miniGame = new MinigameStartController();
         
 
         #endregion
@@ -76,7 +76,8 @@ namespace Managers
             CoreGameSignals.Instance.onLevelFailed += OnLevelFailed;
             ScoreSignals.Instance.onChangePlayerScore += OnChangePlayerScore;
             MiniGameSignals.Instance.onCollisionWithStack += OnStartMiniGame;
-            
+            MiniGameSignals.Instance.onCollisionWithStack += OnSetPlayerScore;
+
         }
 
         private void UnsubscribeEvents()
@@ -90,6 +91,7 @@ namespace Managers
             CoreGameSignals.Instance.onLevelFailed -= OnLevelFailed;
             ScoreSignals.Instance.onChangePlayerScore -= OnChangePlayerScore;
             MiniGameSignals.Instance.onCollisionWithStack -= OnStartMiniGame;
+            MiniGameSignals.Instance.onCollisionWithStack -= OnSetPlayerScore;
 
         }
 
@@ -166,17 +168,16 @@ namespace Managers
                 
                 gameObject.SetActive(false);
             });
-            
-            SetPlayerScore();
 
         }
 
-        private void SetPlayerScore()
+        private void OnSetPlayerScore()
         {
             CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, playerScoreController._playerScore);
         
             UISignals.Instance.onChangeScoreText(playerScoreController._playerScore);
         }
+        
         public void StopPlayerMove() => movementController.OnReset();
         
     }

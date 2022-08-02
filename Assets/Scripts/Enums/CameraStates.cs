@@ -8,6 +8,8 @@ namespace Enums
 {
     public enum CameraStates
     {
-        Initial, Runner, MiniGame
+        Initial, 
+        Runner, 
+        MiniGame
     }
 }
