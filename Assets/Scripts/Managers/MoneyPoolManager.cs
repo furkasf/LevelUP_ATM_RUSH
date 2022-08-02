@@ -38,10 +38,10 @@ namespace Managers
         {
             for (int i = 0; i < poolSize; i++)
             {
-                GameObject ball = Instantiate(moneyPrefab);
-                ball.transform.parent = moneyContainer.transform;
-                ball.SetActive(false);
-                moneyPool.Add(ball);
+                GameObject money = Instantiate(moneyPrefab);
+                money.transform.parent = moneyContainer.transform;
+                money.SetActive(false);
+                moneyPool.Add(money);
             }
 
             return moneyPool;
