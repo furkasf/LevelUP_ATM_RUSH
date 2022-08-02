@@ -15,29 +15,30 @@ namespace Managers
 
         #region Serialize Variable
 
-        [SerializeField] GameObject unUsedMoney;//prefab
+        [SerializeField] GameObject moneyPrefab;//prefab
         [SerializeField] GameObject moneyContainer;
         [SerializeField] List<GameObject> moneyPool = new List<GameObject>();
-        [SerializeField] int ballSize;
+        [SerializeField] int poolSize;
 
         #endregion
         #endregion
 
         private void Awake()
         {
-            if (Instance == null) Instance = this;
+            if (Instance != null && Instance != this) Destroy(gameObject);
+            Instance = this;
         }
 
         private void Start()
         {
-            moneyPool = Setup(ballSize);
+            moneyPool = Setup(poolSize);
         }
 
         public List<GameObject> Setup(int poolSize)
         {
             for (int i = 0; i < poolSize; i++)
             {
-                GameObject ball = Instantiate(unUsedMoney);
+                GameObject ball = Instantiate(moneyPrefab);
                 ball.transform.parent = moneyContainer.transform;
                 ball.SetActive(false);
                 moneyPool.Add(ball);
@@ -49,20 +50,20 @@ namespace Managers
         public GameObject GetMoneyFromPool()
         {
             //cheack any in active ball from pool
-            foreach (var ball in moneyPool)
+            foreach (var money in moneyPool)
             {
-                if (ball.activeInHierarchy == false)
+                if (money.activeInHierarchy == false)
                 {
-                    ball.SetActive(true);
-                    return ball;
+                    money.SetActive(true);
+                    return money;
                    
                 }
             }
             //if doesnt have extra ball in pool creat new ball and pool
-            GameObject newBall = Instantiate(unUsedMoney);
-            newBall.transform.parent = moneyContainer.transform;
-            moneyPool.Add(newBall);
-            return newBall;
+            GameObject newMoney = Instantiate(moneyPrefab);
+            newMoney.transform.parent = moneyContainer.transform;
+            moneyPool.Add(newMoney);
+            return newMoney;
         }
 
         //add money used in level to pool
