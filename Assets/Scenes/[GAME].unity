@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38810048, g: 0.72781575, b: 0.73249876, a: 1}
+  m_IndirectSpecularColor: {r: 0.3880867, g: 0.7278094, b: 0.7325043, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -318,10 +318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cb5d9bab9d23d458aea5556bb8738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unUsedMoney: {fileID: 4922631598213467536, guid: 29281b91c53760b47a03c022451d1e11, type: 3}
+  moneyPrefab: {fileID: 4922631598213467536, guid: 29281b91c53760b47a03c022451d1e11, type: 3}
   moneyContainer: {fileID: 288061776}
   moneyPool: []
-  ballSize: 100
+  poolSize: 20
 --- !u!1 &97251328
 GameObject:
   m_ObjectHideFlags: 0
