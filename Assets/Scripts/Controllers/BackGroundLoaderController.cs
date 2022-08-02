@@ -10,15 +10,15 @@ using TMPro;
 
 namespace Controllers
 {
-    public class BackGroundLoader : MonoSingleton<BackGroundLoader>
+    public class BackGroundLoaderController : MonoSingleton<BackGroundLoaderController>
     {
         #region Self Variables
 
         #region Public Variables
         
-        public BackGroundAxis backgroundAxis = BackGroundAxis.Vertical;
+        public BackGroundAxis BackgroundAxis = BackGroundAxis.Vertical;
 
-        public Transform targetTransform;
+        public Transform TargetTransform;
         
         
         #endregion
@@ -33,31 +33,31 @@ namespace Controllers
 
         [SerializeField] private Transform levelCollactableHolder ;
         
-        private int levelCollactableCount = 80;
-        
         #endregion
 
         #region Private Variables
 
-        private LetterPathData Data;
+        private LetterPathData _data;
         
-        private float colorValue;
+        private float _colorValue;
             
-        private Vector3 forwardStack;
+        private Vector3 _forwardStack;
 
-        private Vector3 upwardsStack;
+        private Vector3 _upwardsStack;
 
         private float _indexMinFactor;
-
-        #endregion
-
-        #endregion
         
-   
-        private void Awake()
+        private int _levelCollactableCount = 80;
+
+        #endregion
+
+        #endregion
+
+
+        protected override void Awake()
         {
-            Data = GetLetterPathData();
-            _indexMinFactor = Data.indexMinFactor;
+            _data = GetLetterPathData();
+            _indexMinFactor = _data.indexMinFactor;
         }
 
         #region Event Subscription
@@ -69,12 +69,12 @@ namespace Controllers
 
         private void SubscribeEvents()
         {
-            MiniGameSignals.Instance.onCollisionWithBlock += SetColor;
+            MiniGameSignals.Instance.onCollisionWithBlock += OnSetColor;
         }
 
         private void UnsubscribeEvents()
         {
-            MiniGameSignals.Instance.onCollisionWithBlock -= SetColor;
+            MiniGameSignals.Instance.onCollisionWithBlock -= OnSetColor;
         }
         private void OnDisable()
         {
@@ -86,40 +86,40 @@ namespace Controllers
         private void Start()
         {
 
-            Data.cubePrefab.transform.localScale = Data.CubeScale;
+            _data.cubePrefab.transform.localScale = _data.CubeScale;
             
-            targetTransform.position = new Vector3(0,(Data.cubePrefab.transform.localScale.y / 2) -1f,195);
+            TargetTransform.position = new Vector3(0,(_data.cubePrefab.transform.localScale.y / 2) -1f,195);
 
             SetCubesToScene(SetPredictedCubeCount()); 
             
-            OnLoadTower(backgroundAxis); 
+            OnLoadTower(BackgroundAxis); 
         }
 
         private LetterPathData GetLetterPathData() => Resources.Load<CD_LetterPath>("Data/CD_LetterPath").LetterPathData;
         
         private int SetPredictedCubeCount() // Set cube count base level
         {
-            return predictedCubeCount = (levelCollactableCount * mostValuableObjectValue) / Data.cubeScaleFactor;
+            return predictedCubeCount = (_levelCollactableCount * mostValuableObjectValue) / _data.cubeScaleFactor;
         }
         
         private void SetCubesToScene(int cubeCount)
         {
             for (int i = 0; i < cubeCount; i++)
             {
-                cubeList.Add(Instantiate(Data.cubePrefab,targetTransform));
+                cubeList.Add(Instantiate(_data.cubePrefab,TargetTransform));
                 
             }
         }
-        private void SetColor(GameObject gO)
+        private void OnSetColor(GameObject gO)
         {
-            colorValue += 0.05f;
+            _colorValue += 0.05f;
             
-            if (colorValue>= 0.9f)
+            if (_colorValue>= 0.9f)
             {
-                colorValue = 0;
+                _colorValue = 0;
             }
             
-            gO.GetComponent<Renderer>().material.color = Color.HSVToRGB(colorValue, 1, 1);
+            gO.GetComponent<Renderer>().material.color = Color.HSVToRGB(_colorValue, 1, 1); // DoColor
         }
         private void SetTowerCollider(BackGroundAxis _backgroundAxis,GameObject gO)
         {   
@@ -127,20 +127,20 @@ namespace Controllers
             
             if (_backgroundAxis == BackGroundAxis.Vertical)
             {
-                cubeCollider.center = Data.cubeColliderCenter;
-                cubeCollider.size = Data.cubeColliderSize;
+                cubeCollider.center = _data.cubeColliderCenter;
+                cubeCollider.size = _data.cubeColliderSize;
             }
             else
             {
-                cubeCollider.center = Data.cubeColliderCenter;
-                cubeCollider.size = Data.cubeColliderSize;
+                cubeCollider.center = _data.cubeColliderCenter;
+                cubeCollider.size = _data.cubeColliderSize;
             }
         }
         private void SetTextOnCubes(GameObject gO,BackGroundAxis _backgroundAxis)
         {   
             
             
-            if (_indexMinFactor > Data.indexMaxFactor)
+            if (_indexMinFactor > _data.indexMaxFactor)
             {
                 return;
             }
@@ -166,41 +166,40 @@ namespace Controllers
         {
             if (_backgroundAxis == BackGroundAxis.Vertical)
             {
-               return forwardStack = cubeList[index].transform.localScale.y * Vector3.up;
+               return _forwardStack = cubeList[index].transform.localScale.y * Vector3.up;
             }
             else
             {
-                return upwardsStack = cubeList[index].transform.localScale.z * Vector3.forward;
+                return _upwardsStack = cubeList[index].transform.localScale.z * Vector3.forward;
             }
         }
-        private void SetBuild(BackGroundAxis _backgroundAxis)
+        private void SetBuild(BackGroundAxis backgroundAxis)
         {
             for (int i = 0; i < cubeList.Count; i++)
             {   
-                SetTextOnCubes(cubeList[i].gameObject,_backgroundAxis);
+                SetTextOnCubes(cubeList[i].gameObject,backgroundAxis);
                 
-                SetTowerCollider(_backgroundAxis,cubeList[i]);
+                SetTowerCollider(backgroundAxis,cubeList[i]);
                 
                 if (i == 0)
                 {
-                    cubeList[i].transform.position = targetTransform.position;
+                    cubeList[i].transform.position = TargetTransform.position;
                 }
                 else
                 {
-                   
-                    cubeList[i].transform.position = cubeList[i - 1].transform.position + SetStackDirection(_backgroundAxis,i);
+                    cubeList[i].transform.position = cubeList[i - 1].transform.position + SetStackDirection(backgroundAxis,i);
                 }
             }
         }
-        private void OnLoadTower(BackGroundAxis _backgroundAxis)
+        private void OnLoadTower(BackGroundAxis backgroundAxis)
         {
-            if (_backgroundAxis == BackGroundAxis.Vertical)
+            if (backgroundAxis == BackGroundAxis.Vertical)
             {
-                SetBuild(_backgroundAxis);
+                SetBuild(backgroundAxis);
             }
             else
             {   
-                SetBuild(_backgroundAxis);
+                SetBuild(backgroundAxis);
             }
         }
     }

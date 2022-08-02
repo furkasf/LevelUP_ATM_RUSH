@@ -22,17 +22,6 @@ namespace Controllers
         private void OnTriggerEnter(Collider other)
         {
             
-            if (other.CompareTag("MoneyTransform")) // delete this 
-            {
-                //UISignals.Instance.onOpenPanel?.Invoke(UIPanels.MiniGamePanel);
-                manager.StopPlayerMove();
-                manager.OnStartMiniGame();
-            }
-            
-            if (other.CompareTag("WinZone"))
-            {
-                CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
-            }
             
             if (other.CompareTag("Obstacle"))
             {

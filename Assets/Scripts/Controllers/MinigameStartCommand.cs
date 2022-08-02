@@ -49,42 +49,37 @@ namespace Controllers
         {
             UnsubscribeEvents();
         }
-
         #endregion
-    
 
-        private IEnumerator StartMiniGame(int score,Transform playerManager)
+        private IEnumerator StartMiniGame(int score)
         {
-            yield return new WaitForSeconds(1f);
-        
-            playerManager.gameObject.SetActive(false);
-        
+            
             fakePlayer.SetActive(true);
-            fakePlayer.transform.GetComponent<BoxCollider>().enabled = true;
-        
-            CoreGameSignals.Instance.onSetCameraState?.Invoke(CameraStates.Runner);
-
+            
+            fakePlayer.GetComponent<BoxCollider>().enabled = true;
+            
             for (int i = 0; i < score; i++)
             {
                 GameObject obj = MoneyPoolManager.instance.GetMoneyFromPool();
+                
                 obj.SetActive(true);
+                
                 obj.transform.position = fakePlayer.transform.position;
+                
                 obj.transform.GetChild(1).GetComponent<BoxCollider>().enabled = false;
+                
                 obj.transform.SetParent(null);
-                fakePlayer.transform.DOMoveY(.75f, 0.1f).SetRelative(obj.transform);
+                
+                fakePlayer.transform.DOMoveY(.75f, 0.1f).SetRelative(obj.transform)
+                    .OnComplete(() => CoreGameSignals.Instance.onLevelSuccessful());
+                
                 yield return new WaitForSeconds(0.09f);
             }
-
-            CoreGameSignals.Instance.onSaveGameData(SaveStates.Score, score);
-        
-            UISignals.Instance.onChangeScoreText(score);
-
-            CoreGameSignals.Instance.onLevelSuccessful();
         }
-    
-        private void OnChangeActor(int score, Transform playerManager)
+        
+        private void OnChangeActor(int score)
         {
-            StartCoroutine(StartMiniGame(score,playerManager));
+            StartCoroutine(StartMiniGame(score));
         }
     }
 }
