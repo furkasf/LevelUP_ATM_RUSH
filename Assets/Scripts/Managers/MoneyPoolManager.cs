@@ -9,13 +9,13 @@ namespace Managers
         #region Self Variable
         #region Public Variables
 
-        public static MoneyPoolManager instance;
+        public static MoneyPoolManager Instance;
 
         #endregion
 
         #region Serialize Variable
 
-        [SerializeField] GameObject unUsedMoney;
+        [SerializeField] GameObject unUsedMoney;//prefab
         [SerializeField] GameObject moneyContainer;
         [SerializeField] List<GameObject> moneyPool = new List<GameObject>();
         [SerializeField] int ballSize;
@@ -25,15 +25,15 @@ namespace Managers
 
         private void Awake()
         {
-            if (instance == null) instance = this;
+            if (Instance == null) Instance = this;
         }
 
         private void Start()
         {
-            moneyPool = CreatMoneyPool(ballSize);
+            moneyPool = Setup(ballSize);
         }
 
-        public List<GameObject> CreatMoneyPool(int poolSize)
+        public List<GameObject> Setup(int poolSize)
         {
             for (int i = 0; i < poolSize; i++)
             {
@@ -55,7 +55,7 @@ namespace Managers
                 {
                     ball.SetActive(true);
                     return ball;
-                    
+                   
                 }
             }
             //if doesnt have extra ball in pool creat new ball and pool

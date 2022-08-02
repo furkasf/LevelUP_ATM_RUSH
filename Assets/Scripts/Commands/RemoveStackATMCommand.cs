@@ -27,7 +27,7 @@ namespace Commands
 
                 _collectables[0].transform.SetParent(_tempHolder.transform);
 
-                MoneyPoolManager.instance.AddMoneyToPool(_collectables[0]);
+                MoneyPoolManager.Instance.AddMoneyToPool(_collectables[0]);
 
                 ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
 

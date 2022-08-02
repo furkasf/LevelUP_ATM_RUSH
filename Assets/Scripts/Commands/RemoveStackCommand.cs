@@ -35,7 +35,7 @@ namespace Commands
 
                 _collectables[0].SetActive(false);
 
-                MoneyPoolManager.instance.AddMoneyToPool(_collectables[0]);
+                MoneyPoolManager.Instance.AddMoneyToPool(_collectables[0]);
 
                 _collectables.Remove(_collectables[0]);
 
