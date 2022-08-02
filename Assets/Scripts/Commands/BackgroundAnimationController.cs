@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using DG.Tweening;
 using Signals;
@@ -6,7 +5,7 @@ using Signals;
 
 namespace Controllers
 {
-    public class BackgroundAnimationCommand : MonoBehaviour
+    public class BackgroundAnimationController : MonoBehaviour
     {
         private void OnTriggerEnter(Collider other)
         {
@@ -18,7 +17,10 @@ namespace Controllers
         }
         private void OnTriggerExit(Collider other)
         {
-            PlayBackAnim(other.gameObject);
+            if (other.CompareTag("StairStep"))
+            {
+                PlayBackAnim(other.gameObject);
+            }
         }
 
         private void PlayForwardAnim(GameObject gameObject)
