@@ -21,7 +21,7 @@ namespace Controllers
 
         public void SetLevelText(int value)
         {
-            levelText.text = "level "+ value.ToString();
+            levelText.text = "LEVEL "+ value.ToString();
         }
 
         public void SetScoreText(int value)

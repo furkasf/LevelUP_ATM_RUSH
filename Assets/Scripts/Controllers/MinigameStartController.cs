@@ -67,14 +67,13 @@ namespace Controllers
                 
                 obj.transform.position = fakePlayer.transform.position;
 
-                fakePlayer.transform.DOMoveY(.75f, 0.1f).SetRelative(obj.transform)
-                 .OnComplete(() =>
-                 {   
-                     CoreGameSignals.Instance.onLevelSuccessful();
-                 });
-                yield return new WaitForSeconds(0.05f);
+                fakePlayer.transform.DOMoveY(.75f, 0.1f).SetRelative(obj.transform);
+
+                yield return new WaitForSeconds(0.1f);
 
             }
+            
+            CoreGameSignals.Instance.onLevelSuccessful();
         }
         
         private void OnRaiseFakePlayer(int score)

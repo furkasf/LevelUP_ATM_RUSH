@@ -151,7 +151,7 @@ namespace Managers
         public void PushAndShakeThePlayer()
         {
             movementController.IsReadyToPlay(false);
-            transform.DOShakePosition(0.5f, 0.6f, 6);
+            //transform.DOShakePosition(0.5f, 0.6f, 6);
             transform.DOMoveZ(transform.position.z - 8, 0.5f).OnComplete(() =>
             movementController.IsReadyToPlay(true));
         }

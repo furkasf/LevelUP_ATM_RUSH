@@ -25,7 +25,7 @@ namespace Controllers
 
         private void PlayForwardAnim(GameObject gameObject)
         {
-            gameObject.transform.DOLocalMoveZ(4.0f, .2f);
+            gameObject.transform.DOLocalMoveZ(2.5f, .2f);
         }
 
         private void PlayBackAnim(GameObject gameObject)

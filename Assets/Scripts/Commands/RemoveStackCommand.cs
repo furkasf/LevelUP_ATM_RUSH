@@ -31,13 +31,13 @@ namespace Commands
             {
                 _transform.GetChild(index).SetParent(null);
 
+                _collectables[index].SetActive(false);
+                
                 _collectables[index].transform.SetParent(_tempHolder.transform);
 
-                _collectables[index].SetActive(false);
+                //MoneyPoolManager.Instance.AddMoneyToPool(_collectables[index]);
 
-                MoneyPoolManager.Instance.AddMoneyToPool(_collectables[index]);
-
-                _collectables.Remove(_collectables[index]);
+                _collectables.RemoveAt(index);
 
                 _collectables.TrimExcess();
 
@@ -58,16 +58,17 @@ namespace Commands
                 {
                     randomValue = 0;
                 }
-                _collectables[i].transform.SetParent(_tempHolder.transform);
 
                 _collectables[i].transform.GetChild(1).gameObject.tag = "Collectable";
+                
+                _collectables[i].transform.SetParent(_tempHolder.transform);
                 
                 int value = (int)_collectables[i].GetComponent<CollectableManager>().StateData;
                 ScoreSignals.Instance.onChangePlayerScore(-value);
 
-                _collectables[i].transform.DOJump(_collectables[i].transform.position + new Vector3(randomValue, 0, (Random.Range(6, 12))), 4.0f, 2, 1f);
+                _collectables[i].transform.DOJump(_collectables[i].transform.position + new Vector3(randomValue, 0, (Random.Range(6, 12))), 3.0f, 2, 1f);
 
-                _collectables.Remove(_collectables[i]);
+                _collectables.RemoveAt(i);
 
             }
 
