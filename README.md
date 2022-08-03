@@ -24,7 +24,8 @@ almak için referans olarak kullanılabir.
 
 NOT: UML güncel değildir.
 
- 
+![uml](https://user-images.githubusercontent.com/60402673/182665180-c8ad89c5-7a3e-4be7-8063-7ce6581f6c92.png)
+
 ## Kullanılan Unity Paketleri
 
 - Toony Color
