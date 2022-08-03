@@ -24,7 +24,7 @@ almak için referans olarak kullanılabir.
 
 NOT: UML güncel değildir.
 
-![uml](https://user-images.githubusercontent.com/60402673/182665180-c8ad89c5-7a3e-4be7-8063-7ce6581f6c92.png)
+![UMLFILE](https://user-images.githubusercontent.com/60402673/182665953-f327ea17-5af4-4c16-baa7-bbeedf6a006a.jpg)
 
 ## Kullanılan Unity Paketleri
 
