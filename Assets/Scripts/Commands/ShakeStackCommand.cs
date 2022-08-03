@@ -24,8 +24,8 @@ namespace Commands
                 {
                     yield break;
                 }
-                _collectables[i].transform.DOScale(new Vector3(1.7f, 1.7f, 1.7f), 0.14f).SetEase(Ease.Flash);
-                _collectables[i].transform.DOScale(Vector3.one, 0.14f).SetDelay(0.14f).SetEase(Ease.Flash);
+                _collectables[i].transform.DOScale(new Vector3(1.4f, 1.4f, 1.4f), 0.1f).SetEase(Ease.Flash);
+                _collectables[i].transform.DOScale(Vector3.one, 0.1f).SetDelay(0.1f).SetEase(Ease.Flash);
                 _collectables.TrimExcess();
                 yield return new WaitForSeconds(0.05f);
             }

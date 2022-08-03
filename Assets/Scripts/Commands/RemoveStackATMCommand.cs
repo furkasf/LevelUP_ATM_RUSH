@@ -22,20 +22,17 @@ namespace Commands
 
         public void OnCollisionWithATM(int index, int value)
         {
-            if (index == 0)
+            if (index == _collectables.Count -1)
             {
+                _collectables[index].transform.SetParent(_tempHolder.transform);
 
-                _collectables[0].transform.SetParent(_tempHolder.transform);
-
-                MoneyPoolManager.Instance.AddMoneyToPool(_collectables[0]);
+                MoneyPoolManager.Instance.AddMoneyToPool(_collectables[index]);
 
                 ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);
 
-                _collectables.Remove(_collectables[0]);
+                _collectables.Remove(_collectables[index]);
 
                 _collectables.TrimExcess();
-
-                return;
             }
 
         }

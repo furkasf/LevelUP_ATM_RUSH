@@ -27,29 +27,25 @@ namespace Commands
         public void OnRemoveFromStack(int index)
         {
 
-            if (index == 0)
+            if (index == _collectables.Count -1)
             {
-                _transform.GetChild(0).SetParent(null);
+                _transform.GetChild(index).SetParent(null);
 
-                _collectables[0].transform.SetParent(_tempHolder.transform);
+                _collectables[index].transform.SetParent(_tempHolder.transform);
 
-                _collectables[0].SetActive(false);
+                _collectables[index].SetActive(false);
 
-                MoneyPoolManager.Instance.AddMoneyToPool(_collectables[0]);
+                MoneyPoolManager.Instance.AddMoneyToPool(_collectables[index]);
 
-                _collectables.Remove(_collectables[0]);
+                _collectables.Remove(_collectables[index]);
 
                 _collectables.TrimExcess();
 
                 return;
             }
 
-            for (int i = index; i < _collectables.Count; i--)
+            for (int i = _collectables.Count -1 ; i >= index ; i--)
             {
-                if (i < 0)  // when index lower than 0 it cause trouble(null excep.)
-                {
-                    return;
-                }
 
                 int randomValue = Random.Range(-3, 3);
 
@@ -65,10 +61,7 @@ namespace Commands
                 _collectables[i].transform.SetParent(_tempHolder.transform);
 
                 _collectables[i].transform.GetChild(1).gameObject.tag = "Collectable";
-
-                //MoneyPoolManager.instance.AddMoneyToPool(Collectables[0]);
-
-
+                
                 int value = (int)_collectables[i].GetComponent<CollectableManager>().StateData;
                 ScoreSignals.Instance.onChangePlayerScore(-value);
 

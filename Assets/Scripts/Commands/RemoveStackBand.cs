@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Signals;
 using DG.Tweening;
 using UnityEngine;
@@ -24,13 +21,13 @@ namespace Commands
 
         public void OnCollisionWithBand(int index, int value)
         {
-            if (index == 0)
+            if (index == _collectables.Count - 1)
             {
-                GameObject temp = _transform.GetChild(0).gameObject;
+                GameObject temp = _transform.GetChild(index).gameObject;
 
                 temp.gameObject.transform.SetParent(_tempHolder.transform);
 
-                _collectables.Remove(_collectables[0]);
+                _collectables.Remove(_collectables[index]);
 
                 temp.transform.DOMoveX(-4, 0.4f).OnComplete(() =>
                 {

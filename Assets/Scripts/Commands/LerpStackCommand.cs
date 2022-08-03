@@ -19,9 +19,9 @@ namespace Commands
             {
                 return;
             }
-            for (int i = _collectables.Count - 1; i >= 1; i--)
+            for (int i = 1; i <= _collectables.Count-1; i++)
             {
-                _collectables[i - 1].transform.DOMoveX(_collectables[i].transform.position.x, .1f);
+                _collectables[i].transform.DOMoveX(_collectables[i-1].transform.position.x, .1f);
             }
 
         }
