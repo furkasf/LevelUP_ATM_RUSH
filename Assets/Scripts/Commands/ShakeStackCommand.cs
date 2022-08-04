@@ -20,7 +20,7 @@ namespace Commands
             _collectables.TrimExcess();
             for (int i = _collectables.Count - 1; i >= 0; i--)
             {   
-                if (i == 0 || i>= _collectables.Count)
+                if (i < 0 || i>= _collectables.Count)
                 {
                     yield break;
                 }
