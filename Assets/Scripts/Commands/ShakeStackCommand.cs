@@ -20,11 +20,11 @@ namespace Commands
             _collectables.TrimExcess();
             for (int i = _collectables.Count - 1; i >= 0; i--)
             {   
-                if (i == 0 || i>= _collectables.Count)
+                if (i < 0 || i>= _collectables.Count)
                 {
                     yield break;
                 }
-                _collectables[i].transform.DOScale(new Vector3(1.6f, 1.6f, 1.6f), 0.12f).SetEase(Ease.Flash);
+                _collectables[i].transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.12f).SetEase(Ease.Flash);
                 _collectables[i].transform.DOScale(Vector3.one, 0.12f).SetDelay(0.12f).SetEase(Ease.Flash);
 
                 _collectables.TrimExcess();

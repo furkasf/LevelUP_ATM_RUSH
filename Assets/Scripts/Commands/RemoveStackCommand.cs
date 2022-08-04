@@ -66,7 +66,7 @@ namespace Commands
                 int value = (int)_collectables[i].GetComponent<CollectableManager>().StateData;
                 ScoreSignals.Instance.onChangePlayerScore(-value);
 
-                _collectables[i].transform.DOJump(_collectables[i].transform.position + new Vector3(randomValue, 0, (Random.Range(6, 12))), 3.0f, 2, 1f);
+                _collectables[i].transform.DOJump(_collectables[i].transform.position + new Vector3(randomValue, 0, (Random.Range(6, 12))), 3.0f, 2, .5f);
 
                 _collectables.RemoveAt(i);
 
