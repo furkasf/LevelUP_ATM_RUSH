@@ -25,7 +25,8 @@ namespace Commands
             if (index == _collectables.Count -1)
             {
                 _collectables[index].transform.SetParent(_tempHolder.transform);
-
+                
+                _collectables[index].SetActive(false);
                 //MoneyPoolManager.Instance.AddMoneyToPool(_collectables[index]);
 
                 ScoreSignals.Instance.onChangeAtmScore?.Invoke(value);

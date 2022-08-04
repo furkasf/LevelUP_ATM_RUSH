@@ -37,7 +37,6 @@ namespace Managers
         #region MyRegion
         
         private MinigameStartController _miniGame = new MinigameStartController();
-        
 
         #endregion
         #endregion
