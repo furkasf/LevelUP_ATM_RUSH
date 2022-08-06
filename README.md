@@ -53,5 +53,11 @@ bu ikisi sade level'i load ve clear etmek için kullandık
     managerı kod sayısını minimize edip genel olarak kodu daha rahat maintain
     etmek için kullandık 
 
+## GamePlay video
+
+
+https://user-images.githubusercontent.com/60402673/183252998-71744776-cb2f-4db3-94f6-4f0589fea57e.mp4
+
+
 
 
